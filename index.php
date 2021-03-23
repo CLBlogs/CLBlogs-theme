@@ -4,6 +4,9 @@
     <title>CLBlogs Home</title>
 </head>
 <body>
-    <a href="login.php">登录</a>
+    <?php
+        $road = get_template_directory_uri();
+        echo "<a href='$road/login.php'>登录</a>";
+    ?>
 </body>
 </html>
