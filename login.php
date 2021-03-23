@@ -109,7 +109,7 @@ $(function(){
 	}
 </script>
 -->
-<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
 	<div class="position ">
