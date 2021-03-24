@@ -125,10 +125,10 @@ $(function(){
 		<div class="row">
 			<div class="col-md-2 col-md-offset-3 ">&nbsp;</div>
 			<div class="col-md-2">
-				<p class="text-center" id='lo' style='border-bottom:3px solid #45718A;' onmouseover='onMouseOver()' onclick="changePage('login')" >登录</li>
+				<li class="text-center" id='lo' style='border-bottom:3px solid #45718A;' onmouseover='onMouseOver()' onclick="changePage('login')" >登录</li>
 			</div>
 			<div class="col-md-2 ">
-				<p class="text-center" id='re' onmouseover='onMouseOver()' onclick="changePage('register')" >注册</li>
+				<li class="text-center" id='re' onmouseover='onMouseOver()' onclick="changePage('register')" >注册</li>
 			</div>
 		</div>
 	</div>
@@ -136,13 +136,13 @@ $(function(){
 <!--登录页面-->
 	<div id="login">
 	<div class="container" >	
-	<form action="" method="">	
+	<form action="loginaction.php" method="post">
 		<div class="row">
 				<div class="col-md-2 col-md-offset-3 text-right" id="textContent">
 					用户名:&nbsp;&nbsp;
 				</div>
 				<div class="col-md-4">
-					<input class="information" name="loId" type="text" value="" />
+					<input class="information" name="username" type="text" value="" />
 				</div>
 			</div></br>
 		<div class="row">
@@ -150,7 +150,7 @@ $(function(){
 					密码:&nbsp;&nbsp;&nbsp;&nbsp;
 				</div>
 				<div class="col-md-4">
-					<input class="information" name="loId" type="text" value="" />
+					<input class="information" name="password" type="text" value="" />
 				</div>
 		</div></br>
 		<div class="row" style="position: relative;top: 5px;">
@@ -158,7 +158,7 @@ $(function(){
 					记住密码:
 				</div>
 				<div class="col-md-4">
-					<input name="loId" type="checkbox"  />
+					<input name="remember" type="checkbox"  />
 				</div>
 		</div>
 		<div class="row" style="position: relative;top:10px;">
@@ -172,13 +172,13 @@ $(function(){
 <!--注册页面-->
 	<div id="register" style="display: none;">
 	<div class="container" >	
-	<form action="" method="">	
+	<form action="registeraction.php" method="post">
 		<div class="row">
 				<div class="col-md-2 col-md-offset-3 text-right" id="textContent">
 					用户名:&nbsp;&nbsp;
 				</div>
 				<div class="col-md-4">
-					<input class="information" name="loId" type="text" value="" />
+					<input class="information" name="username" type="text" value="" />
 				</div>
 		</div></br>
 		<div class="row">
@@ -186,7 +186,7 @@ $(function(){
 					<p>邮箱:&nbsp;&nbsp;&nbsp;&nbsp;</p>
 				</div>
 				<div class="col-md-4">
-					<input class="information" name="loId" type="text" value="" />
+					<input class="information" name="email" type="text" value="" />
 				</div>
 		</div></br>
 
@@ -196,7 +196,7 @@ $(function(){
 					<p>密码:&nbsp;&nbsp;&nbsp;&nbsp;</p>
 				</div>
 				<div class="col-md-4">
-					<input class="information" name="loId" type="text" value="" />
+					<input class="information" name="password" type="text" value="" />
 				</div>
 		</div></br>
 		<div class="row">
@@ -204,7 +204,7 @@ $(function(){
 					确认密码:
 				</div>
 				<div class="col-md-4">
-					<input class="information" name="loId" type="text" value="" />
+					<input class="information" name="re_password" type="text" value="" />
 				</div>
 		</div>
 		<div class="row">
