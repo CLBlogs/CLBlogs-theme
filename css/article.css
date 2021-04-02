@@ -211,7 +211,7 @@ textarea{
         overflow: auto;
         margin:1% 1% 1% 1%;
         background-color:rgba(245, 192,203, 0.9);
-     
+    }
 }
 @media  (max-width:900px)
 {
