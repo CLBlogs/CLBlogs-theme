@@ -106,8 +106,76 @@ pageEncoding="UTF-8"%>-->
                     </li>
                 </ul>
             </div>
+
             <div class="commentArea"><!--评论区  合并的时候把输入框的id值替换上面的#mycomment-->
-                <textarea name="mycomment" id="mycomment" placeholder="在这里留下你的想法"></textarea>
+            <!--    <textarea name="mycomment" id="mycomment" placeholder="在这里留下你的想法"></textarea>          -->
+                <div class="commentArea_one">                 
+                            <tr>
+                                <td>                                   已发布评论   </td>
+                                    <br/>
+                                <br/>
+                            <div align="center"> 
+                        <table>
+                            <td>     <input type="button" value="用户"></td>
+                                <br/>
+                                <td>
+                                    <textarea cols="300" rows="4"id="txt"></textarea>
+                                </td>
+                            </tr>
+                        
+                        </table>
+                            </div> 
+                            <div align="right"> 
+                                <input type="button" value="评论">
+                                <input type="button" value="点赞">
+                            </div>
+                            
+                            
+                            
+                            <div align="center"> 
+                            <table>
+                            <td>     <input type="button" value="用户"></td>
+                                <br/>
+                                <td>
+                                    <textarea cols="300" rows="4"id="txt"></textarea>
+                                </td>
+                            </tr>
+                            </table>
+                            
+                            </div>
+                            <div align="right"> 
+                                <input type="button" value="评论">
+                                <input type="button" value="点赞">
+                            </div>
+                        
+                        <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                        <br/>
+                    
+                    
+                        </div>
+                            <br/>
+                                <br/>
+                        
+                            <td> 个人评论</td>  
+                            <div align="center">
+                            </form>   
+                                <br/>
+                                    <form action="#" method="post">
+                                
+                                <textarea id="mycomment" cols="300" rows="8" placeholder="留下你的想法"> 
+                                    </textarea>
+                                <br/>
+                                <div align="right"> 
+                                <input type="submit" value="发布"/>
+                                </div>
+                            </div>
+                            </form>
+                        </div>
+                </div>
             </div>
         </main>
     </div> 

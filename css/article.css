@@ -176,6 +176,9 @@ li.toolbox_comment>a
     text-decoration-line: none;
     color: black;
 }
+.commentArea{
+    margin:30px 10px;
+}
 textarea{
     width:80% ;
     height:40px;
