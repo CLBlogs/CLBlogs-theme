@@ -125,10 +125,10 @@ $(function(){
 		<div class="row">
 			<div class="col-md-2 col-md-offset-3 ">&nbsp;</div>
 			<div class="col-md-2">
-				<p class="text-center" id='lo' style='border-bottom:3px solid #45718A;' onmouseover='onMouseOver()' onclick="changePage('login')" >登录</li>
+				<li class="text-center" id='lo' style='border-bottom:3px solid #45718A;' onmouseover='onMouseOver()' onclick="changePage('login')" >登录</li>
 			</div>
 			<div class="col-md-2 ">
-				<p class="text-center" id='re' onmouseover='onMouseOver()' onclick="changePage('register')" >注册</li>
+				<li class="text-center" id='re' onmouseover='onMouseOver()' onclick="changePage('register')" >注册</li>
 			</div>
 		</div>
 	</div>
