@@ -74,14 +74,13 @@
 <!--                    </ul>-->
 <!--                </div>-->
 <!--            </div>-->
-            <div id="main-flow" class="main-flow">
+            <div id="main-flow" class="main-flow" style="MARGIN-RIGHT: auto; MARGIN-LEFT: auto; ">
                 <div id="post-list" class="post-list">
                     <article id="post-item-1" class="post-item">
                         <section id="post-item-body-1" class="post-item-body">
                             <div id="post-item-text-1" class="post-item-text"><a class="post-item-title"
                                                                                  href="#">博客标题</a>
-                                <p class="post-item-summary"><a href="#"><img class="avatar"
-                                                                              src="http://106.54.169.139/wp-content/themes/Clblogs_theme_home/assets/img/photo_test.png">前面我们研究了RPC的原理，市面上有很多基于RPC思想实现的框架，比如有Dubbo。今天就从Dubbo的SPI机制、服务注册与发现源码及网络通信过程去深入剖析下Dubbo。
+                                <p class="post-item-summary"><a href="#"><?php echo "<img class=\"avatar\" src=\"$road/assets/img/photo_test.png\">"; ?>前面我们研究了RPC的原理，市面上有很多基于RPC思想实现的框架，比如有Dubbo。今天就从Dubbo的SPI机制、服务注册与发现源码及网络通信过程去深入剖析下Dubbo。
                                         Dubbo架构 概述 Dubbo是阿里巴巴公司开源的一个高性能优秀的服务框架，使得应用可通过高性能的RPC 实现服务<br></a></p>
                             </div>
                             <footer id="post-item-foot-1" class="post-item-foot"><a class="post-item-author"
@@ -94,15 +93,14 @@
                                             class="glyphicon glyphicon-eye-open"></i><span>Text</span></a></footer>
                         </section>
                     </article>
-                    <article id="post-item-2" class="post-item">
-                        <section id="post-item-body-2" class="post-item-body">
-                            <div id="post-item-text-2" class="post-item-text"><a class="post-item-title"
+                    <article id="post-item-1" class="post-item">
+                        <section id="post-item-body-1" class="post-item-body">
+                            <div id="post-item-text-1" class="post-item-text"><a class="post-item-title"
                                                                                  href="#">博客标题</a>
-                                <p class="post-item-summary"><a href="#"><img class="avatar"
-                                                                              src="http://106.54.169.139/wp-content/themes/Clblogs_theme_home/assets/img/photo_test.png">前面我们研究了RPC的原理，市面上有很多基于RPC思想实现的框架，比如有Dubbo。今天就从Dubbo的SPI机制、服务注册与发现源码及网络通信过程去深入剖析下Dubbo。
+                                <p class="post-item-summary"><a href="#"><?php echo "<img class=\"avatar\" src=\"$road/assets/img/photo_test.png\">"; ?>前面我们研究了RPC的原理，市面上有很多基于RPC思想实现的框架，比如有Dubbo。今天就从Dubbo的SPI机制、服务注册与发现源码及网络通信过程去深入剖析下Dubbo。
                                         Dubbo架构 概述 Dubbo是阿里巴巴公司开源的一个高性能优秀的服务框架，使得应用可通过高性能的RPC 实现服务<br></a></p>
                             </div>
-                            <footer id="post-item-foot-2" class="post-item-foot"><a class="post-item-author"
+                            <footer id="post-item-foot-1" class="post-item-foot"><a class="post-item-author"
                                                                                     href="#"><span><span
                                                 style="text-decoration: underline;">author</span></span></a><span
                                         class="post-meta-item">time</span><a class="post-meta-iten" href="#"><i
@@ -112,15 +110,14 @@
                                             class="glyphicon glyphicon-eye-open"></i><span>Text</span></a></footer>
                         </section>
                     </article>
-                    <article id="post-item-3" class="post-item">
-                        <section id="post-item-body-3" class="post-item-body">
-                            <div id="post-item-text-3" class="post-item-text"><a class="post-item-title"
+                    <article id="post-item-1" class="post-item">
+                        <section id="post-item-body-1" class="post-item-body">
+                            <div id="post-item-text-1" class="post-item-text"><a class="post-item-title"
                                                                                  href="#">博客标题</a>
-                                <p class="post-item-summary"><a href="#"><img class="avatar"
-                                                                              src="http://106.54.169.139/wp-content/themes/Clblogs_theme_home/assets/img/photo_test.png">前面我们研究了RPC的原理，市面上有很多基于RPC思想实现的框架，比如有Dubbo。今天就从Dubbo的SPI机制、服务注册与发现源码及网络通信过程去深入剖析下Dubbo。
+                                <p class="post-item-summary"><a href="#"><?php echo "<img class=\"avatar\" src=\"$road/assets/img/photo_test.png\">"; ?>前面我们研究了RPC的原理，市面上有很多基于RPC思想实现的框架，比如有Dubbo。今天就从Dubbo的SPI机制、服务注册与发现源码及网络通信过程去深入剖析下Dubbo。
                                         Dubbo架构 概述 Dubbo是阿里巴巴公司开源的一个高性能优秀的服务框架，使得应用可通过高性能的RPC 实现服务<br></a></p>
                             </div>
-                            <footer id="post-item-foot-3" class="post-item-foot"><a class="post-item-author"
+                            <footer id="post-item-foot-1" class="post-item-foot"><a class="post-item-author"
                                                                                     href="#"><span><span
                                                 style="text-decoration: underline;">author</span></span></a><span
                                         class="post-meta-item">time</span><a class="post-meta-iten" href="#"><i
@@ -130,38 +127,14 @@
                                             class="glyphicon glyphicon-eye-open"></i><span>Text</span></a></footer>
                         </section>
                     </article>
-                    <article id="post-item-4" class="post-item">
-                        <section id="post-item-body-4" class="post-item-body">
-                            <div id="post-item-text-4" class="post-item-text"><a class="post-item-title"
+                    <article id="post-item-1" class="post-item">
+                        <section id="post-item-body-1" class="post-item-body">
+                            <div id="post-item-text-1" class="post-item-text"><a class="post-item-title"
                                                                                  href="#">博客标题</a>
-                                <p class="post-item-summary"><a href="#"><img class="avatar"
-                                                                              src="http://106.54.169.139/wp-content/themes/Clblogs_theme_home/assets/img/photo_test.png">前面我们研究了RPC的原理，市面上有很多基于RPC思想实现的框架，比如有Dubbo。今天就从Dubbo的SPI机制、服务注册与发现源码及网络通信过程去深入剖析下Dubbo。
+                                <p class="post-item-summary"><a href="#"><?php echo "<img class=\"avatar\" src=\"$road/assets/img/photo_test.png\">"; ?>前面我们研究了RPC的原理，市面上有很多基于RPC思想实现的框架，比如有Dubbo。今天就从Dubbo的SPI机制、服务注册与发现源码及网络通信过程去深入剖析下Dubbo。
                                         Dubbo架构 概述 Dubbo是阿里巴巴公司开源的一个高性能优秀的服务框架，使得应用可通过高性能的RPC 实现服务<br></a></p>
                             </div>
-                            <footer id="post-item-foot-4" class="post-item-foot"><a class="post-item-author"
-                                                                                    href="#"><span><span
-                                                style="text-decoration: underline;">author</span></span></a><span
-                                        class="post-meta-item">time</span><a class="post-meta-iten" href="#"><i
-                                            class="glyphicon glyphicon-thumbs-up"></i><span>Text</span></a><a
-                                        class="post-meta-iten" href="#"><i class="glyphicon glyphicon-star"></i><span>Text</span></a><a
-                                        class="post-meta-iten" href="#"><i
-                                            class="glyphicon glyphicon-eye-open"></i><span>Text</span></a></footer>
-                        </section>
-                    </article>
-                    <article id="post-item-5" class="post-item">
-                        <section id="post-item-body-5" class="post-item-body">
-                            <div id="post-item-text-5" class="post-item-text">
-                                <a class="post-item-title" href="#">博客标题</a>
-                                <p class="post-item-summary">
-                                    <a href="#">
-                                        <?php echo "<img class=\"avatar\" src=\"$road/assets/img/photo_test.png\">"; ?>
-                                        前面我们研究了RPC的原理，市面上有很多基于RPC思想实现的框架，比如有Dubbo。今天就从Dubbo的SPI机制、服务注册与发现源码及网络通信过程去深入剖析下Dubbo。
-                                        Dubbo架构 概述 Dubbo是阿里巴巴公司开源的一个高性能优秀的服务框架，使得应用可通过高性能的RPC 实现服务
-                                        <br>
-                                    </a>
-                                </p>
-                            </div>
-                            <footer id="post-item-foot-5" class="post-item-foot"><a class="post-item-author"
+                            <footer id="post-item-foot-1" class="post-item-foot"><a class="post-item-author"
                                                                                     href="#"><span><span
                                                 style="text-decoration: underline;">author</span></span></a><span
                                         class="post-meta-item">time</span><a class="post-meta-iten" href="#"><i
