@@ -8,13 +8,13 @@
     <?php
     $road = get_template_directory_uri();
     // echo $road;
-    echo "<link rel=\"stylesheet\" href=\"$road/assets/js/jquery.min.js\">";
-    echo "<link rel=\"stylesheet\" href=\"$road/assets/bootstrap/js/bootstrap.min.js\">";
-    echo "<link rel=\"stylesheet\" href=\"$road/assets/bootstrap/css/bootstrap.min.css\">";
-    echo "<link rel=\"stylesheet\" href=\"$road/assets/css/Navigation-Clean.css\">";
-    echo "<link rel=\"stylesheet\" href=\"$road/assets/css/Navigation-with-Search-1.css\">";
-    echo "<link rel=\"stylesheet\" href=\"$road/assets/css/Navigation-with-Search.css\">";
-    echo "<link rel=\"stylesheet\" href=\"$road/assets/css/styles.css\">";
+    echo "<link rel=\"stylesheet\" href=\"$road/js/jquery-3.5.1.js\">";
+    echo "<link rel=\"stylesheet\" href=\"$road/js/bootstrap.js\">";
+    echo "<link rel=\"stylesheet\" href=\"$road/css/bootstrap.css\">";
+    echo "<link rel=\"stylesheet\" href=\"$road/css/Navigation-Clean.css\">";
+    echo "<link rel=\"stylesheet\" href=\"$road/css/Navigation-with-Search-1.css\">";
+    echo "<link rel=\"stylesheet\" href=\"$road/css/Navigation-with-Search.css\">";
+    echo "<link rel=\"stylesheet\" href=\"$road/css/styles.css\">";
     ?>
 </head>
 
@@ -80,7 +80,7 @@
                         <section id="post-item-body-1" class="post-item-body">
                             <div id="post-item-text-1" class="post-item-text"><a class="post-item-title"
                                                                                  href="#">博客标题</a>
-                                <p class="post-item-summary"><a href="#"><?php echo "<img class=\"avatar\" src=\"$road/assets/img/photo_test.png\">"; ?>前面我们研究了RPC的原理，市面上有很多基于RPC思想实现的框架，比如有Dubbo。今天就从Dubbo的SPI机制、服务注册与发现源码及网络通信过程去深入剖析下Dubbo。
+                                <p class="post-item-summary"><a href="#"><?php echo "<img class=\"avatar\" src=\"$road/img/photo_test.png\">"; ?>前面我们研究了RPC的原理，市面上有很多基于RPC思想实现的框架，比如有Dubbo。今天就从Dubbo的SPI机制、服务注册与发现源码及网络通信过程去深入剖析下Dubbo。
                                         Dubbo架构 概述 Dubbo是阿里巴巴公司开源的一个高性能优秀的服务框架，使得应用可通过高性能的RPC 实现服务<br></a></p>
                             </div>
                             <footer id="post-item-foot-1" class="post-item-foot"><a class="post-item-author"
@@ -97,7 +97,7 @@
                         <section id="post-item-body-1" class="post-item-body">
                             <div id="post-item-text-1" class="post-item-text"><a class="post-item-title"
                                                                                  href="#">博客标题</a>
-                                <p class="post-item-summary"><a href="#"><?php echo "<img class=\"avatar\" src=\"$road/assets/img/photo_test.png\">"; ?>前面我们研究了RPC的原理，市面上有很多基于RPC思想实现的框架，比如有Dubbo。今天就从Dubbo的SPI机制、服务注册与发现源码及网络通信过程去深入剖析下Dubbo。
+                                <p class="post-item-summary"><a href="#"><?php echo "<img class=\"avatar\" src=\"$road/img/photo_test.png\">"; ?>前面我们研究了RPC的原理，市面上有很多基于RPC思想实现的框架，比如有Dubbo。今天就从Dubbo的SPI机制、服务注册与发现源码及网络通信过程去深入剖析下Dubbo。
                                         Dubbo架构 概述 Dubbo是阿里巴巴公司开源的一个高性能优秀的服务框架，使得应用可通过高性能的RPC 实现服务<br></a></p>
                             </div>
                             <footer id="post-item-foot-1" class="post-item-foot"><a class="post-item-author"
@@ -114,7 +114,7 @@
                         <section id="post-item-body-1" class="post-item-body">
                             <div id="post-item-text-1" class="post-item-text"><a class="post-item-title"
                                                                                  href="#">博客标题</a>
-                                <p class="post-item-summary"><a href="#"><?php echo "<img class=\"avatar\" src=\"$road/assets/img/photo_test.png\">"; ?>前面我们研究了RPC的原理，市面上有很多基于RPC思想实现的框架，比如有Dubbo。今天就从Dubbo的SPI机制、服务注册与发现源码及网络通信过程去深入剖析下Dubbo。
+                                <p class="post-item-summary"><a href="#"><?php echo "<img class=\"avatar\" src=\"$road/img/photo_test.png\">"; ?>前面我们研究了RPC的原理，市面上有很多基于RPC思想实现的框架，比如有Dubbo。今天就从Dubbo的SPI机制、服务注册与发现源码及网络通信过程去深入剖析下Dubbo。
                                         Dubbo架构 概述 Dubbo是阿里巴巴公司开源的一个高性能优秀的服务框架，使得应用可通过高性能的RPC 实现服务<br></a></p>
                             </div>
                             <footer id="post-item-foot-1" class="post-item-foot"><a class="post-item-author"
@@ -131,7 +131,7 @@
                         <section id="post-item-body-1" class="post-item-body">
                             <div id="post-item-text-1" class="post-item-text"><a class="post-item-title"
                                                                                  href="#">博客标题</a>
-                                <p class="post-item-summary"><a href="#"><?php echo "<img class=\"avatar\" src=\"$road/assets/img/photo_test.png\">"; ?>前面我们研究了RPC的原理，市面上有很多基于RPC思想实现的框架，比如有Dubbo。今天就从Dubbo的SPI机制、服务注册与发现源码及网络通信过程去深入剖析下Dubbo。
+                                <p class="post-item-summary"><a href="#"><?php echo "<img class=\"avatar\" src=\"$road/img/photo_test.png\">"; ?>前面我们研究了RPC的原理，市面上有很多基于RPC思想实现的框架，比如有Dubbo。今天就从Dubbo的SPI机制、服务注册与发现源码及网络通信过程去深入剖析下Dubbo。
                                         Dubbo架构 概述 Dubbo是阿里巴巴公司开源的一个高性能优秀的服务框架，使得应用可通过高性能的RPC 实现服务<br></a></p>
                             </div>
                             <footer id="post-item-foot-1" class="post-item-foot"><a class="post-item-author"
