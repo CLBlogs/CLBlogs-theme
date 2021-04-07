@@ -10,8 +10,7 @@ if (!empty($username) && !empty($password)) { //建立连接
     $sql_select = "SELECT username,password FROM b_user WHERE username = '$username' AND password = '$password'"; //执行SQL语句
     $ret = mysqli_query($conn, $sql_select);
     $row = mysqli_fetch_array($ret); //判断用户名或密码是否正确
-    if ($username == $row['username'] && $password == $row['password'])
-    { //选中“记住我”
+    if ($username == $row['username'] && $password == $row['password']) { //选中“记住我”
         /*if ($remember == "on")
         { //创建cookie
             setcookie("", $username, time() + 7 * 24 * 3600);
@@ -31,9 +30,7 @@ if (!empty($username) && !empty($password)) { //建立连接
         echo "<script>alert('登陆成功'); history.go(-1);</script>";
         echo "<br/> <a href=\"$road/login.php\">点击返回</a>";
         mysqli_close($conn);
-    }
-    else
-    {
+    } else {
 
         echo "<script>alert('用户名或密码错误'); history.go(-1);</script>";
     }
