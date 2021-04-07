@@ -157,7 +157,7 @@ pageEncoding="UTF-8"%>-->
                 用户名:&nbsp;&nbsp;
             </div>
             <div class="col-md-4">
-                <input class="information" name="username" type="text" value=""/>
+                <input class="information" name="user_login" type="text" value=""/>
             </div>
         </div>
         </br>
@@ -166,7 +166,7 @@ pageEncoding="UTF-8"%>-->
                 密码:&nbsp;&nbsp;&nbsp;&nbsp;
             </div>
             <div class="col-md-4">
-                <input class="information" name="password" type="text" value=""/>
+                <input class="information" name="user_pass" type="text" value=""/>
             </div>
         </div>
         <!--        </br>-->
@@ -195,7 +195,7 @@ pageEncoding="UTF-8"%>-->
                 用户名:&nbsp;&nbsp;
             </div>
             <div class="col-md-4">
-                <input class="information" name="username" type="text" value=""/>
+                <input class="information" name="user_login" type="text" value=""/>
             </div>
         </div>
         </br>
@@ -215,7 +215,7 @@ pageEncoding="UTF-8"%>-->
                 <p>密码:&nbsp;&nbsp;&nbsp;&nbsp;</p>
             </div>
             <div class="col-md-4">
-                <input class="information" name="password" type="text" value=""/>
+                <input class="information" name="user_pass" type="text" value=""/>
             </div>
         </div>
         </br>

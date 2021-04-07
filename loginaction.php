@@ -1,16 +1,21 @@
 <?php
 // $Id:$ //声明变量
 require '../../../wp-blog-header.php';
+global $wpdb;
 $road = get_template_directory_uri();
-$username = isset($_POST['username']) ? $_POST['username'] : "";
-$password = isset($_POST['password']) ? $_POST['password'] : "";
+// $username = isset($_POST['username']) ? $_POST['username'] : "";
+$user_login = isset($_POST['user_login']) ? $_POST['user_login'] : "";
+// $password = isset($_POST['password']) ? $_POST['password'] : "";
+$user_pass = isset($_POST['user_pass']) ? $_POST['user_pass'] : "";
 $remember = isset($_POST['remember']) ? $_POST['remember'] : ""; //判断用户名和密码是否为空
-if (!empty($username) && !empty($password)) { //建立连接
-    $conn = mysqli_connect('localhost', 'test7_fnsflm_xy', 'yBkS8icDP8', 'test7_fnsflm_xy'); //准备SQL语句
-    $sql_select = "SELECT username,password FROM b_user WHERE username = '$username' AND password = '$password'"; //执行SQL语句
-    $ret = mysqli_query($conn, $sql_select);
-    $row = mysqli_fetch_array($ret); //判断用户名或密码是否正确
-    if ($username == $row['username'] && $password == $row['password']) { //选中“记住我”
+if (!empty($user_login) && !empty($user_pass)) { //建立连接
+    // $conn = mysqli_connect('localhost', 'test7_fnsflm_xy', 'yBkS8icDP8', 'test7_fnsflm_xy'); //准备SQL语句
+    $sql_select = "SELECT user_login,user_pass FROM wp_users WHERE user_login = '$user_login' AND user_pass = '$user_pass'"; //执行SQL语句
+    // $ret = mysqli_query($conn, $sql_select);
+    // $row = mysqli_fetch_array($ret); //判断用户名或密码是否正确
+    $wpdb->query($sql_select);
+    //if ($user_login == $row['user_login'] && $user_pass == $row['user_pass']) { //选中“记住我”
+    if ($wpdb->num_rows) {
         /*if ($remember == "on")
         { //创建cookie
             setcookie("", $username, time() + 7 * 24 * 3600);
@@ -29,9 +34,8 @@ if (!empty($username) && !empty($password)) { //建立连接
         //header("Location:loginsucc.php"); //关闭数据库,跳转至loginsucc.php
         echo "<script>alert('登陆成功'); history.go(-1);</script>";
         echo "<br/> <a href=\"$road/login.php\">点击返回</a>";
-        mysqli_close($conn);
+        // mysqli_close($conn);
     } else {
-
         echo "<script>alert('用户名或密码错误'); history.go(-1);</script>";
     }
 } else {
