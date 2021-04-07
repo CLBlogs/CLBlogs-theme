@@ -1,5 +1,7 @@
 <?php
 // $Id:$ //声明变量
+require '../../../wp-blog-header.php';
+$road = get_template_directory_uri();
 $username = isset($_POST['username']) ? $_POST['username'] : "";
 $password = isset($_POST['password']) ? $_POST['password'] : "";
 $remember = isset($_POST['remember']) ? $_POST['remember'] : ""; //判断用户名和密码是否为空
@@ -27,7 +29,7 @@ if (!empty($username) && !empty($password)) { //建立连接
         //跳转到loginsucc.php页面
         //header("Location:loginsucc.php"); //关闭数据库,跳转至loginsucc.php
         echo "<script>alert('登陆成功'); history.go(-1);</script>";
-        echo "<br/> <a href=’login.php‘>点击返回</a>";
+        echo "<br/> <a href=\"$road/login.php\">点击返回</a>";
         mysqli_close($conn);
     }
     else

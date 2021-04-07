@@ -1,5 +1,7 @@
 <?php
 // $Id:$ //声明变量
+require '../../../wp-blog-header.php';
+$road = get_template_directory_uri();
 $username = isset($_POST['username']) ? $_POST['username'] : "";
 $password = isset($_POST['password']) ? $_POST['password'] : "";
 $re_password = isset($_POST['re_password']) ? $_POST['re_password'] : "";

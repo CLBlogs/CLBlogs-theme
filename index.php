@@ -7,9 +7,8 @@
     <title>bootstrap3.4_virsion1</title>
     <?php
     $road = get_template_directory_uri();
-    // echo $road;
-    echo "<link rel=\"stylesheet\" href=\"$road/js/jquery-3.5.1.js\">";
-    echo "<link rel=\"stylesheet\" href=\"$road/js/bootstrap.js\">";
+    echo "<link rel=\"application/javascript\" href=\"$road/js/jquery-3.5.1.js\">";
+    echo "<link rel=\"application/javascript\" href=\"$road/js/bootstrap.js\">";
     echo "<link rel=\"stylesheet\" href=\"$road/css/bootstrap.css\">";
     echo "<link rel=\"stylesheet\" href=\"$road/css/Navigation-Clean.css\">";
     echo "<link rel=\"stylesheet\" href=\"$road/css/Navigation-with-Search-1.css\">";
