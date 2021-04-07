@@ -47,7 +47,7 @@
         </nav>
         <ul class="nav nav-tabs">
             <?php
-            echo "<li><a id=\"denglu\" href=\"$road/login.php\">登录/注册</a></li>";
+             echo "<li><a id=\"denglu\" href=\"$road/login.php\">登录/注册</a></li>";
             ?>
         </ul>
     </div>

@@ -152,15 +152,16 @@ $(function(){
 				<div class="col-md-4">
 					<input class="information" name="loId" type="text" value="" />
 				</div>
-		</div></br>
-		<div class="row" style="position: relative;top: 5px;">
-				<div class="col-md-2 col-md-offset-3 text-right" id="textContent" >
-					记住密码:
-				</div>
-				<div class="col-md-4">
-					<input name="loId" type="checkbox"  />
-				</div>
 		</div>
+<!--        </br>-->
+<!--		<div class="row" style="position: relative;top: 5px;">-->
+<!--				<div class="col-md-2 col-md-offset-3 text-right" id="textContent" >-->
+<!--					记住密码:-->
+<!--				</div>-->
+<!--				<div class="col-md-4">-->
+<!--					<input name="loId" type="checkbox"  />-->
+<!--				</div>-->
+<!--		</div>-->
 		<div class="row" style="position: relative;top:10px;">
 				<div class="col-md-4 col-md-offset-5">
 					<input id="submitButton" type="submit" value="登录">
