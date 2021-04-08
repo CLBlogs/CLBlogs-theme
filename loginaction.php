@@ -32,8 +32,12 @@ if (!empty($user_login) && !empty($user_pass)) { //建立连接
         fclose($f);*/
         //跳转到loginsucc.php页面
         //header("Location:loginsucc.php"); //关闭数据库,跳转至loginsucc.php
-        echo "<script>alert('登陆成功'); history.go(-1);</script>";
-        echo "<br/> <a href=\"$road/login.php\">点击返回</a>";
+        echo "<script>alert('登陆成功'); 
+        //        history.go(-1);
+                window.location.href=\"$road/mineblog.php\";
+                </script>";
+        // echo "<br/> <a href=\"$road/login.php\">点击返回</a>";
+        // echo "<script>window.location.href=\"$road/login.php\";</script>";
         // mysqli_close($conn);
     } else {
         echo "<script>alert('用户名或密码错误'); history.go(-1);</script>";
