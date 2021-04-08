@@ -2,7 +2,7 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel='stylesheet' id='skeleton-css' href='http://test2.fnsflm.xyz:8190/wp-content/themes/ninja-shadow/assets/css/skeleton.css?ver=5.7' type='text/css' media='all'/>
-	<link rel='stylesheet' id='base-css'  href='http://test2.fnsflm.xyz:8190/wp-content/themes/ninja-shadow/assets/css/base.css?ver=5.7' type='text/css' media='all' />
+	<link rel='stylesheet' id='base-css' href='http://test2.fnsflm.xyz:8190/wp-content/themes/ninja-shadow/assets/css/base.css?ver=5.7' type='text/css' media='all' />
 	<link rel='stylesheet' id='theme-style-css'  href='http://test2.fnsflm.xyz:8190/wp-content/themes/ninja-shadow/assets/css/theme-style.css?ver=5.7' type='text/css' media='all' />
 	<!-- <script src="https://s3.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"></script> -->	
 </head>
