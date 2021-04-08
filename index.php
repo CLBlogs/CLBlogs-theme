@@ -33,17 +33,18 @@
                         <li><a id="shouye" href="#">首页</a></li>
                         <li><a id="guidang" href="#">归档</a></li>
                         <li><a id="liuyan" href="#">留言</a></li>
-                        <li><?php get_search_form(); ?></li>
+                        <!--                        <li>--><?php //get_search_form(); ?><!--</li>-->
                     </ul>
-<!--                    <form class="navbar-form navbar-left" target="_self" style="margin-left: 100px;">-->
-<!--                        <div class="form-group">-->
-<!--                            <label class="control-label" for="search-field">-->
-<!--                                <i class="glyphicon glyphicon-search"></i>-->
-<!--                            </label>-->
-<!--                            <input class="form-control search-field" type="search" id="search-field" name="search">-->
-<!--                        </div>-->
-<!--                    </form>-->
-<!--                    <a class="btn btn-default navbar-btn navbar-right action-button" role="button" href="#">搜索</a>-->
+                    <?php get_search_form(); ?>
+                    <!--                    <form class="navbar-form navbar-left" target="_self" style="margin-left: 100px;">-->
+                    <!--                        <div class="form-group">-->
+                    <!--                            <label class="control-label" for="search-field">-->
+                    <!--                                <i class="glyphicon glyphicon-search"></i>-->
+                    <!--                            </label>-->
+                    <!--                            <input class="form-control search-field" type="search" id="search-field" name="search">-->
+                    <!--                        </div>-->
+                    <!--                    </form>-->
+                    <!--                    <a class="btn btn-default navbar-btn navbar-right action-button" role="button" href="#">搜索</a>-->
 
                 </div>
             </div>
@@ -80,82 +81,50 @@
             <!--            </div>-->
             <div id="main-flow" class="main-flow" style="MARGIN-RIGHT: auto; MARGIN-LEFT: auto; ">
                 <div id="post-list" class="post-list">
-                    <article id="post-item-1" class="post-item">
-                        <section id="post-item-body-1" class="post-item-body">
-                            <div id="post-item-text-1" class="post-item-text"><a class="post-item-title"
-                                                                                 href="#">博客标题</a>
-                                <p class="post-item-summary"><a
-                                            href="#"><?php echo "<img class=\"avatar\" src=\"$road/img/photo_test.png\">"; ?>
-                                        前面我们研究了RPC的原理，市面上有很多基于RPC思想实现的框架，比如有Dubbo。今天就从Dubbo的SPI机制、服务注册与发现源码及网络通信过程去深入剖析下Dubbo。
-                                        Dubbo架构 概述 Dubbo是阿里巴巴公司开源的一个高性能优秀的服务框架，使得应用可通过高性能的RPC 实现服务<br></a></p>
-                            </div>
-                            <footer id="post-item-foot-1" class="post-item-foot"><a class="post-item-author"
-                                                                                    href="#"><span><span
-                                                style="text-decoration: underline;">author</span></span></a><span
-                                        class="post-meta-item">time</span><a class="post-meta-iten" href="#"><i
-                                            class="glyphicon glyphicon-thumbs-up"></i><span>Text</span></a><a
-                                        class="post-meta-iten" href="#"><i class="glyphicon glyphicon-star"></i><span>Text</span></a><a
-                                        class="post-meta-iten" href="#"><i
-                                            class="glyphicon glyphicon-eye-open"></i><span>Text</span></a></footer>
-                        </section>
-                    </article>
-                    <article id="post-item-1" class="post-item">
-                        <section id="post-item-body-1" class="post-item-body">
-                            <div id="post-item-text-1" class="post-item-text"><a class="post-item-title"
-                                                                                 href="#">博客标题</a>
-                                <p class="post-item-summary"><a
-                                            href="#"><?php echo "<img class=\"avatar\" src=\"$road/img/photo_test.png\">"; ?>
-                                        前面我们研究了RPC的原理，市面上有很多基于RPC思想实现的框架，比如有Dubbo。今天就从Dubbo的SPI机制、服务注册与发现源码及网络通信过程去深入剖析下Dubbo。
-                                        Dubbo架构 概述 Dubbo是阿里巴巴公司开源的一个高性能优秀的服务框架，使得应用可通过高性能的RPC 实现服务<br></a></p>
-                            </div>
-                            <footer id="post-item-foot-1" class="post-item-foot"><a class="post-item-author"
-                                                                                    href="#"><span><span
-                                                style="text-decoration: underline;">author</span></span></a><span
-                                        class="post-meta-item">time</span><a class="post-meta-iten" href="#"><i
-                                            class="glyphicon glyphicon-thumbs-up"></i><span>Text</span></a><a
-                                        class="post-meta-iten" href="#"><i class="glyphicon glyphicon-star"></i><span>Text</span></a><a
-                                        class="post-meta-iten" href="#"><i
-                                            class="glyphicon glyphicon-eye-open"></i><span>Text</span></a></footer>
-                        </section>
-                    </article>
-                    <article id="post-item-1" class="post-item">
-                        <section id="post-item-body-1" class="post-item-body">
-                            <div id="post-item-text-1" class="post-item-text"><a class="post-item-title"
-                                                                                 href="#">博客标题</a>
-                                <p class="post-item-summary"><a
-                                            href="#"><?php echo "<img class=\"avatar\" src=\"$road/img/photo_test.png\">"; ?>
-                                        前面我们研究了RPC的原理，市面上有很多基于RPC思想实现的框架，比如有Dubbo。今天就从Dubbo的SPI机制、服务注册与发现源码及网络通信过程去深入剖析下Dubbo。
-                                        Dubbo架构 概述 Dubbo是阿里巴巴公司开源的一个高性能优秀的服务框架，使得应用可通过高性能的RPC 实现服务<br></a></p>
-                            </div>
-                            <footer id="post-item-foot-1" class="post-item-foot"><a class="post-item-author"
-                                                                                    href="#"><span><span
-                                                style="text-decoration: underline;">author</span></span></a><span
-                                        class="post-meta-item">time</span><a class="post-meta-iten" href="#"><i
-                                            class="glyphicon glyphicon-thumbs-up"></i><span>Text</span></a><a
-                                        class="post-meta-iten" href="#"><i class="glyphicon glyphicon-star"></i><span>Text</span></a><a
-                                        class="post-meta-iten" href="#"><i
-                                            class="glyphicon glyphicon-eye-open"></i><span>Text</span></a></footer>
-                        </section>
-                    </article>
-                    <article id="post-item-1" class="post-item">
-                        <section id="post-item-body-1" class="post-item-body">
-                            <div id="post-item-text-1" class="post-item-text"><a class="post-item-title"
-                                                                                 href="#">博客标题</a>
-                                <p class="post-item-summary"><a
-                                            href="#"><?php echo "<img class=\"avatar\" src=\"$road/img/photo_test.png\">"; ?>
-                                        前面我们研究了RPC的原理，市面上有很多基于RPC思想实现的框架，比如有Dubbo。今天就从Dubbo的SPI机制、服务注册与发现源码及网络通信过程去深入剖析下Dubbo。
-                                        Dubbo架构 概述 Dubbo是阿里巴巴公司开源的一个高性能优秀的服务框架，使得应用可通过高性能的RPC 实现服务<br></a></p>
-                            </div>
-                            <footer id="post-item-foot-1" class="post-item-foot"><a class="post-item-author"
-                                                                                    href="#"><span><span
-                                                style="text-decoration: underline;">author</span></span></a><span
-                                        class="post-meta-item">time</span><a class="post-meta-iten" href="#"><i
-                                            class="glyphicon glyphicon-thumbs-up"></i><span>Text</span></a><a
-                                        class="post-meta-iten" href="#"><i class="glyphicon glyphicon-star"></i><span>Text</span></a><a
-                                        class="post-meta-iten" href="#"><i
-                                            class="glyphicon glyphicon-eye-open"></i><span>Text</span></a></footer>
-                        </section>
-                    </article>
+                    <?php
+                    if (have_posts()) {
+                        while (have_posts()) {
+
+                            //获取下一篇文章的信息，并且将信息存入全局变量 $post 中
+                            the_post();
+                            ?>
+                            <article id="post-item-1" class="post-item">
+                                <section id="post-item-body-1" class="post-item-body">
+                                    <div id="post-item-text-1" class="post-item-text">
+                                        <a class="post-item-title"
+                                           href="<? the_permalink(); ?>"><? the_title(); ?></a>
+                                        <p class="post-item-summary">
+                                            <a href="<? the_permalink(); ?>"><?php echo "<img class=\"avatar\" src=\"$road/img/photo_test.png\">"; ?>
+                                                <? the_excerpt(); ?>
+                                                <br>
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <footer id="post-item-foot-1" class="post-item-foot">
+                                        <!--                                        --><?php
+                                        //                                        $author = the_author();
+                                        //                                        echo "<a class=\"post-item-author\" href=\"$road/mineblog.php?author=$author\">$author</a>";
+                                        //                                        ?>
+                                        <span class="post-meta-item"><? the_date(); ?></span>
+                                        <!--                                        <a class="post-meta-iten" href="#">-->
+                                        <!--                                            <i class="glyphicon glyphicon-thumbs-up"></i>-->
+                                        <!--                                            <span>Text</span>-->
+                                        <!--                                        </a>-->
+                                        <!--                                        <a class="post-meta-iten" href="#">-->
+                                        <!--                                            <i class="glyphicon glyphicon-star"></i>-->
+                                        <!--                                            <span>Text</span></a><a class="post-meta-iten" href="#">-->
+                                        <!--                                            <i class="glyphicon glyphicon-eye-open"></i>-->
+                                        <!--                                            <span>Text</span>-->
+                                        <!--                                        </a>-->
+                                    </footer>
+                                </section>
+                            </article>
+                            <?
+                        }
+                    } else {
+                        echo '没有文章可以显示';
+                    }
+                    ?>
                 </div>
             </div>
             <!--            <div id="side_right" class="side_right">-->
