@@ -94,7 +94,7 @@
                                         <a class="post-item-title"
                                            href="<? the_permalink(); ?>"><? the_title(); ?></a>
                                         <p class="post-item-summary">
-                                            <a href="<? the_permalink(); ?>"><?php echo "<img class=\"avatar\" src=\"$road/img/photo_test.png\">"; ?>
+                                            <a href="<?php echo the_permalink()/*."?author=".the_author()*/; ?>"><?php echo "<img class=\"avatar\" src=\"$road/img/photo_test.png\">"; ?>
                                                 <? the_excerpt(); ?>
                                                 <br>
                                             </a>

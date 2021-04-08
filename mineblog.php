@@ -12,7 +12,9 @@
     echo "<link href=\"$road/css/bootstrap.css\" rel=\"stylesheet\">";
     echo "<script src=\"$road/js/jquery-3.5.1.js\"></script>";
     echo "<script src=\"$road/js/bootstrap.js\"></script>";
-    $user_login = $_GET["user_login"];
+    $user_id = $_GET["user_id"];
+    $author_info = $wpdb->query("SELECT * FROM wp_users WHERE ID='$user_id'");
+    echo $author_info["user_email"];
     ?>
 
     <style>
@@ -96,18 +98,20 @@
                         <h2>zzz</h2>
                     </div>
                     <div>
-                        <p>个人简介：</p>
-                        <p>生日:</p>
-                        <p>性别:</p>
-                        <p>兴趣标签:</p>
-                        <p>手机号码：</p>
-                        <p>qq:</p>
-                        <p>微信:</p>
-                        <p>Email:</p>
+<!--                        <p>个人简介：</p>-->
+<!--                        <p>生日:</p>-->
+<!--                        <p>性别:</p>-->
+<!--                        <p>兴趣标签:</p>-->
+<!--                        <p>手机号码：</p>-->
+<!--                        <p>qq:</p>-->
+<!--                        <p>微信:</p>-->
+<!--                        <p>Email:</p>-->
+                        <p>用户名: <? $author_info["user_login"] ?></p>
+                        <p>邮箱: <? $author_info["user_email"] ?></p>
                     </div>
-                    <div class="text-center">
-                        <button class="btn btn-default" type="submit">编辑</button>
-                    </div>
+                    <!--                    <div class="text-center">-->
+                    <!--                        <button class="btn btn-default" type="submit">编辑</button>-->
+                    <!--                    </div>-->
                 </div>
 
                 <!-- 博客上传 -->

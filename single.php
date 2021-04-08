@@ -8,6 +8,8 @@ pageEncoding="UTF-8"%>-->
     <?php
     $road = get_template_directory_uri();
     echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"$road/css/article.css\">";
+    $author = the_author();
+    $email = get_the_author_meta( 'user_email' );
     ?>
 
 </head>
@@ -19,10 +21,12 @@ pageEncoding="UTF-8"%>-->
     <aside>
         <div class="blogger">
             <div class="blogger_head">
-                <img class="blogger_head_portrait" src="img/4.jpg" alt="点击进入博主主页面" class="blogger_head_portrait">
-                <!-- <div class="blogger_name">
+<!--                --><?php //echo"<a href=\"$road/otherblog.php\">";?>
+<!--                <img class="blogger_head_portrait" src="https://v1.alapi.cn/api/avatar?email=--><?// $email ?><!--&size=100" alt="点击进入博主主页面" class="blogger_head_portrait">-->
+<!--                </a>-->
+                <div class="blogger_name">
                   博主昵称
-                  </div>-->
+                  </div>
             </div>
             <hr class="blogger_line">
             <div class="blogger_introduction">博主的介绍或其他</div>
