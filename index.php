@@ -33,20 +33,24 @@
                         <li><a id="shouye" href="#">首页</a></li>
                         <li><a id="guidang" href="#">归档</a></li>
                         <li><a id="liuyan" href="#">留言</a></li>
+                        <li><?php get_search_form(); ?></li>
                     </ul>
-                    <form class="navbar-form navbar-left" target="_self" style="margin-left: 100px;">
-                        <div class="form-group"><label class="control-label" for="search-field"><i
-                                        class="glyphicon glyphicon-search"></i></label><input
-                                    class="form-control search-field" type="search" id="search-field" name="search">
-                        </div>
-                    </form>
-                    <a class="btn btn-default navbar-btn navbar-right action-button" role="button" href="#">搜索</a>
+<!--                    <form class="navbar-form navbar-left" target="_self" style="margin-left: 100px;">-->
+<!--                        <div class="form-group">-->
+<!--                            <label class="control-label" for="search-field">-->
+<!--                                <i class="glyphicon glyphicon-search"></i>-->
+<!--                            </label>-->
+<!--                            <input class="form-control search-field" type="search" id="search-field" name="search">-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                    <a class="btn btn-default navbar-btn navbar-right action-button" role="button" href="#">搜索</a>-->
+
                 </div>
             </div>
         </nav>
         <ul class="nav nav-tabs">
             <?php
-             echo "<li><a id=\"denglu\" href=\"$road/login.php\">登录/注册</a></li>";
+            echo "<li><a id=\"denglu\" href=\"$road/login.php\">登录/注册</a></li>";
             ?>
         </ul>
     </div>
@@ -173,6 +177,7 @@
             <!--                </div>-->
             <!--            </div>-->
         </div>
+
     </div>
 </div>
 </body>

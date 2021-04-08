@@ -12,10 +12,8 @@
     echo "<link href=\"$road/css/bootstrap.css\" rel=\"stylesheet\">";
     echo "<script src=\"$road/js/jquery-3.5.1.js\"></script>";
     echo "<script src=\"$road/js/bootstrap.js\"></script>";
+    $user_login = $_GET["user_login"];
     ?>
-
-
-
 
     <style>
         .card {
@@ -193,7 +191,6 @@
         <!-- 右侧部分 -->
     </div>
 </div>
-
 
 <!-- <div class="jumbotron text-center" style="margin-bottom:0">
   <p>Powered by zzz</p>
