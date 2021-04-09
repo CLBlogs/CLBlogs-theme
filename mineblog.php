@@ -8,13 +8,14 @@
     <!-- Bootstrap -->
     <?php
     require '../../../wp-blog-header.php';
+    global $wpdb;
     $road = get_template_directory_uri();
     echo "<link href=\"$road/css/bootstrap.css\" rel=\"stylesheet\">";
     echo "<script src=\"$road/js/jquery-3.5.1.js\"></script>";
     echo "<script src=\"$road/js/bootstrap.js\"></script>";
     $user_id = $_GET["user_id"];
-    $author_info = $wpdb->query("SELECT * FROM wp_users WHERE ID='$user_id'");
-    echo $author_info["user_email"];
+    $author_info = $wpdb->get_row("SELECT * FROM $wpdb->users WHERE ID=$user_id");
+    // echo $author_info->user_email;
     ?>
 
     <style>
@@ -54,15 +55,15 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">主页</a></li>
-                <li><a href="#">管理</a></li>
-                <li><a href="#">留言</a></li>
+                <li class="active"><a href="/">主页</a></li>
+<!--                <li><a href="#">管理</a></li>-->
+<!--                <li><a href="#">留言</a></li>-->
             </ul>
-            <div class="pull-right">
-                <ul class="nav navbar-nav">
-                    <li><a href="#">登录</a></li>
-                </ul>
-            </div>
+<!--            <div class="pull-right">-->
+<!--                <ul class="nav navbar-nav">-->
+<!--                    <li><a href="#">登录</a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
         </div>
     </div>
 </nav>
@@ -92,22 +93,24 @@
                 <!-- 个人资料 -->
                 <div class="tab-pane fade in active" id="Tab1">
                     <div class="text-center">
-                        <img src="images/Rikka.jpg" class="img-circle text-center" width="200" height="200">
+                        <?php echo "<img src=\"https://v1.alapi.cn/api/avatar?email=$author_info->user_email&size=200\"
+                             class=\"img-circle text-center\" width=\"200\" height=\"200\">";
+                        ?>
                     </div>
                     <div class="text-center">
-                        <h2>zzz</h2>
+                        <h2><?php echo $author_info->user_login ?></h2>
                     </div>
                     <div>
-<!--                        <p>个人简介：</p>-->
-<!--                        <p>生日:</p>-->
-<!--                        <p>性别:</p>-->
-<!--                        <p>兴趣标签:</p>-->
-<!--                        <p>手机号码：</p>-->
-<!--                        <p>qq:</p>-->
-<!--                        <p>微信:</p>-->
-<!--                        <p>Email:</p>-->
-                        <p>用户名: <? $author_info["user_login"] ?></p>
-                        <p>邮箱: <? $author_info["user_email"] ?></p>
+                        <!--                        <p>个人简介：</p>-->
+                        <!--                        <p>生日:</p>-->
+                        <!--                        <p>性别:</p>-->
+                        <!--                        <p>兴趣标签:</p>-->
+                        <!--                        <p>手机号码：</p>-->
+                        <!--                        <p>qq:</p>-->
+                        <!--                        <p>微信:</p>-->
+                        <!--                        <p>Email:</p>-->
+                        <p>用户名: <?php echo $author_info->user_login; ?></p>
+                        <p>邮箱: <?php echo $author_info->user_email; ?></p>
                     </div>
                     <!--                    <div class="text-center">-->
                     <!--                        <button class="btn btn-default" type="submit">编辑</button>-->
@@ -116,21 +119,56 @@
 
                 <!-- 博客上传 -->
                 <div class="tab-pane fade" id="Tab2">
-                    <div class="card">
-                        <a href="#">标题1</a>
-                        <h5>副标题</h5>
-                        <div class="fakeimg">
-                            <img src="images/Yukino.jpg" alt="Yukino" width="400">
-                        </div>
-                        <p>Yukino</p>
-                        <div class="text-right">
-                            <button class="btn btn-default" type="submit">上传</button>
-                        </div>
-                    </div>
+                    <form action="mineblog.php?user_id=<?php echo $user_id ?>" method="post">
+                        标题: <br><input type="text" name="post_title" size="30"><br>
+                        摘要: <br><input type="text" name="post_excerpt" size="30"><br>
+                        正文: <br><input type="text" name="post_content" size="30"><br>
+                        <input type="submit" value="提交">
+                    </form>
+                    <?php
+                    $wpdb->query("SELECT * from $wpdb->posts");
+                    $posts_id = $wpdb->num_rows + 1;
+                    $now_date = date('Y-m-d H:i:s');
+                    $APost = array(
+                        "ID" => $posts_id,
+                        "post_author" => $user_id,
+                        "post_date" => $now_date,
+                        "post_date_gmt" => $now_date,
+                        "post_content" => "<p>".$_POST["post_content"]."</p>",
+                        "post_excerpt" => $_POST["post_excerpt"],
+                        "post_title" => $_POST["post_title"],
+                        "post_status" => "publish",
+                        "comment_status" => "open",
+                        "post_modified" => $now_date,
+                        "post_modified_gmt" => $now_date,
+                        "guid" => get_bloginfo('url') . "?p=" . "$posts_id",
+                        "post_type" => "post",
+                        "post_name" => $_POST["post_title"]
+                    );
+                    $wpdb->insert($wpdb->posts, $APost);
+                    //                    wp_insert_post($APost);
+                    ?>
+                    <!--                    <div class="card">-->
+                    <!--                        <a href="#">标题1</a>-->
+                    <!--                        <h5>副标题</h5>-->
+                    <!--                        <div class="fakeimg">-->
+                    <!--                            <img src="images/Yukino.jpg" alt="Yukino" width="400">-->
+                    <!--                        </div>-->
+                    <!--                        <p>Yukino</p>-->
+                    <!--                        <div class="text-right">-->
+                    <!--                            <button class="btn btn-default" type="submit">上传</button>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
                 </div>
 
                 <!-- 博客管理 -->
                 <div class="tab-pane fade" id="Tab3">
+                    <?php
+                    $posts = $wpdb->get_results("SELECT * from $wpdb->posts where post_author=$user_id");
+                    foreach ($posts as $post) {
+                        echo $post->post_title;
+                    }
+                    ?>
                     <!-- 博文1 -->
                     <div class="card">
                         <a href="#">标题1</a>
@@ -155,50 +193,50 @@
                         <p>Yukino</p>
                     </div>
                     <!-- 博文2 -->
-                    <div class="card">
-                        <a href="#">标题2</a>
-                        <div class="pull-right">
-                            <button type="button" class="btn btn-default" aria-label="Left Align">
-                                <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
-                            </button>
-                        </div>
-                        <h5>副标题</h5>
+                    <!--                    <div class="card">-->
+                    <!--                        <a href="#">标题2</a>-->
+                    <!--                        <div class="pull-right">-->
+                    <!--                            <button type="button" class="btn btn-default" aria-label="Left Align">-->
+                    <!--                                <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>-->
+                    <!--                            </button>-->
+                    <!--                        </div>-->
+                    <!--                        <h5>副标题</h5>-->
+                    <!---->
+                    <!--                        <div class="fakeimg">-->
+                    <!--                            <img src="images/Azusa.jpg" alt="Azusa" width="400">-->
+                    <!--                        </div>-->
+                    <!--                        <p>Azusa</p>-->
+                    <!--                    </div>-->
+                    <!--                </div>-->
 
-                        <div class="fakeimg">
-                            <img src="images/Azusa.jpg" alt="Azusa" width="400">
-                        </div>
-                        <p>Azusa</p>
-                    </div>
+                    <!-- 我的收藏· -->
+                    <!-- <div class="tab-pane fade" id="Tab4">
+                      <h2>标题1</h2>
+                      <h5>副标题</h5>
+                      <div class="fakeimg" >
+                          <img src="images/Yukino.jpg" alt="Yukino" width="400">
+                      </div>
+                      <p>Yukino</p>
+                      <br>
+                      <h2>标题2</h2>
+                      <h5>副标题</h5>
+                      <div class="fakeimg">
+                          <img src="images/Azusa.jpg" alt="Azusa" width="400">
+                      </div>
+                      <p>Azusa</p>
+                    </div> -->
                 </div>
 
-                <!-- 我的收藏· -->
-                <!-- <div class="tab-pane fade" id="Tab4">
-                  <h2>标题1</h2>
-                  <h5>副标题</h5>
-                  <div class="fakeimg" >
-                      <img src="images/Yukino.jpg" alt="Yukino" width="400">
-                  </div>
-                  <p>Yukino</p>
-                  <br>
-                  <h2>标题2</h2>
-                  <h5>副标题</h5>
-                  <div class="fakeimg">
-                      <img src="images/Azusa.jpg" alt="Azusa" width="400">
-                  </div>
-                  <p>Azusa</p>
-                </div> -->
             </div>
 
+
+            <!-- 右侧部分 -->
         </div>
-
-
-        <!-- 右侧部分 -->
     </div>
-</div>
 
-<!-- <div class="jumbotron text-center" style="margin-bottom:0">
-  <p>Powered by zzz</p>
-</div> -->
+    <!-- <div class="jumbotron text-center" style="margin-bottom:0">
+      <p>Powered by zzz</p>
+    </div> -->
 
 </body>
 </html>

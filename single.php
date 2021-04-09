@@ -8,14 +8,17 @@ pageEncoding="UTF-8"%>-->
     <?php
     $road = get_template_directory_uri();
     echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"$road/css/article.css\">";
-    $author = the_author();
+    global $wpdb;
+    // $author_info = $wpdb->get_row("SELECT * FROM $wpdb->users WHERE ID=$user_id");
+
+    //$author = $wpdb->;
     $email = get_the_author_meta( 'user_email' );
     ?>
 
 </head>
 <body>
 <nav>
-    <a href="/index.php">导航栏</a>
+    <a href="/">首页</a>
 </nav>
 <div id="main_content">
     <aside>

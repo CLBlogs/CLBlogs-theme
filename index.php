@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>bootstrap3.4_virsion1</title>
+    <title>CLBlogs</title>
     <?php
     $road = get_template_directory_uri();
     echo "<link rel=\"application/javascript\" href=\"$road/js/jquery-3.5.1.js\">";
@@ -23,16 +23,16 @@
     <div id="top_nav" class="navbar border-none">
         <nav class="navbar navbar-default navigation-clean-search">
             <div class="container">
-                <div class="navbar-header"><a class="navbar-brand" href="#">CLBlogs</a>
+                <div class="navbar-header"><a class="navbar-brand" href="/">CLBlogs</a>
                     <button data-toggle="collapse" class="navbar-toggle collapsed" data-target="#navcol-1"><span
                                 class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
                                 class="icon-bar"></span><span class="icon-bar"></span></button>
                 </div>
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav">
-                        <li><a id="shouye" href="#">首页</a></li>
-                        <li><a id="guidang" href="#">归档</a></li>
-                        <li><a id="liuyan" href="#">留言</a></li>
+                        <li><a id="shouye" href="/">首页</a></li>
+<!--                        <li><a id="guidang" href="#">归档</a></li>-->
+<!--                        <li><a id="liuyan" href="#">留言</a></li>-->
                         <!--                        <li>--><?php //get_search_form(); ?><!--</li>-->
                     </ul>
                     <?php get_search_form(); ?>
@@ -87,12 +87,16 @@
 
                             //获取下一篇文章的信息，并且将信息存入全局变量 $post 中
                             the_post();
+
                             ?>
                             <article id="post-item-1" class="post-item">
                                 <section id="post-item-body-1" class="post-item-body">
                                     <div id="post-item-text-1" class="post-item-text">
+<!--                                        <a class="post-item-title"-->
+<!--                                           href="--><?php //$author=the_author(); echo "$road/single.php?user=".$author; ?><!--">--><?// the_title(); ?><!--</a>-->
                                         <a class="post-item-title"
                                            href="<? the_permalink(); ?>"><? the_title(); ?></a>
+
                                         <p class="post-item-summary">
                                             <a href="<?php echo the_permalink()/*."?author=".the_author()*/; ?>"><?php echo "<img class=\"avatar\" src=\"$road/img/photo_test.png\">"; ?>
                                                 <? the_excerpt(); ?>
