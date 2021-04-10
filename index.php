@@ -41,7 +41,7 @@
                             ?>
                             <!-- <li class="active" style="display: none;"><a id="denglu" class="top_nav_link" href="#">登录</a></li>
                             <li class="active" style="display: none;"><a id="zhuce" class="top_nav_link" href="#">注册</a></li>
-                            <li class="active" style="/*display: none;*/"><a class="dropdown-button" href="#"><img id="user_icon" class="navbar-avatar" src="assets/img/photo_test.png">昵称</a></li> -->
+                            <li class="active" style="/*display: none;*/"><a class="dropdown-button" href="#"><img id="user_icon" class="navbar-avatar" src=\"$road/img/photo_test.png\">昵称</a></li> -->
                         </ul>
                     </div>
                 </div>
