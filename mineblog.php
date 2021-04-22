@@ -76,7 +76,7 @@
         <div class="col-sm-2">
             <ul id="myTab" class="nav nav-pills nav-stacked ">
                 <li class="active"><a href="#Tab1" data-toggle="tab">个人资料</a></li>
-                <li><a href="#Tab2" data-toggle="tab">博客上传</a></li>
+<!--                <li><a href="#Tab2" data-toggle="tab">博客上传</a></li>-->
                 <li><a href="#Tab3" data-toggle="tab">博客管理</a></li>
                 <!-- <li><a href="#Tab4" data-toggle="tab">我的收藏</a></li>  -->
             </ul>
@@ -118,36 +118,36 @@
                 </div>
 
                 <!-- 博客上传 -->
-                <div class="tab-pane fade" id="Tab2">
-                    <form action="mineblog.php?user_id=<?php echo $user_id ?>" method="post">
-                        标题: <br><input type="text" name="post_title" size="30"><br>
-                        摘要: <br><input type="text" name="post_excerpt" size="30"><br>
-                        正文: <br><input type="text" name="post_content" size="30"><br>
-                        <input type="submit" value="提交">
-                    </form>
-                    <?php
-                    $wpdb->query("SELECT * from $wpdb->posts");
-                    $posts_id = $wpdb->num_rows + 1;
-                    $now_date = date('Y-m-d H:i:s');
-                    $APost = array(
-                        "ID" => $posts_id,
-                        "post_author" => $user_id,
-                        "post_date" => $now_date,
-                        "post_date_gmt" => $now_date,
-                        "post_content" => "<p>".$_POST["post_content"]."</p>",
-                        "post_excerpt" => $_POST["post_excerpt"],
-                        "post_title" => $_POST["post_title"],
-                        "post_status" => "publish",
-                        "comment_status" => "open",
-                        "post_modified" => $now_date,
-                        "post_modified_gmt" => $now_date,
-                        "guid" => get_bloginfo('url') . "?p=" . "$posts_id",
-                        "post_type" => "post",
-                        "post_name" => $_POST["post_title"]
-                    );
-                    $wpdb->insert($wpdb->posts, $APost);
-                    //                    wp_insert_post($APost);
-                    ?>
+<!--                <div class="tab-pane fade" id="Tab2">-->
+<!--                    <form action="mineblog.php?user_id=--><?php //echo $user_id ?><!--" method="post">-->
+<!--                        标题: <br><input type="text" name="post_title" size="30"><br>-->
+<!--                        摘要: <br><input type="text" name="post_excerpt" size="30"><br>-->
+<!--                        正文: <br><input type="text" name="post_content" size="30"><br>-->
+<!--                        <input type="submit" value="提交">-->
+<!--                    </form>-->
+<!--                    --><?php
+//                    $wpdb->query("SELECT * from $wpdb->posts");
+//                    $posts_id = $wpdb->num_rows + 1;
+//                    $now_date = date('Y-m-d H:i:s');
+//                    $APost = array(
+//                        "ID" => $posts_id,
+//                        "post_author" => $user_id,
+//                        "post_date" => $now_date,
+//                        "post_date_gmt" => $now_date,
+//                        "post_content" => "<p>".$_POST["post_content"]."</p>",
+//                        "post_excerpt" => $_POST["post_excerpt"],
+//                        "post_title" => $_POST["post_title"],
+//                        "post_status" => "publish",
+//                        "comment_status" => "open",
+//                        "post_modified" => $now_date,
+//                        "post_modified_gmt" => $now_date,
+//                        "guid" => get_bloginfo('url') . "?p=" . "$posts_id",
+//                        "post_type" => "post",
+//                        "post_name" => $_POST["post_title"]
+//                    );
+//                    $wpdb->insert($wpdb->posts, $APost);
+//                    //                    wp_insert_post($APost);
+//                    ?>
                     <!--                    <div class="card">-->
                     <!--                        <a href="#">标题1</a>-->
                     <!--                        <h5>副标题</h5>-->
@@ -159,16 +159,17 @@
                     <!--                            <button class="btn btn-default" type="submit">上传</button>-->
                     <!--                        </div>-->
                     <!--                    </div>-->
-                </div>
+<!--                </div>-->
 
                 <!-- 博客管理 -->
                 <div class="tab-pane fade" id="Tab3">
-                    <?php
-                    $posts = $wpdb->get_results("SELECT * from $wpdb->posts where post_author=$user_id");
-                    foreach ($posts as $post) {
-                        echo $post->post_title;
-                    }
-                    ?>
+                    <a href="page-editor.php?user_id=<? $user_id ?>">upload blog</a>
+<!--                    --><?php
+//                    $posts = $wpdb->get_results("SELECT * from $wpdb->posts where post_author=$user_id");
+//                    foreach ($posts as $post) {
+//                        echo $post->post_title;
+//                    }
+//                    ?>
                     <!-- 博文1 -->
                     <div class="card">
                         <a href="#">标题1</a>
