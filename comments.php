@@ -4,6 +4,14 @@
 	<link rel='stylesheet' id='skeleton-css' href='http://test2.fnsflm.xyz:8190/wp-content/themes/ninja-shadow/assets/css/skeleton.css?ver=5.7' type='text/css' media='all'/>
 	<link rel='stylesheet' id='base-css'  href='http://test2.fnsflm.xyz:8190/wp-content/themes/ninja-shadow/assets/css/base.css?ver=5.7' type='text/css' media='all' />
 	<link rel='stylesheet' id='theme-style-css'  href='http://test2.fnsflm.xyz:8190/wp-content/themes/ninja-shadow/assets/css/theme-style.css?ver=5.7' type='text/css' media='all' />
+    <?php
+    // require '../../../wp-blog-header.php';
+    global $wpdb;
+    $road = get_template_directory_uri();
+    $emotion = $road."/img/emotion/";
+    // echo $road;
+    ?>
+
 </head>
 <script type="text/javascript">
     function replication(id,name) {
@@ -18,6 +26,7 @@
     }
     function insertImg(id){
         document.getElementById("comment").value+="&"+id+".gif";
+
     }
 </script>
 <body>
@@ -30,11 +39,11 @@
                     <!-- 连接数据库，动态加载评论 -->
                     <?php
     //连接blog数据库
-	$conn=mysqli_connect("localhost","root","123456");
+	$conn=mysqli_connect("localhost","test3_fnsflm_xy","65ksKYZxKX");
 	if(!$conn){
 		die("数据库连接失败！");
 	}
-	mysqli_select_db($conn,"blog");
+	mysqli_select_db($conn,"test3_fnsflm_xy");
 	mysqli_query($conn,"set names utf8");
 	//查询获取wp_comments表中所有评论数据
 	$sql="select * from wp_comments";
@@ -54,16 +63,16 @@
 	<!-- 评论列表 -->
   	<ol class="comment-list">
 		<li id="comment-1" class="comment even thread-even depth-1">
-			<article id="div-comment-1" class="comment-body">				
-				<footer class="comment-meta">					
+			<article id="div-comment-1" class="comment-body">
+				<footer class="comment-meta">
 					<div class="comment-author vcard">
 						<b class="fn"><a href='#' rel='external nofollow ugc' class='url'><?php echo $arr['comment_author'];?></a></b><span class="says">说道：</span>
-					</div><!-- .comment-author -->					
+					</div><!-- .comment-author -->
 					<div class="comment-metadata">
 						<time datetime="2021-03-07T15:48:41+00:00"><?php echo $arr['comment_date']; ?></time>
 					</div><!-- .comment-metadata -->
 				</footer><!-- .comment-meta -->
-				
+
 				<div class="comment-content">
 					<?php
                         $comment_content=$arr['comment_content'];
@@ -72,7 +81,7 @@
                                 $l=strpos($comment_content,"&");
                                 echo substr($comment_content, 0, $l);
                                 $number = substr($comment_content, $l+1, $i-$l-1);
-                                $commentSrc="img/emotion/" . $number . ".gif";
+                                $commentSrc=$emotion . $number . ".gif";
                     ?>
                     <img src="<?php echo $commentSrc; ?>" />
                     <?php
@@ -86,7 +95,7 @@
                     ?>
 				</div><!-- .comment-content -->
 				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='#reply-title' onclick="replication(<?php echo $arr['comment_ID'];?>,'<?php echo $arr['comment_author'];?>')">回复</a></div>
-				
+
 				<!-- 动态加载回复 -->
 				<?php
                     //动态加载所有子评论
@@ -109,12 +118,12 @@
 	</ol><!-- .comment-list -->
 <?php }
 	                    }	?>
-		
+
                     <!-- 发表评论/回复 -->
 	                    <div id="respond" class="comment-respond">
                             <h3 id="reply-title" class="comment-reply-title">发表评论</h3>
                             <p class="logged-in-as"><a href="#" aria-label="已登录为test2。编辑您的个人资料。">已登录为jiangchen</a>。<a href="#">注销？</a></p>
-                            <form action="controller.php" method="post"  id="commentform" class="comment-form" novalidate>
+                            <form action=<?php echo $road."/controller.php"?> method="post"  id="commentform" class="comment-form" novalidate>
 			                    <p class="logged-in-as"></p>
 			                    <p class="comment-form-comment">
                                     <label for="comment" style="float: left">评论</label><a id="quxiaohuifu" rel='nofollow' class='comment-reply-link' href='#reply-title' style="display:none" onclick="noReplication()">&nbsp;取消回复</a>
@@ -123,7 +132,7 @@
 			                        <?php
 			                            for($i=1;$i<=112;$i++){
 			                                $strI=(string)$i;
-			                                $strSrc="img/emotion/" . $strI . ".gif";
+			                                $strSrc=$emotion . $strI . ".gif";
 			                                ?>
                                     <img src="<?php echo $strSrc; ?>" onclick="insertImg(<?php echo $strI; ?>)"/>
 			                        <?php } ?>

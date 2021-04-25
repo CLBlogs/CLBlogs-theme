@@ -1,10 +1,10 @@
 <?php
     //连接blog数据库
-    $conn=mysqli_connect("localhost","root","123456");
+    $conn=mysqli_connect("localhost","test3_fnsflm_xy","65ksKYZxKX");
     if(!$conn){
         die("数据库连接失败！");
     }
-    mysqli_select_db($conn,"blog");
+    mysqli_select_db($conn,"test3_fnsflm_xy");
     mysqli_query($conn,"set names utf8");
 
     $arr=$_POST;
