@@ -45,7 +45,7 @@
 <div class="position ">
     <div class="container" >
         <div class="row">
-            <div id="back" class="col-md-7 col-md-offset-3 col-sm-7 col-sm-offset-3 backColor" style="height: 400px"></div>
+            <div id="back" class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 backColor" style="height: 400px"></div>
         </div>
     </div>
 </div>
@@ -53,7 +53,7 @@
 </br>
 <div class='container navi'>
     <div class="row">
-        <div class="col-md-2 col-md-offset-3 col-sm-2 col-sm-offset-3 ">&nbsp;</div>
+        <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 ">&nbsp;</div>
         <div class="col-md-2 col-sm-2">
             <p class="text-center" id='lo' style='border-bottom:3px solid #45718A;' onmouseover='onMouseOver()'
                 onclick="changePage('login')">登录
@@ -70,7 +70,7 @@
     <div class="container">
         <?php echo "<form action=\"$road/loginaction.php\" method=\"post\">"; ?>
         <div class="row">
-            <div class="col-md-2 col-md-offset-3 col-sm-2 col-sm-offset-3 text-right" id="textContent">
+            <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
                 用户名:&nbsp;&nbsp;
             </div>
             <div class="col-md-4 col-sm-4">
@@ -79,7 +79,7 @@
         </div>
         </br>
         <div class="row">
-            <div class="col-md-2 col-md-offset-3 col-sm-2 col-sm-offset-3 text-right" id="textContent">
+            <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
                 密码:&nbsp;&nbsp;&nbsp;&nbsp;
 
             </div>
@@ -93,7 +93,7 @@
         </div>
          </br>
         <div class="row">
-            <div class=" col-md-2 col-md-offset-3 col-sm-2 col-sm-offset-3 text-right" id="textContent">
+            <div class=" col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
                 验证码:&nbsp;&nbsp;
             </div>
             <div class="col-md-3 col-sm-3">
@@ -105,7 +105,7 @@
         </div>
         </br>
         <div class="row" style="position: relative;top: 5px;">
-            <div class="col-md-2 col-md-offset-3  col-sm-2 col-sm-offset-3 text-right" id="textContent" >
+            <div class="col-md-2 col-md-offset-2  col-sm-2 col-sm-offset-2 text-right" id="textContent" >
                 记住密码:
             </div>
             <div class="col-md-4 col-sm-4">
@@ -113,8 +113,8 @@
             </div>
         </div>
         <div class="row" style="position: relative;top:10px;">
-            <div class="col-md-4 col-md-offset-5 col-sm-4 col-sm-offset-5">
-                <input class="submitButton" id="submitButton-login" type="submit" value="登录">
+            <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
+                <input class="submitButton" id="submitButton-login" type="button" value="登录">
             </div>
         </div>
         </form>
@@ -123,9 +123,10 @@
 <!--注册页面-->
 <div id="register" style="display: none;">
     <div class="container">
+
         <?php echo "<form action=\"$road/registeraction.php\" method=\"post\">"; ?>
         <div class="row">
-            <div class="col-md-2 col-md-offset-3  col-sm-2 col-sm-offset-3 text-right" id="textContent">
+            <div class="col-md-2 col-md-offset-2  col-sm-2 col-sm-offset-2 text-right" id="textContent">
                 用户名:&nbsp;&nbsp;
             </div>
             <div class="col-md-4 col-sm-4">
@@ -134,7 +135,7 @@
         </div>
         </br>
         <div class="row">
-            <div class="col-md-2 col-md-offset-3 col-sm-2 col-sm-offset-3 text-right" id="textContent">
+            <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
                 <p>邮箱:&nbsp;&nbsp;&nbsp;&nbsp;</p>
             </div>
             <div class="col-md-4 col-sm-4">
@@ -144,7 +145,7 @@
         </br>
 
         <div class="row">
-            <div class="col-md-2 col-md-offset-3 col-sm-2 col-sm-offset-3 text-right" id="textContent">
+            <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
                 密码:&nbsp;&nbsp;&nbsp;&nbsp;
             </div>
             <div class="col-sm-4 col-sm-4">
@@ -156,8 +157,8 @@
         </div>
         </br>
         <div class="row">
-            <div class="col-md-2 col-md-offset-3 col-sm-2 col-sm-offset-3 text-right" id="textContent">
-                确认密码: &nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
+                确认密码:
             </div>
             <div class="col-md-4 col-sm-4">
                 <input class="information repassword" id="rePassword" name="re_password" type="password" onkeyup="checkPassword()"/>
@@ -167,8 +168,9 @@
                 <img class="repasswordImgs" src='img/hidePassword.png'>
             </div>
         </div>
+        </br>
         <div class="row">
-            <div class="col-md-2 col-md-offset-3 col-sm-2 col-sm-offset-3 text-right" id="textContent">
+            <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
                 验证码:&nbsp;&nbsp;
             </div>
             <div class="col-md-3 col-sm-3">
@@ -180,8 +182,8 @@
         </div>
         </br>
         <div class="row">
-            <div class="col-md-4 col-md-offset-5 col-sm-4 col-sm-offset-5">
-                <input class="submitButton" id="submitButton-register" type="submit" value="注册">
+            <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
+                <input class="submitButton" id="submitButton-register" type="button" value="注册">
             </div>
         </div>
         </form>
@@ -209,25 +211,6 @@
             re.style.borderBottom = '3px solid #45718A';
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     $(function(){
         var show_num_login = [];
         var show_num_register=[];
@@ -245,11 +228,14 @@
             var num = show_num_login.join("");
             if(val==''){
                 alert('请输入验证码！');
+                $("#submitButton-login").attr("type", "button");
             }else if(val == num){
-                alert('提交成功！');
+                //alert('提交成功！');
+                $("#submitButton-login").attr("type", "submit");
                 $(".canValue-login").val('');
             }else{
                 alert('验证码错误！请重新输入！');
+                $("#submitButton-login").attr("type", "button");
                 $(".canValue-login").val('');
             }
         })
@@ -258,11 +244,14 @@
             var num = show_num_register.join("");
             if(val==''){
                 alert('请输入验证码！');
+                $("#submitButton-register").attr("type", "button");
             }else if(val == num){
-                alert('提交成功！');
+                //alert('提交成功！');
+                $("#submitButton-register").attr("type", "submit");
                 $(".canValue-register").val('');
             }else{
                 alert('验证码错误！请重新输入！');
+                $("#submitButton-register").attr("type", "button");
                 $(".canValue-register").val('');
             }
         })
