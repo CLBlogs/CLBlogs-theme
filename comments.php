@@ -15,28 +15,13 @@
     global $wpdb;
     $road = get_template_directory_uri();
     $emotion = $road . "/img/emotion/";
-    // echo $road;
+    //echo $road;
+    $articleId = get_the_ID();
+    //echo $id;
+
     ?>
 
 </head>
-<script type="text/javascript">
-    function replication(id, name) {
-        document.getElementById("reply-title").innerHTML = "回复给" + name;
-        document.getElementById("huifuid").value = id;
-        document.getElementById("quxiaohuifu").style.display = "block";
-    }
-
-    function noReplication() {
-        document.getElementById("reply-title").innerHTML = "发表评论";
-        document.getElementById("huifuid").value = "pinglun";
-        document.getElementById("quxiaohuifu").style.display = "none";
-    }
-
-    function insertImg(id) {
-        document.getElementById("comment").value += "&" + id + ".gif";
-
-    }
-</script>
 <body>
 <div class="content">
     <div class="content-container">
@@ -54,7 +39,7 @@
                     mysqli_select_db($conn, "test3_fnsflm_xy");
                     mysqli_query($conn, "set names utf8");
                     //查询获取wp_comments表中所有评论数据
-                    $sql = "select * from wp_comments";
+                    $sql = "select * from wp_comments where comment_post_ID=" . $articleId;
                     $rst = mysqli_query($conn, $sql);
                     $rows = mysqli_num_rows($rst);
 
@@ -127,7 +112,25 @@
                                                     </div><!-- .comment-metadata -->
                                                 </footer><!-- .comment-meta -->
                                                 <div class="comment-content">
-                                                    &nbsp;&nbsp;&nbsp;<?php echo $subArr['comment_content']; ?></div><!-- .comment-content -->
+                                                    &nbsp;&nbsp;&nbsp; <?php
+                                                    $sub_comment_content = $subArr['comment_content'];
+                                                    while ($sub_comment_content) {
+                                                        if ($m = strpos($sub_comment_content, ".gif")) {
+                                                            $n = strpos($sub_comment_content, "&");
+                                                            echo substr($sub_comment_content, 0, $n);
+                                                            $sub_number = substr($sub_comment_content, $n + 1, $m - $n - 1);
+                                                            $sub_commentSrc = $emotion . $sub_number . ".gif";
+                                                            ?>
+                                                            <img src="<?php echo $sub_commentSrc; ?>"/>
+                                                            <?php
+                                                            $sub_comment_content = substr($sub_comment_content, $m + 4);
+                                                        } else {
+                                                            echo $sub_comment_content;
+                                                            break;
+                                                        }
+                                                    }
+                                                    ?>
+                                                </div><!-- .comment-content -->
                                             <?php }
                                         } ?>
                                     </article><!-- .comment-body -->
@@ -151,6 +154,9 @@
                                                                                       style="display:none"
                                                                                       onclick="noReplication()">&nbsp;取消回复</a>
                                 <input id="huifuid" type="text" name="hfId" value="pinglun" style="display: none"/>
+
+                                <input id="currentUrl" type="text" name="cUrl" value="currentUrl" style="display:none" />
+                                <input id="artilcId" type="text" name="aId" value=<?php echo $articleId; ?> style="display:none" />
                                 <textarea id="comment" name="comment" placeholder="来说点什么吧~" cols="45" rows="8"
                                           maxlength="65525" required="required"></textarea>
                                 <?php
@@ -171,6 +177,27 @@
     </div>
 </div>
 </body>
+<script type="text/javascript">
+    var $test = window.location.href;
+    document.getElementById("currentUrl").value=$test;
+    document.getElementById("articleId").value=
+    function replication(id, name) {
+        document.getElementById("reply-title").innerHTML = "回复给" + name;
+        document.getElementById("huifuid").value = id;
+        document.getElementById("quxiaohuifu").style.display = "block";
+    }
+
+    function noReplication() {
+        document.getElementById("reply-title").innerHTML = "发表评论";
+        document.getElementById("huifuid").value = "pinglun";
+        document.getElementById("quxiaohuifu").style.display = "none";
+    }
+
+    function insertImg(id) {
+        document.getElementById("comment").value += "&" + id + ".gif";
+
+    }
+</script>
 </html>
 				
 				
