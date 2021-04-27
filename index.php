@@ -33,7 +33,6 @@
                         <li><a id="shouye" href="/">首页</a></li>
                         <!--                        <li><a id="guidang" href="#">归档</a></li>-->
                         <!--                        <li><a id="liuyan" href="#">留言</a></li>-->
-                        <!--                        <li>--><?php //get_search_form(); ?><!--</li>-->
                     </ul>
                     <?php get_search_form(); ?>
                     <!--                    <form class="navbar-form navbar-left" target="_self" style="margin-left: 100px;">-->
@@ -57,28 +56,28 @@
     </div>
     <div id="main-contain" class="hero">
         <div id="main" class="main">
-            <!--            <div id="side_left" class="side-left card-list side-bar">-->
-            <!--                <div id="cnblog_b1" class="sidebar-image"></div>-->
-            <!--                <div id="sidebar_bh" class="sidebar-bh"></div>-->
-            <!--                <div class="card">-->
-            <!--                    <h4 class="card-title"><a href="#">排行榜标题</a></h4>-->
-            <!--                    <ul class="item-list">-->
-            <!--                        <li><span class="number highlight">1</span><a href="#">Announcing -hardening<br><br></a></li>-->
-            <!--                        <li><span class="number highlight">2</span><a href="#">有意思！强大的 SVG 滤镜<br><br><br></a></li>-->
-            <!--                        <li><span class="number highlight">3</span><a href="#">CentOS离线安装Nginx<br><br><br></a></li>-->
-            <!--                        <li><span class="number highlight">4</span><a href="#">图解 | 原来这就是 class<br><br></a></li>-->
-            <!--                    </ul>-->
-            <!--                </div>-->
-            <!--                <div class="card">-->
-            <!--                    <h4 class="card-title"><a href="#">排行榜标题</a></h4>-->
-            <!--                    <ul class="item-list">-->
-            <!--                        <li><span class="number highlight">1</span><a href="#">Announcing -hardening<br><br></a></li>-->
-            <!--                        <li><span class="number highlight">2</span><a href="#">有意思！强大的 SVG 滤镜<br><br><br></a></li>-->
-            <!--                        <li><span class="number highlight">3</span><a href="#">CentOS离线安装Nginx<br><br><br></a></li>-->
-            <!--                        <li><span class="number highlight">4</span><a href="#">图解 | 原来这就是 class<br><br></a></li>-->
-            <!--                    </ul>-->
-            <!--                </div>-->
-            <!--            </div>-->
+            <div id="side_left" class="side-left card-list side-bar">
+                <div id="cnblog_b1" class="sidebar-image"></div>
+                <div id="sidebar_bh" class="sidebar-bh"></div>
+                <div class="card">
+                    <h4 class="card-title"><a href="#">排行榜标题</a></h4>
+                    <ul class="item-list">
+                        <li><span class="number highlight">1</span><a href="#">Announcing -hardening<br><br></a></li>
+                        <li><span class="number highlight">2</span><a href="#">有意思！强大的 SVG 滤镜<br><br><br></a></li>
+                        <li><span class="number highlight">3</span><a href="#">CentOS离线安装Nginx<br><br><br></a></li>
+                        <li><span class="number highlight">4</span><a href="#">图解 | 原来这就是 class<br><br></a></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4 class="card-title"><a href="#">排行榜标题</a></h4>
+                    <ul class="item-list">
+                        <li><span class="number highlight">1</span><a href="#">Announcing -hardening<br><br></a></li>
+                        <li><span class="number highlight">2</span><a href="#">有意思！强大的 SVG 滤镜<br><br><br></a></li>
+                        <li><span class="number highlight">3</span><a href="#">CentOS离线安装Nginx<br><br><br></a></li>
+                        <li><span class="number highlight">4</span><a href="#">图解 | 原来这就是 class<br><br></a></li>
+                    </ul>
+                </div>
+            </div>
             <div id="main-flow" class="main-flow" style="MARGIN-RIGHT: auto; MARGIN-LEFT: auto; ">
                 <div id="post-list" class="post-list">
                     <?php
@@ -92,10 +91,6 @@
                             <article id="post-item-1" class="post-item">
                                 <section id="post-item-body-1" class="post-item-body">
                                     <div id="post-item-text-1" class="post-item-text">
-                                        <!--                                        <a class="post-item-title"-->
-                                        <!--                                           href="-->
-                                        <?php //$author=the_author(); echo "$road/single.php?user=".$author; ?><!--">-->
-                                        <?// the_title(); ?><!--</a>-->
                                         <a class="post-item-title"
                                            href="<? the_permalink(); ?>"><? the_title(); ?></a>
 
@@ -108,21 +103,7 @@
                                         </p>
                                     </div>
                                     <footer id="post-item-foot-1" class="post-item-foot">
-                                        <!--                                        --><?php
-                                        //                                        $author = the_author();
-                                        //                                        echo "<a class=\"post-item-author\" href=\"$road/mineblog.php?author=$author\">$author</a>";
-                                        //                                        ?>
                                         <span class="post-meta-item"><? the_date(); ?></span>
-                                        <!--                                        <a class="post-meta-iten" href="#">-->
-                                        <!--                                            <i class="glyphicon glyphicon-thumbs-up"></i>-->
-                                        <!--                                            <span>Text</span>-->
-                                        <!--                                        </a>-->
-                                        <!--                                        <a class="post-meta-iten" href="#">-->
-                                        <!--                                            <i class="glyphicon glyphicon-star"></i>-->
-                                        <!--                                            <span>Text</span></a><a class="post-meta-iten" href="#">-->
-                                        <!--                                            <i class="glyphicon glyphicon-eye-open"></i>-->
-                                        <!--                                            <span>Text</span>-->
-                                        <!--                                        </a>-->
                                     </footer>
                                 </section>
                             </article>

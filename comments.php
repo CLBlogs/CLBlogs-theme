@@ -27,17 +27,8 @@
 
                     <!-- 连接数据库，动态加载评论 -->
                     <?php
-                    // 连接blog数据库
-                    // $conn = mysqli_connect("localhost", "test3_fnsflm_xy", "65ksKYZxKX");
-//                    if (!$conn) {
-//                        die("数据库连接失败！");
-//                    }
-                    // mysqli_select_db($conn, "test3_fnsflm_xy");
-                    // mysqli_query($conn, "set names utf8");
                     //查询获取wp_comments表中所有评论数据
                     $sql = "select * from wp_comments where comment_post_ID=" . $articleId;
-                    // $rst = mysqli_query($conn, $sql);
-                    // $rows = mysqli_num_rows($rst);
                     $rst = $wpdb->get_results($sql);
                     $rows = $wpdb->num_rows;
                     ?>
@@ -46,10 +37,8 @@
                     </h2>
                     <?php
                     //动态加载所有0级评论
-                    // while ($arr = mysqli_fetch_assoc($rst)) {
-                        foreach ($rst as $arr){
-                        // if ($arr['comment_parent'] == 0) {
-                        if ($arr->comment_parent == 0){
+                    foreach ($rst as $arr) {
+                        if ($arr->comment_parent == 0) {
                             ?>
 
                             <!-- 评论列表 -->
@@ -97,9 +86,9 @@
                                         //动态加载所有子评论
                                         // $subRst = mysqli_query($conn, $sql);
                                         $subRst = $wpdb->get_results($sql);
-                                        foreach ($subRst as $subArr){
-                                                if ($subArr->comment_parent == $arr -> comment_ID)   {
-                                            ?>
+                                        foreach ($subRst as $subArr) {
+                                            if ($subArr->comment_parent == $arr->comment_ID) {
+                                                ?>
                                                 <footer class="comment-meta">
                                                     <div class="comment-author vcard">
                                                         <b class="fn"><a href='#' rel='external nofollow ugc'
@@ -155,8 +144,9 @@
                                                                                       onclick="noReplication()">&nbsp;取消回复</a>
                                 <input id="huifuid" type="text" name="hfId" value="pinglun" style="display: none"/>
 
-                                <input id="currentUrl" type="text" name="cUrl" value="currentUrl" style="display:none" />
-                                <input id="artilcId" type="text" name="aId" value=<?php echo $articleId; ?> style="display:none" />
+                                <input id="currentUrl" type="text" name="cUrl" value="currentUrl" style="display:none"/>
+                                <input id="artilcId" type="text" name="aId"
+                                       value=<?php echo $articleId; ?> style="display:none"/>
                                 <textarea id="comment" name="comment" placeholder="来说点什么吧~" cols="45" rows="8"
                                           maxlength="65525" required="required"></textarea>
                                 <?php
@@ -179,7 +169,8 @@
 </body>
 <script type="text/javascript">
     var $test = window.location.href;
-    document.getElementById("currentUrl").value=$test;
+    document.getElementById("currentUrl").value = $test;
+
     function replication(id, name) {
         document.getElementById("reply-title").innerHTML = "回复给" + name;
         document.getElementById("huifuid").value = id;
@@ -194,7 +185,6 @@
 
     function insertImg(id) {
         document.getElementById("comment").value += "&" + id + ".gif";
-
     }
 </script>
 </html>

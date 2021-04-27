@@ -1,5 +1,4 @@
 <?php
-// $Id:$ //声明变量
 require '../../../wp-blog-header.php';
 global $wpdb;
 $road = get_template_directory_uri();

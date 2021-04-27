@@ -80,30 +80,6 @@ pageEncoding="UTF-8"%>-->
         <article>
             <div class="blogs_content">
                 <? the_content(); ?>
-                <!--                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae numquam maiores, illo tenetur iste,-->
-                <!--                    magni minima quos aspernatur exercitationem, ex aperiam fugiat qui repellat cupiditate perferendis-->
-                <!--                    modi explicabo ullam at.</p>-->
-                <!--                <p>Soluta officiis aspernatur esse eius incidunt nostrum quos ullam id architecto officia porro, aperiam-->
-                <!--                    quam sapiente a optio voluptatibus? Quisquam, ullam et. Omnis, earum. Veniam sequi id ab cupiditate-->
-                <!--                    amet!</p>-->
-                <!--                <p>Enim dicta optio ea iste architecto quas, qui necessitatibus animi neque? Animi velit, minus illum-->
-                <!--                    amet eaque recusandae ducimus odit eveniet nesciunt laborum perspiciatis eligendi impedit.-->
-                <!--                    Doloremque minus numquam veniam.</p>-->
-                <!--                <p>Optio neque facilis hic nulla odio ut modi molestiae perferendis. Voluptas velit distinctio, maiores-->
-                <!--                    odio similique et sunt numquam, voluptates nesciunt quas, cumque doloremque esse cum facilis? Nisi,-->
-                <!--                    fugit quam.</p>-->
-                <!--                <p>Optio voluptatum doloremque blanditiis! Repellendus nihil vero quo quae distinctio, quasi, magni-->
-                <!--                    minima sed nulla dignissimos rerum laudantium, tempora dolore debitis. Dolorem quidem officiis ex-->
-                <!--                    eum illum corporis atque praesentium.</p>-->
-                <!--                <p>Debitis excepturi nobis id, neque aspernatur dolorem quas in laborum ducimus minus fugit enim rem-->
-                <!--                    temporibus hic, quis pariatur culpa reprehenderit aut dolore dolores eius voluptates repellat-->
-                <!--                    perspiciatis. Neque, a.</p>-->
-                <!--                <p>Non at aut totam architecto debitis voluptatum, iure repellat ratione enim fugit magni ducimus beatae-->
-                <!--                    ut iusto quam. Natus unde in explicabo perferendis totam numquam ipsum, praesentium cupiditate-->
-                <!--                    veniam repellendus!</p>-->
-                <!--                <p>Fuga, debitis. Voluptates quibusdam ipsa odio molestiae enim eum repellat illum nulla tempore?-->
-                <!--                    Architecto ipsa, numquam nam dolor debitis nostrum similique doloribus repellat expedita pariatur-->
-                <!--                    doloremque unde suscipit odit nobis.</p>-->
             </div>
         </article>
         <!--        <div class="toolbox">-->
