@@ -112,7 +112,7 @@
                     记住密码:
                 </div>
                 <div class="col-md-4 col-sm-4">
-                    <input name="loId" type="checkbox"/>
+                    <input name="remember" type="checkbox"/>
                 </div>
             </div>
             <div class="row" style="position: relative;top:10px;">

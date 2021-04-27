@@ -8,14 +8,17 @@
     <!-- Bootstrap -->
     <?php
     require '../../../wp-blog-header.php';
+    require_once 'check.php';
     global $wpdb;
     $road = get_template_directory_uri();
     echo "<link href=\"$road/css/bootstrap.css\" rel=\"stylesheet\">";
     echo "<script src=\"$road/js/jquery-3.5.1.js\"></script>";
     echo "<script src=\"$road/js/bootstrap.js\"></script>";
-    $user_id = $_GET["user_id"];
+    session_start();
+    $user_id = $_SESSION['user_id'];
     $author_info = $wpdb->get_row("SELECT * FROM $wpdb->users WHERE ID=$user_id");
     // echo $author_info->user_email;
+
     ?>
 
     <style>
