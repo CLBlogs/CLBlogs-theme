@@ -93,7 +93,7 @@
                                 <section id="post-item-body-1" class="post-item-body">
                                     <div id="post-item-text-1" class="post-item-text">
 <!--                                        <a class="post-item-title"-->
-<!--                                           href="--><?php //$author=the_author(); echo "$road/single.php?user=".$author; ?><!--">--><?// the_title(); ?><!--</a>-->
+<!--                                           href="--><?php //$author=the_author(); echo "$road/single.php?user=".$author; ?><!--">--><?php// the_title(); ?><!--</a>-->
                                         <a class="post-item-title"
                                            href="<? the_permalink(); ?>"><? the_title(); ?></a>
 
