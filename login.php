@@ -2,20 +2,22 @@
 <html>
 <head>
     <style type="text/css">
-        .passwordImgs, .repasswordImgs{
+        .passwordImgs, .repasswordImgs {
             width: 30px;
             height: 30px;
         }
 
-        .canvas{
-            width:120px ;
-            height:42px;
-            border:1px solid #000000;
+        .canvas {
+            width: 120px;
+            height: 42px;
+            border: 1px solid #000000;
         }
+
         .backColor {
             background-color: rgba(240, 255, 255, 0.25);
             border-radius: 10px;
         }
+
         .submitButton {
             border-radius: 30px;
             margin-top: 10px;
@@ -43,152 +45,154 @@
 </head>
 <body>
 <div class="position ">
-    <div class="container" >
+    <div class="container">
         <div class="row">
-            <div id="back" class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 backColor" style="height: 400px"></div>
+            <div id="back" class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 backColor"
+                 style="height: 400px"></div>
         </div>
     </div>
 </div>
 <div class="position">
-</br>
-<div class='container navi'>
-    <div class="row">
-        <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 ">&nbsp;</div>
-        <div class="col-md-2 col-sm-2">
-            <p class="text-center" id='lo' style='border-bottom:3px solid #45718A;' onmouseover='onMouseOver()'
-                onclick="changePage('login')">登录
-            </p>
-        </div>
-        <div class="col-md-2 col-sm-2">
-            <p class="text-center" id='re' onmouseover='onMouseOver()' onclick="changePage('register')">注册</p>
-        </div>
-    </div>
-</div>
-
-<!--登录页面-->
-<div id="login">
-    <div class="container">
-        <?php echo "<form action=\"$road/loginaction.php\" method=\"post\">"; ?>
+    </br>
+    <div class='container navi'>
         <div class="row">
-            <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                用户名:&nbsp;&nbsp;
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <input class="information" name="user_login" type="text" value=""/>
-            </div>
-        </div>
-        </br>
-        <div class="row">
-            <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                密码:&nbsp;&nbsp;&nbsp;&nbsp;
-
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <input class="information password" name="user_pass" type="password" value=""/>
-
-            </div>
-            <div class="col-md-1 col-sm-1">
-                <img class="passwordImgs" src='img/hidePassword.png'>
-            </div>
-        </div>
-         </br>
-        <div class="row">
-            <div class=" col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                验证码:&nbsp;&nbsp;
-            </div>
-            <div class="col-md-3 col-sm-3">
-                <input class="information canValue-login"  type="text" value="" placeholder="不区分大小写" >
+            <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 ">&nbsp;</div>
+            <div class="col-md-2 col-sm-2">
+                <p class="text-center" id='lo' style='border-bottom:3px solid #45718A;' onmouseover='onMouseOver()'
+                   onclick="changePage('login')">登录
+                </p>
             </div>
             <div class="col-md-2 col-sm-2">
-                <canvas class="canvas" id="canvas-login" ></canvas>
+                <p class="text-center" id='re' onmouseover='onMouseOver()' onclick="changePage('register')">注册</p>
             </div>
         </div>
-        </br>
-        <div class="row" style="position: relative;top: 5px;">
-            <div class="col-md-2 col-md-offset-2  col-sm-2 col-sm-offset-2 text-right" id="textContent" >
-                记住密码:
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <input name="loId" type="checkbox"  />
-            </div>
-        </div>
-        <div class="row" style="position: relative;top:10px;">
-            <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
-                <input class="submitButton" id="submitButton-login" type="button" value="登录">
-            </div>
-        </div>
-        </form>
     </div>
-</div>
-<!--注册页面-->
-<div id="register" style="display: none;">
-    <div class="container">
 
-        <?php echo "<form action=\"$road/registeraction.php\" method=\"post\">"; ?>
-        <div class="row">
-            <div class="col-md-2 col-md-offset-2  col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                用户名:&nbsp;&nbsp;
+    <!--登录页面-->
+    <div id="login">
+        <div class="container">
+            <?php echo "<form action=\"$road/loginaction.php\" method=\"post\">"; ?>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
+                    用户名:&nbsp;&nbsp;
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <input class="information" name="user_login" type="text" value=""/>
+                </div>
             </div>
-            <div class="col-md-4 col-sm-4">
-                <input class="information" name="user_login" type="text" value=""/>
-            </div>
-        </div>
-        </br>
-        <div class="row">
-            <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                <p>邮箱:&nbsp;&nbsp;&nbsp;&nbsp;</p>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <input class="information" name="email" type="text" value=""/>
-            </div>
-        </div>
-        </br>
+            </br>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
+                    密码:&nbsp;&nbsp;&nbsp;&nbsp;
 
-        <div class="row">
-            <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                密码:&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <input class="information password" name="user_pass" type="password" value=""/>
+
+                </div>
+                <div class="col-md-1 col-sm-1">
+                    <img class="passwordImgs" src='img/hidePassword.png'>
+                </div>
             </div>
-            <div class="col-sm-4 col-sm-4">
-                <input class="information password" id="password" name="user_pass" type="password" />
+            </br>
+            <div class="row">
+                <div class=" col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
+                    验证码:&nbsp;&nbsp;
+                </div>
+                <div class="col-md-3 col-sm-3">
+                    <input class="information canValue-login" type="text" value="" placeholder="不区分大小写">
+                </div>
+                <div class="col-md-2 col-sm-2">
+                    <canvas class="canvas" id="canvas-login"></canvas>
+                </div>
             </div>
-            <div class="col-md-1 col-sm-1">
-                <img class="passwordImgs" src='img/hidePassword.png'>
+            </br>
+            <div class="row" style="position: relative;top: 5px;">
+                <div class="col-md-2 col-md-offset-2  col-sm-2 col-sm-offset-2 text-right" id="textContent">
+                    记住密码:
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <input name="loId" type="checkbox"/>
+                </div>
             </div>
+            <div class="row" style="position: relative;top:10px;">
+                <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
+                    <input class="submitButton" id="submitButton-login" type="button" value="登录">
+                </div>
+            </div>
+            </form>
         </div>
-        </br>
-        <div class="row">
-            <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                确认密码:
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <input class="information repassword" id="rePassword" name="re_password" type="password" onkeyup="checkPassword()"/>
-                <span id="notice"></span>
-            </div>
-            <div class="col-md-1 col-sm-1">
-                <img class="repasswordImgs" src='img/hidePassword.png'>
-            </div>
-        </div>
-        </br>
-        <div class="row">
-            <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                验证码:&nbsp;&nbsp;
-            </div>
-            <div class="col-md-3 col-sm-3">
-                <input class="information canValue-register"  type="text" value="" placeholder="不区分大小写" >
-            </div>
-            <div class="col-md-2 col-sm-2">
-                <canvas class="canvas"  id="canvas-register" ></canvas>
-            </div>
-        </div>
-        </br>
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
-                <input class="submitButton" id="submitButton-register" type="button" value="注册">
-            </div>
-        </div>
-        </form>
     </div>
-</div>
+    <!--注册页面-->
+    <div id="register" style="display: none;">
+        <div class="container">
+
+            <?php echo "<form action=\"$road/registeraction.php\" method=\"post\">"; ?>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-2  col-sm-2 col-sm-offset-2 text-right" id="textContent">
+                    用户名:&nbsp;&nbsp;
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <input class="information" name="user_login" type="text" value=""/>
+                </div>
+            </div>
+            </br>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
+                    <p>邮箱:&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <input class="information" name="email" type="text" value=""/>
+                </div>
+            </div>
+            </br>
+
+            <div class="row">
+                <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
+                    密码:&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="col-sm-4 col-sm-4">
+                    <input class="information password" id="password" name="user_pass" type="password"/>
+                </div>
+                <div class="col-md-1 col-sm-1">
+                    <img class="passwordImgs" src='img/hidePassword.png'>
+                </div>
+            </div>
+            </br>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
+                    确认密码:
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <input class="information repassword" id="rePassword" name="re_password" type="password"
+                           onkeyup="checkPassword()"/>
+                    <span id="notice"></span>
+                </div>
+                <div class="col-md-1 col-sm-1">
+                    <img class="repasswordImgs" src='img/hidePassword.png'>
+                </div>
+            </div>
+            </br>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
+                    验证码:&nbsp;&nbsp;
+                </div>
+                <div class="col-md-3 col-sm-3">
+                    <input class="information canValue-register" type="text" value="" placeholder="不区分大小写">
+                </div>
+                <div class="col-md-2 col-sm-2">
+                    <canvas class="canvas" id="canvas-register"></canvas>
+                </div>
+            </div>
+            </br>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
+                    <input class="submitButton" id="submitButton-register" type="button" value="注册">
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
 
 </div>
 
@@ -199,76 +203,77 @@
         if (val == 'login') {
             login_div.style.display = 'block';    // 要显示的 display设置为 block
             register_div.style.display = 'none';  // 要隐藏的盒子的 display 设置为 none
-            $("#back").css("height","400");
+            $("#back").css("height", "400");
             lo.style.borderBottom = '3px solid #45718A';
             re.style.borderBottom = '';
 
         } else if (val == 'register') {
             login_div.style.display = 'none';
             register_div.style.display = 'block';
-            $("#back").css("height","500");
+            $("#back").css("height", "500");
             lo.style.borderBottom = '';
             re.style.borderBottom = '3px solid #45718A';
         }
     }
-    $(function(){
+
+    $(function () {
         var show_num_login = [];
-        var show_num_register=[];
-        draw(show_num_login,"login");
-        draw(show_num_register,"register");
-        $("#canvas-login").on('click',function(){
-            draw(show_num_login,"login");
+        var show_num_register = [];
+        draw(show_num_login, "login");
+        draw(show_num_register, "register");
+        $("#canvas-login").on('click', function () {
+            draw(show_num_login, "login");
         })
-        $("#canvas-register").on('click',function(){
-            draw(show_num_register,"register");
+        $("#canvas-register").on('click', function () {
+            draw(show_num_register, "register");
         })
         //验证码
-        $("#submitButton-login").on('click',function(){
+        $("#submitButton-login").on('click', function () {
             var val = $(".canValue-login").val().toLowerCase();
             var num = show_num_login.join("");
-            if(val==''){
+            if (val == '') {
                 alert('请输入验证码！');
                 $("#submitButton-login").attr("type", "button");
-            }else if(val == num){
+            } else if (val == num) {
                 //alert('提交成功！');
                 $("#submitButton-login").attr("type", "submit");
                 $(".canValue-login").val('');
-            }else{
+            } else {
                 alert('验证码错误！请重新输入！');
                 $("#submitButton-login").attr("type", "button");
                 $(".canValue-login").val('');
             }
         })
-        $("#submitButton-register").on('click',function(){
+        $("#submitButton-register").on('click', function () {
             var val = $(".canValue-register").val().toLowerCase();
             var num = show_num_register.join("");
-            if(val==''){
+            if (val == '') {
                 alert('请输入验证码！');
                 $("#submitButton-register").attr("type", "button");
-            }else if(val == num){
+            } else if (val == num) {
                 //alert('提交成功！');
                 $("#submitButton-register").attr("type", "submit");
                 $(".canValue-register").val('');
-            }else{
+            } else {
                 alert('验证码错误！请重新输入！');
                 $("#submitButton-register").attr("type", "button");
                 $(".canValue-register").val('');
             }
         })
     })
-    function draw(show_num,from) {
+
+    function draw(show_num, from) {
         var canvas_width;
         var canvas_height;
-        var canvas ;
-        if(from=="login"){
-            canvas=document.getElementById("canvas-login")
-            canvas_width=$('#canvas-login').width();
-            canvas_height=$('#canvas-login').height();
-        }
-        else if(from=="register"){
-            canvas=document.getElementById("canvas-register")
-            canvas_width=$('#canvas-register').width();
-            canvas_height=$('#canvas-register').height();
+        var canvas;
+        if (from == "login") {
+            canvas = document.getElementById("canvas-login")
+            canvas_width = $('#canvas-login').width();
+            canvas_height = $('#canvas-login').height();
+        } else if (from == "register") {
+            canvas = document.getElementById("canvas-register")
+            canvas_width = $('#canvas-register').width();
+            canvas_height = $('#canvas-register').height();
         }
 
         var context = canvas.getContext("2d");
@@ -309,6 +314,7 @@
             context.stroke();
         }
     }
+
     function randomColor() {
         var r = Math.floor(Math.random() * 256);
         var g = Math.floor(Math.random() * 256);
@@ -316,22 +322,22 @@
         return "rgb(" + r + "," + g + "," + b + ")";
     }
 
-    var pimg=$(".passwordImgs");
-    pimg.mouseover(function() {
+    var pimg = $(".passwordImgs");
+    pimg.mouseover(function () {
         $(this).attr("src", "img/showPassword.png");
         $(".password").attr("type", "text");
     });
-    pimg.mouseout(function() {
+    pimg.mouseout(function () {
         $(this).attr("src", "img/hidePassword.png");
         $(".password").attr("type", "password");
     });
 
-    var repimg=$(".repasswordImgs");
-    repimg.mouseover(function() {
+    var repimg = $(".repasswordImgs");
+    repimg.mouseover(function () {
         $(this).attr("src", "img/showPassword.png");
         $(".repassword").attr("type", "text");
     });
-    repimg.mouseout(function() {
+    repimg.mouseout(function () {
         $(this).attr("src", "img/hidePassword.png");
         $(".repassword").attr("type", "password");
     });
