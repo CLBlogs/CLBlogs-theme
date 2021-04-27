@@ -152,7 +152,7 @@
                     <!--                        <a href="#">标题1</a>-->
                     <!--                        <h5>副标题</h5>-->
                     <!--                        <div class="fakeimg">-->
-                    <!--                            <img src="images/Yukino.jpg" alt="Yukino" width="400">-->
+                    <!--                            <img src="https://cdn.jsdelivr.net/gh/fnsflm/myPicbed/clblogs/images/Yukino.jpg" alt="Yukino" width="400">-->
                     <!--                        </div>-->
                     <!--                        <p>Yukino</p>-->
                     <!--                        <div class="text-right">-->
@@ -189,7 +189,7 @@
                         </div>
                         <h5>副标题</h5>
                         <div class="fakeimg">
-                            <img src="images/Yukino.jpg" alt="Yukino" width="400">
+                            <img src="https://cdn.jsdelivr.net/gh/fnsflm/myPicbed/clblogs/images/Yukino.jpg" alt="Yukino" width="400">
                         </div>
                         <p>Yukino</p>
                     </div>
@@ -204,7 +204,7 @@
                     <!--                        <h5>副标题</h5>-->
                     <!---->
                     <!--                        <div class="fakeimg">-->
-                    <!--                            <img src="images/Azusa.jpg" alt="Azusa" width="400">-->
+                    <!--                            <img src="https://cdn.jsdelivr.net/gh/fnsflm/myPicbed/clblogs/images/Azusa.jpg" alt="Azusa" width="400">-->
                     <!--                        </div>-->
                     <!--                        <p>Azusa</p>-->
                     <!--                    </div>-->
@@ -215,14 +215,14 @@
                       <h2>标题1</h2>
                       <h5>副标题</h5>
                       <div class="fakeimg" >
-                          <img src="images/Yukino.jpg" alt="Yukino" width="400">
+                          <img src="https://cdn.jsdelivr.net/gh/fnsflm/myPicbed/clblogs/images/Yukino.jpg" alt="Yukino" width="400">
                       </div>
                       <p>Yukino</p>
                       <br>
                       <h2>标题2</h2>
                       <h5>副标题</h5>
                       <div class="fakeimg">
-                          <img src="images/Azusa.jpg" alt="Azusa" width="400">
+                          <img src="https://cdn.jsdelivr.net/gh/fnsflm/myPicbed/clblogs/images/Azusa.jpg" alt="Azusa" width="400">
                       </div>
                       <p>Azusa</p>
                     </div> -->

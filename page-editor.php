@@ -5,7 +5,7 @@
     require '../../../wp-blog-header.php';
     global $wpdb;
     $user_id = $_GET["user_id"];
-//    echo $user_id;
+    //    echo $user_id;
     ?>
     <meta charset="utf-8"/>
     <title>Form get textarea value - Editor.md examples</title>
@@ -72,7 +72,8 @@ testEditor.getPreviewedHTML();  // 获取预览窗口里的 HTML，在开启 wat
         var testEditor = editormd("test-editormd", {
             width: "90%",
             height: 640,
-            path: "lib/",
+            // path: "lib/",
+            path: "https://cdn.jsdelivr.net/gh/fnsflm/myPicbed/clblogs/lib/",
             // appendMarkdown : md,
             saveHTMLToTextarea: true
         });

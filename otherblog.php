@@ -68,7 +68,7 @@
 
             <div class="col-sm-2">
                 <div class="text-center">
-                    <img src="images/Rikka.jpg" class="img-circle text-center" width="200" height="200">
+                    <img src="https://cdn.jsdelivr.net/gh/fnsflm/myPicbed/clblogs/images/Rikka.jpg" class="img-circle text-center" width="200" height="200">
                   </div>
                   <div class="text-center">
                     <h2>zzz</h2>
@@ -87,7 +87,7 @@
                     <h5>副标题</h5>
   
                     <div class="fakeimg">
-                        <img src="images/Azusa.jpg" alt="Azusa" width="400">
+                        <img src="https://cdn.jsdelivr.net/gh/fnsflm/myPicbed/clblogs/images/Azusa.jpg" alt="Azusa" width="400">
                     </div>
                     <p>Azusa</p>
                   </div>
