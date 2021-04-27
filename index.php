@@ -16,7 +16,7 @@
     echo "<link rel=\"stylesheet\" href=\"$road/css/styles.css\">";
     echo "test<br>";
     global $wpdb;
-    $f_res =  $wpdb->get_results("select * from wp_comments");
+    $f_res = $wpdb->get_results("select * from wp_comments");
     // foreach($f_res as $ff){
     //     echo $ff->comment_ID;
     //     echo "<br>";
@@ -40,8 +40,8 @@
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav">
                         <li><a id="shouye" href="/">首页</a></li>
-<!--                        <li><a id="guidang" href="#">归档</a></li>-->
-<!--                        <li><a id="liuyan" href="#">留言</a></li>-->
+                        <!--                        <li><a id="guidang" href="#">归档</a></li>-->
+                        <!--                        <li><a id="liuyan" href="#">留言</a></li>-->
                         <!--                        <li>--><?php //get_search_form(); ?><!--</li>-->
                     </ul>
                     <?php get_search_form(); ?>
@@ -101,13 +101,16 @@
                             <article id="post-item-1" class="post-item">
                                 <section id="post-item-body-1" class="post-item-body">
                                     <div id="post-item-text-1" class="post-item-text">
-<!--                                        <a class="post-item-title"-->
-<!--                                           href="--><?php //$author=the_author(); echo "$road/single.php?user=".$author; ?><!--">--><?// the_title(); ?><!--</a>-->
+                                        <!--                                        <a class="post-item-title"-->
+                                        <!--                                           href="-->
+                                        <?php //$author=the_author(); echo "$road/single.php?user=".$author; ?><!--">-->
+                                        <?// the_title(); ?><!--</a>-->
                                         <a class="post-item-title"
                                            href="<? the_permalink(); ?>"><? the_title(); ?></a>
 
                                         <p class="post-item-summary">
-                                            <a href="<?php echo the_permalink()/*."?author=".the_author()*/; ?>"><?php echo "<img class=\"avatar\" src=\"$road/img/photo_test.png\">"; ?>
+                                            <a href="<?php echo the_permalink()/*."?author=".the_author()*/
+                                            ; ?>"><?php echo "<img class=\"avatar\" src=\"$road/img/photo_test.png\">"; ?>
                                                 <? the_excerpt(); ?>
                                                 <br>
                                             </a>

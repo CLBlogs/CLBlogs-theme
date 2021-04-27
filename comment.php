@@ -37,9 +37,9 @@
                     <?php
                     //动态加载所有0级评论
                     // while ($arr = mysqli_fetch_assoc($rst)) {
-                        foreach ($rst as $arr){
+                    foreach ($rst as $arr) {
                         // if ($arr['comment_parent'] == 0) {
-                        if ($arr->comment_parent == 0){
+                        if ($arr->comment_parent == 0) {
                             ?>
 
                             <!-- 评论列表 -->
@@ -87,9 +87,9 @@
                                         //动态加载所有子评论
                                         // $subRst = mysqli_query($conn, $sql);
                                         $subRst = $wpdb->get_results($sql);
-                                        foreach ($subRst as $subArr){
-                                                if ($subArr->comment_parent == $arr -> comment_ID)   {
-                                            ?>
+                                        foreach ($subRst as $subArr) {
+                                            if ($subArr->comment_parent == $arr->comment_ID) {
+                                                ?>
                                                 <footer class="comment-meta">
                                                     <div class="comment-author vcard">
                                                         <b class="fn"><a href='#' rel='external nofollow ugc'
@@ -145,8 +145,9 @@
                                                                                       onclick="noReplication()">&nbsp;取消回复</a>
                                 <input id="huifuid" type="text" name="hfId" value="pinglun" style="display: none"/>
 
-                                <input id="currentUrl" type="text" name="cUrl" value="currentUrl" style="display:none" />
-                                <input id="artilcId" type="text" name="aId" value=<?php echo $articleId; ?> style="display:none" />
+                                <input id="currentUrl" type="text" name="cUrl" value="currentUrl" style="display:none"/>
+                                <input id="artilcId" type="text" name="aId"
+                                       value=<?php echo $articleId; ?> style="display:none"/>
                                 <textarea id="comment" name="comment" placeholder="来说点什么吧~" cols="45" rows="8"
                                           maxlength="65525" required="required"></textarea>
                                 <?php
@@ -169,7 +170,8 @@
 </body>
 <script type="text/javascript">
     var $test = window.location.href;
-    document.getElementById("currentUrl").value=$test;
+    document.getElementById("currentUrl").value = $test;
+
     function replication(id, name) {
         document.getElementById("reply-title").innerHTML = "回复给" + name;
         document.getElementById("huifuid").value = id;

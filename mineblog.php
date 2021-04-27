@@ -15,10 +15,10 @@
     echo "<script src=\"$road/js/jquery-3.5.1.js\"></script>";
     echo "<script src=\"$road/js/bootstrap.js\"></script>";
     session_start();
-    $user_id =$_SESSION['user_id'];
+    $user_id = $_SESSION['user_id'];
     $author_info = $wpdb->get_row("SELECT * FROM $wpdb->users WHERE ID=$user_id");
     // echo $author_info->user_email;
-    
+
     ?>
 
     <style>
@@ -59,14 +59,14 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">主页</a></li>
-<!--                <li><a href="#">管理</a></li>-->
-<!--                <li><a href="#">留言</a></li>-->
+                <!--                <li><a href="#">管理</a></li>-->
+                <!--                <li><a href="#">留言</a></li>-->
             </ul>
-<!--            <div class="pull-right">-->
-<!--                <ul class="nav navbar-nav">-->
-<!--                    <li><a href="#">登录</a></li>-->
-<!--                </ul>-->
-<!--            </div>-->
+            <!--            <div class="pull-right">-->
+            <!--                <ul class="nav navbar-nav">-->
+            <!--                    <li><a href="#">登录</a></li>-->
+            <!--                </ul>-->
+            <!--            </div>-->
         </div>
     </div>
 </nav>
@@ -137,7 +137,7 @@
                         "post_author" => $user_id,
                         "post_date" => $now_date,
                         "post_date_gmt" => $now_date,
-                        "post_content" => "<p>".$_POST["post_content"]."</p>",
+                        "post_content" => "<p>" . $_POST["post_content"] . "</p>",
                         "post_excerpt" => $_POST["post_excerpt"],
                         "post_title" => $_POST["post_title"],
                         "post_status" => "publish",

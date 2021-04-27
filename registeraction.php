@@ -8,7 +8,7 @@ $user_pass = isset($_POST['user_pass']) ? $_POST['user_pass'] : "";
 $re_password = isset($_POST['re_password']) ? $_POST['re_password'] : "";
 $email = isset($_POST['email']) ? $_POST['email'] : "";
 
-if ($user_pass == $re_password) { 
+if ($user_pass == $re_password) {
     $sql_select = "SELECT user_login FROM wp_users WHERE user_login = '$user_login'";
     $wpdb->query($sql_select);
     $num = $wpdb->num_rows;    //统计执行结果影响的行数i
@@ -26,7 +26,7 @@ if ($user_pass == $re_password) {
             'user_registered' => date('Y-m-d H:i:s')
         ));
         echo "<script>alert('注册成功'); history.go(-1);</script>";
-    } 
+    }
 } else {
     echo "<script>alert('两次密码不一致'); history.go(-1);</script>";
 } ?>
