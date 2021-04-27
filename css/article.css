@@ -4,14 +4,14 @@ body{
 nav{
     height:50px;
     line-height: 50px;
-    background-color: pink;
+
     width: 100%;
     margin: 1px;
 }
 #main_content{
     overflow: auto;
     margin:  0 3%;
-    background-color:lightblue;
+
     position: relative;
 }
 
@@ -19,7 +19,7 @@ nav{
     overflow: auto;
     height:auto;  
     margin:5px;
-    background-color: antiquewhite;
+
     box-shadow: 0 0 3px  antiquewhite;
 }
 .blogger_head{
@@ -35,7 +35,7 @@ nav{
 hr.blogger_line{
     size: 1px;
     margin:atuo;
-    background-color:rgba(197, 190, 190, 0.1);
+
     
 }
 .blogger_introduction{  
@@ -45,8 +45,8 @@ hr.blogger_line{
 .recommend{
     height:auto;
     margin:5px;
-    background-color: pink;
-    box-shadow: 0 0 3px rgb(245, 192, 203);
+
+
 }
 .recommend>h3{
     background-color: rgb(167, 197, 253);
@@ -68,11 +68,11 @@ hr.blogger_line{
 {
     height:auto;
     margin:5px;
-    background-color:pink;
+
     box-shadow: 0 0 3px rgb(245, 192, 203);
 }
 .blogger_other_article>h3{
-    background-color: rgb(167, 197, 253);
+
     padding:5px 5px;
     line-height: 100%;
 }
@@ -98,7 +98,7 @@ main{
 }
 .creat_information{
     margin: 10px;
-    background-color: rgba(240, 248, 255,0.8);
+
     padding: 5px;
 }
 .article_information
@@ -132,7 +132,7 @@ main{
     height:20px;
     line-height: 20px;
     text-decoration-line:none;
-    background-color: aliceblue;
+
     border:1px solid aliceblue;
     padding: 1px;
     box-shadow: 0 0 2px aliceblue;
@@ -151,7 +151,7 @@ article{
 }
 div.toolbox{
     margin:20px 20px 10px 15px;
-    background-color: rgb(240, 248, 255,0.8);
+
 }
 ul.toolbox_one{
     padding: 5px;
@@ -210,7 +210,7 @@ textarea{
     main{
         overflow: auto;
         margin:1% 1% 1% 1%;
-        background-color:rgba(245, 192,203, 0.9);
+
     }
 }
 @media  (max-width:900px)
