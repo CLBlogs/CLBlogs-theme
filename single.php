@@ -8,6 +8,7 @@ pageEncoding="UTF-8"%>-->
     <?php
     $road = get_template_directory_uri();
     echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"$road/css/article.css\">";
+    echo "<link href=\"$road/css/bootstrap.css\" rel=\"stylesheet\">";
     global $wpdb;
     // $author_info = $wpdb->get_row("SELECT * FROM $wpdb->users WHERE ID=$user_id");
 
@@ -42,16 +43,38 @@ pageEncoding="UTF-8"%>-->
             else{
                 Collect.style.display='none';
                 CollectActive.style.display='inline';
-
             }
         }
 
     </script>
 </head>
 <body>
-<nav>
-    <a href="/">首页</a>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">CLBLOGS</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">主页</a></li>
+                <!--                <li><a href="#">管理</a></li>-->
+                <!--                <li><a href="#">留言</a></li>-->
+            </ul>
+            <!--            <div class="pull-right">-->
+            <!--                <ul class="nav navbar-nav">-->
+            <!--                    <li><a href="#">登录</a></li>-->
+            <!--                </ul>-->
+            <!--            </div>-->
+        </div>
+    </div>
 </nav>
+
 <div id="main_content">
     <aside>
         <div class="blogger">
