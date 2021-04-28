@@ -4146,7 +4146,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     border-bottom: 1px solid #ddd;
     border-radius: 4px 4px 0 0;
   }
-  .nav-tabs-justified > .active > a,
+  .nav-tabs-justified > .active > a
   .nav-tabs-justified > .active > a:hover,
   .nav-tabs-justified > .active > a:focus {
     border-bottom-color: #fff;
