@@ -1,16 +1,18 @@
 body{
     position: relative;
+
 }
 nav{
-    height:50px;
-    line-height: 50px;
-    width: 100%;
-    margin: 1px;
-}#main_content{
+    margin:0px;
+}
+.navbar{
+    border: 0px;
+}
+#main_content{
      width: 1170px;
      margin: 5px auto;
-     clear: both;
-     display: block;
+    clear: both;
+    display: block;
  }
 aside{
     float: left;
@@ -173,15 +175,16 @@ ul.toolbox_one>li{
     height: 30px;
     vertical-align: middle;
 }
+li.toolbox_one>a
+ {
+     text-decoration-line: none;
+     color: black;
+ }
 .toolbox_one a span{
     font-size: 20px;
     line-height: 30px;
     vertical-align: middle;
 }
-li.toolbox_comment>a
-{
-    text-decoration-line: none;
-    color: black;
-}
+
 
 
