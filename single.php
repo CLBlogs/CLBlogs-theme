@@ -79,12 +79,12 @@ pageEncoding="UTF-8"%>-->
     <aside>
         <div class="blogger">
             <div class="blogger_head">
-<!--                --><?php //echo"<a href=\"$road/otherblog.php\">";?>
-<!--                <img class="blogger_head_portrait" src="https://v1.alapi.cn/api/avatar?email=--><?// $email ?><!--&size=100" alt="点击进入博主主页面" class="blogger_head_portrait">-->
-<!--                </a>-->
+                <!--                --><?php //echo"<a href=\"$road/otherblog.php\">";?>
+                <!--                <img class="blogger_head_portrait" src="https://v1.alapi.cn/api/avatar?email=--><?// $email ?><!--&size=100" alt="点击进入博主主页面" class="blogger_head_portrait">-->
+                <!--                </a>-->
                 <div class="blogger_name">
                     博主名
-                  </div>
+                </div>
             </div>
             <hr class="blogger_line">
             <div class="blogger_introduction">博主的介绍或其他
@@ -111,41 +111,40 @@ pageEncoding="UTF-8"%>-->
                 <? the_content(); ?>
             </div>
         </article>
-                <div class="toolbox">
-                    <ul class="toolbox_one">
-                        <li class="toolbox_Thumb">
-                            <a onclick="displayThump()" >
-                                <?php echo "<img  class='visible'  id= \"Thumb_visible\" alt='点赞'   src=\"$road/img/tobarThumbUp.png\">";?>
-                                <?php echo "<img  class='invisible' id= \"Thumb_invisible\" alt='已点赞' src=\"$road/img/tobarThumbUpactive.png\">";?>
-                                <span >点赞</span>
-                                <span >0
-<!--                                    点赞数-->
+        <div class="toolbox">
+            <ul class="toolbox_one">
+                <li class="toolbox_Thumb">
+                    <a onclick="displayThump()" >
+                        <?php echo "<img  class='tool_visible'  id= \"Thumb_visible\" alt='点赞'   src=\"$road/img/tobarThumbUp.png\">";?>
+                        <?php echo "<img  class='tool_invisible' id= \"Thumb_invisible\" alt='已点赞' src=\"$road/img/tobarThumbUpactive.png\">";?>
+                        <span >点赞</span>
+                        <span >0
+                            <!--                                    点赞数-->
                                 </span>
-                            </a>
-                        </li>
-                        <li class="toolbox_collection">
-                            <a onclick="displayCollect()">
-                                <?php echo "<img  class='visible'  id= \"Collect_visible\" alt=\"收藏\" src=\"$road/img/tobarCollect.png\">";?>
-                                <?php echo "<img  class='invisible' id= \"Collect_invisible\" alt=\"已收藏\" src=\"$road/img/tobarCollectionActive.png\">";?>
-                                <span >收藏</span>
-                                <span >0
-<!--                                    收藏数-->
+                    </a>
+                </li>
+                <li class="toolbox_collection">
+                    <a onclick="displayCollect()">
+                        <?php echo "<img  class='tool_visible'  id= \"Collect_visible\" alt=\"收藏\" src=\"$road/img/tobarCollect.png\">";?>
+                        <?php echo "<img  class='tool_invisible' id= \"Collect_invisible\" alt=\"已收藏\" src=\"$road/img/tobarCollectionActive.png\">";?>
+                        <span >收藏</span>
+                        <span >0
+                            <!--                                    收藏数-->
                                 </span>
-                            </a>
-                        </li>
-                        <li class="toolbox_comment">
-                            <a >
-                                <?php echo "<img  class='visible' id= \"Comment_visible\" alt=\"评论\" src=\"$road/img/tobarComment.png\">";?>
-                                <?php echo "<img  class='invisible' id= \"Comment_invisible\" alt=\"已评论\" src=\"$road/img/tobarCommentactive.png\">";?>
-                                <span >评论</span>
-                                <span ><?php  $id = get_the_ID();
-                                   echo $number = get_comments_number( $id );?>
-
-</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                    </a>
+                </li>
+                <li class="toolbox_comment">
+                    <a >
+                        <?php echo "<img  class='tool_visible' id= \"Comment_visible\" alt=\"评论\" src=\"$road/img/tobarComment.png\">";?>
+                        <?php echo "<img  class='tool_invisible' id= \"Comment_invisible\" alt=\"已评论\" src=\"$road/img/tobarCommentactive.png\">";?>
+                        <span >评论</span>
+                        <span ><?php  $id = get_the_ID();
+                            echo $number = get_comments_number( $id );?>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
 
         <? comments_template(); ?>
 </div>

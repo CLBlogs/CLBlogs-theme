@@ -9,11 +9,11 @@ nav{
     border: 0px;
 }
 #main_content{
-     width: 1170px;
-     margin: 5px auto;
+    width: 1170px;
+    margin: 5px auto;
     clear: both;
     display: block;
- }
+}
 aside{
     float: left;
     margin: 10px;
@@ -152,10 +152,10 @@ article{
     font-size: 20px;
     text-indent: 2em;
 }
-img.visible{
+.tool_visible{
     display:inline-block;
 }
-img.invisible{
+.tool_invisible{
     display: none;
 }
 div.toolbox{
@@ -175,16 +175,13 @@ ul.toolbox_one>li{
     height: 30px;
     vertical-align: middle;
 }
-li.toolbox_one>a
- {
-     text-decoration-line: none;
-     color: black;
- }
 .toolbox_one a span{
     font-size: 20px;
     line-height: 30px;
-    vertical-align: middle;
+    text-decoration-line: none;
+    color: black;
 }
+
 
 
 
