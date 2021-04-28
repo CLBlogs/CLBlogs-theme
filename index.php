@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -109,7 +110,29 @@
                                         //                                        $author = the_author();
                                         //                                        echo "<a class=\"post-item-author\" href=\"$road/mineblog.php?author=$author\">$author</a>";
                                         //                                        ?>
-                                        <span class="post-meta-item"><? the_date(); ?></span>
+                                        <span class="post-meta-item">
+                                            <? the_date(); ?> &nbsp &nbsp &nbsp
+                                             <p>
+                                            <?
+                                            $zan=get_post_meta($post->ID,'_zan',ture);
+                                            $collect=get_post_meta($post->ID,'_collect',ture);
+                                            ?>
+                                            <span>
+                                                点赞数
+                                              <? echo get_post_meta($post->ID,'_zan',ture);?>
+                                            </span>
+                                                 &nbsp &nbsp
+                                            <span>
+                                                收藏数
+                                                 <? echo get_post_meta($post->ID,'_zan',ture);?>
+                                            </span>
+                                        </p>
+
+
+
+                                        </span>
+
+
                                         <!--                                        <a class="post-meta-iten" href="#">-->
                                         <!--                                            <i class="glyphicon glyphicon-thumbs-up"></i>-->
                                         <!--                                            <span>Text</span>-->

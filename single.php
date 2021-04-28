@@ -47,6 +47,13 @@ pageEncoding="UTF-8"%>-->
         }
 
     </script>
+    <script>
+
+
+    </script>
+
+
+
 </head>
 <body>
 
@@ -114,21 +121,36 @@ pageEncoding="UTF-8"%>-->
                 <div class="toolbox">
                     <ul class="toolbox_one">
                         <li class="toolbox_Thumb">
+                            <!--相关功能还未实现,此处刷新一下点赞收藏数会加1-->
+                            <?
+                            $zan=get_post_meta($post->ID,'_zan',ture);
+                             update_post_meta($post->ID,'_zan',$zan+1);?>
+
                             <a onclick="displayThump()" >
                                 <?php echo "<img  class='visible'  id= \"Thumb_visible\" alt='点赞'   src=\"$road/img/tobarThumbUp.png\">";?>
                                 <?php echo "<img  class='invisible' id= \"Thumb_invisible\" alt='已点赞' src=\"$road/img/tobarThumbUpactive.png\">";?>
+
                                 <span >点赞</span>
-                                <span >0
+                                <span >
+                                    <? echo get_post_meta($post->ID,'_zan',ture);?>
 <!--                                    点赞数-->
+
                                 </span>
                             </a>
                         </li>
                         <li class="toolbox_collection">
+                            <?
+                            $collect=get_post_meta($post->ID,'_collect',ture);
+                            update_post_meta($post->ID,'_collect',$collect+1);?>
+
+                            ?>
+
                             <a onclick="displayCollect()">
                                 <?php echo "<img  class='visible'  id= \"Collect_visible\" alt=\"收藏\" src=\"$road/img/tobarCollect.png\">";?>
                                 <?php echo "<img  class='invisible' id= \"Collect_invisible\" alt=\"已收藏\" src=\"$road/img/tobarCollectionActive.png\">";?>
                                 <span >收藏</span>
-                                <span >0
+                                <span>
+                                    <? echo get_post_meta($post->ID,'_collect',ture);?>
 <!--                                    收藏数-->
                                 </span>
                             </a>
