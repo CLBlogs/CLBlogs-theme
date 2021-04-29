@@ -1,27 +1,23 @@
 body{
     position: relative;
+
 }
 nav{
-    height:50px;
-    line-height: 50px;
-
-    width: 100%;
-    margin: 1px;
-}#main_content{
-     width: 1170px;
-     margin: 5px auto;
-     clear: both;
-     display: block;
- }
+    margin:0px;
+}
+.navbar{
+    border: 0px;
+}
+#main_content{
+    width: 1170px;
+    margin: 5px auto;
+    clear: both;
+    display: block;
+}
 aside{
     float: left;
     margin: 10px;
     width: auto;
-}
-#main_content {
-    overflow: auto;
-    margin: 0 3%;
-    position: relative;
 }
 main{
     float: left;
@@ -156,10 +152,10 @@ article{
     font-size: 20px;
     text-indent: 2em;
 }
-img.visible{
+.tool_visible{
     display:inline-block;
 }
-img.invisible{
+.tool_invisible{
     display: none;
 }
 div.toolbox{
@@ -182,58 +178,10 @@ ul.toolbox_one>li{
 .toolbox_one a span{
     font-size: 20px;
     line-height: 30px;
-    vertical-align: middle;
-}
-li.toolbox_comment>a
-{
     text-decoration-line: none;
     color: black;
 }
-.commentArea{
-    margin:30px 10px;
-}
-textarea{
-    width:80% ;
-    height:40px;
-    resize: none;
-    margin:20px 20px 10px 15px;
-}
-@media(min-width: 1201px){
-    aside{
-    float: left;
-    margin: 1% 1% 1% 1%;
-    width: 20%;
-    }
-    main{
-        float: right;
-        margin: 1% 1% 1% 1%;
-        width: 75%;
-        background-color:rgba(245, 192,203, 0.9);
-    }
-}
-@media (max-width:1200px){
-    #main_contenr{
-        display:inlne-flex;
-    }
-    aside{
-        float: left;
-        width:225px;
-        margin: 1% 3% 1% 1%;
-    }
-    main{
-        overflow: auto;
-        margin:1% 1% 1% 1%;
 
-    }
-}
-@media  (max-width:900px)
-{
-    aside{
-        display:none;
-    }
-    main{
-        width: 96%;
-        float: none;
-        margin:1% auto;
-    }
-}
+
+
+
