@@ -14,7 +14,9 @@
     echo "<link rel=\"stylesheet\" href=\"$road/css/Navigation-with-Search-1.css\">";
     echo "<link rel=\"stylesheet\" href=\"$road/css/Navigation-with-Search.css\">";
     echo "<link rel=\"stylesheet\" href=\"$road/css/styles.css\">";
+    setcookie("uri", ' ', time() - 1, '/');
     ?>
+
 </head>
 
 <body>
@@ -60,21 +62,44 @@
                 <div id="cnblog_b1" class="sidebar-image"></div>
                 <div id="sidebar_bh" class="sidebar-bh"></div>
                 <div class="card">
-                    <h4 class="card-title"><a href="#">排行榜标题</a></h4>
-                    <ul class="item-list">
-                        <li><span class="number highlight">1</span><a href="#">Announcing -hardening<br><br></a></li>
-                        <li><span class="number highlight">2</span><a href="#">有意思！强大的 SVG 滤镜<br><br><br></a></li>
-                        <li><span class="number highlight">3</span><a href="#">CentOS离线安装Nginx<br><br><br></a></li>
-                        <li><span class="number highlight">4</span><a href="#">图解 | 原来这就是 class<br><br></a></li>
+                    <h4 class="card-title"><a href="#">热度排行榜</a></h4>
+                    <ul>
+                        <?php $args = array(
+                            'meta_key' => 'views',
+                            'orderby' => 'meta_value_num',
+                            'posts_per_page' => 6,
+                            'order' => 'DESC'
+                        );
+                        query_posts($args);
+                        while (have_posts()) : the_post(); ?>
+                            <li><a href="<? the_permalink(); ?>"><? the_title(); ?></a>
+                                <span class="kc-view fright">浏览：
+                                    <?php
+                                    setPostViews(get_the_ID());
+                                    echo number_format(getPostViews(get_the_ID()));
+                                    ?>
+                                </span>
+                            </li>
+                        <?php endwhile;
+                        wp_reset_query(); ?>
                     </ul>
                 </div>
                 <div class="card">
                     <h4 class="card-title"><a href="#">排行榜标题</a></h4>
-                    <ul class="item-list">
-                        <li><span class="number highlight">1</span><a href="#">Announcing -hardening<br><br></a></li>
-                        <li><span class="number highlight">2</span><a href="#">有意思！强大的 SVG 滤镜<br><br><br></a></li>
-                        <li><span class="number highlight">3</span><a href="#">CentOS离线安装Nginx<br><br><br></a></li>
-                        <li><span class="number highlight">4</span><a href="#">图解 | 原来这就是 class<br><br></a></li>
+                    <ul>
+                        <?php $args = array(
+                            'meta_key' => 'views',
+                            'orderby' => 'meta_value_num',
+                            'posts_per_page' => 6,
+                            'order' => 'DESC'
+                        );
+                        query_posts($args);
+                        while (have_posts()) : the_post(); ?>
+                            <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a><span
+                                        class="kc-view fright">浏览：<?php setPostViews(get_the_ID());
+                                    echo number_format(getPostViews(get_the_ID())); ?></span></li>
+                        <?php endwhile;
+                        wp_reset_query(); ?>
                     </ul>
                 </div>
             </div>
@@ -83,10 +108,8 @@
                     <?php
                     if (have_posts()) {
                         while (have_posts()) {
-
                             //获取下一篇文章的信息，并且将信息存入全局变量 $post 中
                             the_post();
-
                             ?>
                             <article id="post-item-1" class="post-item">
                                 <section id="post-item-body-1" class="post-item-body">
@@ -103,7 +126,28 @@
                                         </p>
                                     </div>
                                     <footer id="post-item-foot-1" class="post-item-foot">
-                                        <span class="post-meta-item"><? the_date(); ?></span>
+                                        <span class="post-meta-item"><? the_date(); ?>
+                                        </span>
+                                        <a class="post-meta-iten" href="#">
+                                            <i class="glyphicon glyphicon-thumbs-up"></i>
+                                            <span><? _e('author', 'zhangchongen'); ?>：<? the_author(); ?><span>|</span></span>
+
+                                        </a>
+                                        <a class="post-meta-iten" href="#">
+                                            <i class="glyphicon glyphicon-star"></i>
+                                            <span><? echo __('time', 'zhangchongen'); ?>：<? the_time('Y-m-d'); ?></span></a>
+
+                                        <a class="post-meta-iten" href="#">
+                                            <i class="glyphicon glyphicon-eye-open"></i>
+                                            <span><? edit_post_link(__('Edit', 'zhangchongen'), ' <span>|</span> ', ''); ?></span>
+                                        </a>
+                                        <a class="post-meta-iten" href="#">
+                                            <i class="glyphicon glyphicon-eye-open"></i>
+                                            <span><?php setPostViews(get_the_ID());
+                                                echo ' 浏览次数';
+                                                echo number_format(getPostViews(get_the_ID())); ?></span>
+                                        </a>
+
                                     </footer>
                                 </section>
                             </article>
@@ -134,7 +178,6 @@
             <!--                </div>-->
             <!--            </div>-->
         </div>
-
     </div>
 </div>
 </body>

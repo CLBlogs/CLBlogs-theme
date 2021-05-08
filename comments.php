@@ -11,10 +11,13 @@
           href='https://cdn.jsdelivr.net/gh/fnsflm/myPicbed/clblogs/css/theme-style.css'
           type='text/css' media='all'/>
     <?php
+    //     require 'wp-blog-header.php';
     global $wpdb;
     $road = get_template_directory_uri();
     $emotion = $road . "/img/emotion/";
     $articleId = get_the_ID();
+    // echo $_COOKIE['uri'];
+    //    session_start();
     ?>
 
 </head>
@@ -131,8 +134,27 @@
                     <!-- 发表评论/回复 -->
                     <div id="respond" class="comment-respond">
                         <h3 id="reply-title" class="comment-reply-title">发表评论</h3>
-                        <p class="logged-in-as"><a href="#" aria-label="已登录为test2。编辑您的个人资料。">已登录为jiangchen</a>。<a
-                                    href="#">注销？</a></p>
+                        <p class="logged-in-as">
+                            <?php
+                            if (empty($_SESSION['user_id']))//没有登陆
+                            {
+                                echo "<a href=\"$road/login.php\" id=\"statement\">当前为游客状态。</a>";
+                            } else {
+                                $sql = "select * from wp_users where ID=" . $_SESSION['user_id'];
+                                $rst = $wpdb->get_results($sql);
+                                foreach ($rst as $arr) {
+                                    echo "<a href=\"$road/mineblog.php\" id=\"statement\">已登录为" . $arr->user_login . "。</a>";
+                                }
+                            }
+                            ?>
+                            <?php
+                            if (empty($_SESSION['user_id'])) {  //没有登陆
+                                echo "<a id='stateAction' href='$road/login.php'>登录?</a>";
+                            } else {
+                                echo "<a id='stateAction' href='' onclick='cancellation()'>注销?</a>";
+                            }
+                            ?>
+                        </p>
                         <form action=<?php echo $road . "/controller.php" ?> method="post" id="commentform"
                               class="comment-form" novalidate>
                             <p class="logged-in-as"></p>
@@ -145,6 +167,20 @@
                                 <input id="huifuid" type="text" name="hfId" value="pinglun" style="display: none"/>
 
                                 <input id="currentUrl" type="text" name="cUrl" value="currentUrl" style="display:none"/>
+                                <input id="currentStatement" type="text" name="cState" value=
+                                <?php
+                                if (empty($_SESSION['user_id']))//没有登陆
+                                {
+                                    echo "游客";
+                                } else {
+                                    $sql = "select * from wp_users where ID=" . $_SESSION['user_id'];
+                                    $rst = $wpdb->get_results($sql);
+                                    foreach ($rst as $arr) {
+                                        echo $arr->user_login;
+                                    }
+                                }
+                                ?>
+                                style="display:none"/>
                                 <input id="artilcId" type="text" name="aId"
                                        value=<?php echo $articleId; ?> style="display:none"/>
                                 <textarea id="comment" name="comment" placeholder="来说点什么吧~" cols="45" rows="8"
@@ -185,6 +221,41 @@
 
     function insertImg(id) {
         document.getElementById("comment").value += "&" + id + ".gif";
+    }
+
+    //读取cookies
+    function getCookie(name) {
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+
+        if (arr = document.cookie.match(reg))
+
+            return (arr[2]);
+        else
+            return null;
+    }
+
+    function cancellation() {
+        // if (document.getElementById("stateAction").innerHTML == "注销？") {
+        //     alert("注销成功！");
+        //     document.getElementById("statement").innerHTML = "当前为游客状态。";
+        //     document.getElementById("stateAction").innerHTML = "登录？";
+        //     document.getElementById("currentStatement").value = "游客";
+        //     document.getElementById("stateAction").href = "#";
+        // } else {
+        //     document.getElementById("stateAction").href = "/wp-content/themes/CLBlogs-theme/login.php";
+        //     //document.
+        // }
+        var user_login_val = getCookie("user_login");
+        var user_pass_val = getCookie("user_pass");
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 1);
+        document.cookie = "user_login="+user_login_val+";expires=" + exp.toUTCString();
+        document.cookie = "user_pass="+user_pass_val+";expires=" + exp.toUTCString();
+        console.log(user_login_val);
+        console.log(user_pass_val);
+        console.log(exp.toUTCString());
+        alert("注销成功！");
+        location.reload();
     }
 </script>
 </html>

@@ -15,8 +15,8 @@ if (!empty($user_login)) {
                 setcookie("user_pass", $user_pass, time() + 30 * 24 * 3600, '/');
 
             } else {//不记住密码~
-                setcookie("user_login", ' ', time() - 1, '/');
-                setcookie("user_pass", ' ', time() - 1, '/');
+                setcookie("user_login", $user_login, time() + 3600, '/');
+                setcookie("user_pass", $user_pass, time() + 3600, '/');
             }
             $uri = $_COOKIE['uri'];
             $user_id = $wpdb->get_var("select ID from wp_users where user_login = '$user_login'");
@@ -30,8 +30,9 @@ if (!empty($user_login)) {
                 window.location.href=\"$road/mineblog.php\";
                 </script>";
             } else {//如果是从其他页面进入那就跳转，还没有测试，else这里进不来，因为$_COOKIE['uri']一直都是空的
+                echo $uri;
                 echo "<script>
-                window.location.href=\"$road/$uri\";
+                    window.location.href=\"$uri\";
                 </script>";
             }
         } else
