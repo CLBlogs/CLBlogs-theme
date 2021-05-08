@@ -83,16 +83,30 @@
 
         <!-- 博客展示区 -->
         <div class="col-sm-6">
-            <div class="card">
-                <a href="#">标题2</a>
-                <h5>副标题</h5>
+            <?php
+            if (have_posts()) {
+                while (have_posts()) {
 
-                <div class="fakeimg">
-                    <img src="https://cdn.jsdelivr.net/gh/fnsflm/myPicbed/clblogs/images/Azusa.jpg" alt="Azusa"
-                         width="400">
-                </div>
-                <p>Azusa</p>
-            </div>
+                    //获取下一篇文章的信息，并且将信息存入全局变量 $post 中
+                    the_post();
+
+                    ?>
+                    <div class="card">
+                        <a href="<? the_permalink(); ?>"><? the_title(); ?></a>
+                        <h5>副标题</h5>
+
+                        <div class="fakeimg">
+                            <img src="https://cdn.jsdelivr.net/gh/fnsflm/myPicbed/clblogs/images/Azusa.jpg" alt="Azusa"
+                                 width="400">
+                        </div>
+                        <p><? the_author(); ?></p>
+                    </div>
+                    <?
+                }
+            } else {
+                echo '没有文章可以显示';
+            }
+            ?>
         </div>
     </div>
 </div>

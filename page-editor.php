@@ -63,7 +63,7 @@ testEditor.getPreviewedHTML();  // 获取预览窗口里的 HTML，在开启 wat
         var testEditor = editormd("test-editormd", {
             width: "90%",
             height: 640,
-            path: "https://cdn.jsdelivr.net/gh/fnsflm/myPicbed/clblogs/lib/",
+            path: "https://cdn.jsdelivr.net/gh/fnsflm/myPicbed@master/clblogs/lib/",
             saveHTMLToTextarea: true
         });
     });

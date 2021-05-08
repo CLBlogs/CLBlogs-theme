@@ -129,29 +129,45 @@
                     //                    }
                     //                    ?>
                     <!-- 博文1 -->
-                    <div class="card">
-                        <a href="#">标题1</a>
-                        <div class="pull-right dropdown">
-                            <button type="button" class="btn dropdown-toggle btn-default" id="menu"
-                                    data-toggle="dropdown" aria-label="Left Align">
-                                <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu">
-                                <li role="presentation">
-                                    <a role="menuitem" tabindex="-1" href="#">删除</a>
-                                </li>
-                                <li role="presentation">
-                                    <a role="menuitem" tabindex="-1" href="#">修改</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <h5>副标题</h5>
-                        <div class="fakeimg">
-                            <img src="https://cdn.jsdelivr.net/gh/fnsflm/myPicbed/clblogs/images/Yukino.jpg"
-                                 alt="Yukino" width="400">
-                        </div>
-                        <p>Yukino</p>
-                    </div>
+
+                    <?php
+                    if (have_posts()) {
+                        while (have_posts()) {
+
+                            //获取下一篇文章的信息，并且将信息存入全局变量 $post 中
+                            the_post();
+
+                            ?>
+                            <div class="card">
+                                <a href="<? the_permalink(); ?>"><? the_title(); ?></a>
+                                <div class="pull-right dropdown">
+                                    <button type="button" class="btn dropdown-toggle btn-default" id="menu"
+                                            data-toggle="dropdown" aria-label="Left Align">
+                                        <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu">
+                                        <li role="presentation">
+                                            <a role="menuitem" tabindex="-1" href="#">删除</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a role="menuitem" tabindex="-1" href="#">修改</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <h5>副标题</h5>
+                                <div class="fakeimg">
+                                    <img src="https://cdn.jsdelivr.net/gh/fnsflm/myPicbed/clblogs/images/Yukino.jpg"
+                                         alt="Yukino" width="400">
+                                </div>
+                                <p><? the_author(); ?></p>
+                            </div>
+                            <?
+                        }
+                    } else {
+                        echo '没有文章可以显示';
+                    }
+                    ?>
+
 
                     <!-- 我的收藏· -->
                     <!-- <div class="tab-pane fade" id="Tab4">
