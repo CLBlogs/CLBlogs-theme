@@ -52,7 +52,11 @@
         </nav>
         <ul class="nav nav-tabs">
             <?php
-            echo "<li><a id=\"denglu\" href=\"$road/login.php\">登录/注册</a></li>";
+            if (empty($_COOKIE['user_login'])) {
+                echo "<li><a id=\"denglu\" href=\"$road/login.php\">登录/注册</a></li>";
+            } else {
+                echo "<li><a id='denglu' href='$road/mineblog.php'>个人中心</a></li>";
+            }
             ?>
         </ul>
     </div>
@@ -116,7 +120,6 @@
                                     <div id="post-item-text-1" class="post-item-text">
                                         <a class="post-item-title"
                                            href="<? the_permalink(); ?>"><? the_title(); ?></a>
-
                                         <p class="post-item-summary">
                                             <a href="<?php echo the_permalink()/*."?author=".the_author()*/
                                             ; ?>"><?php echo "<img class=\"avatar\" src=\"$road/img/photo_test.png\">"; ?>
