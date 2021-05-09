@@ -4,17 +4,17 @@ pageEncoding="UTF-8"%>-->
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title><?php echo the_title();?></title>
+    <title><?php echo the_title(); ?></title>
     <?php
     $road = get_template_directory_uri();
     echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"$road/css/article.css\">";
     echo "<link href=\"$road/css/bootstrap.css\" rel=\"stylesheet\">";
     echo "<script src=\"$road/js/jquery-3.5.1.js\"></script>";
     global $wpdb;
-    // $author_info = $wpdb->get_row("SELECT * FROM $wpdb->users WHERE ID=$user_id");
-
-    //$author = $wpdb->;
-    $email = get_the_author_meta('user_email');
+    global $post;
+    $author_id = $post->post_author;
+    $author_data = get_userdata($author_id);
+    $email = $author_data->user_email;
     $uri = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     setcookie("uri", $uri, time() + 30 * 24 * 3600, '/');
     session_start();
@@ -63,7 +63,6 @@ pageEncoding="UTF-8"%>-->
     </script>
 </head>
 <body>
-
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -72,7 +71,7 @@ pageEncoding="UTF-8"%>-->
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">CLBLOGS</a>
+            <a class="navbar-brand" href="<?php echo $road; ?>">CLBLOGS</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
@@ -93,16 +92,24 @@ pageEncoding="UTF-8"%>-->
     <aside>
         <div class="blogger">
             <div class="blogger_head">
-                <!--                --><?php //echo"<a href=\"$road/otherblog.php\">";?>
-                <!--                <img class="blogger_head_portrait" src="https://v1.alapi.cn/api/avatar?email=-->
-                <? // $email ?><!--&size=100" alt="点击进入博主主页面" class="blogger_head_portrait">-->
-                <!--                </a>-->
+                <?php echo "<a href=\"$road/otherblog.php?user_id=$author_id\">"; ?>
+                <img class="blogger_head_portrait" src="https://v1.alapi.cn/api/avatar?email=<?php echo $email; ?>&size=100"
+                     alt="点击进入博主主页面" class="blogger_head_portrait">
+                </a>
                 <div class="blogger_name">
-                    博主名
+                    <?php echo $author_data->user_login; ?>
                 </div>
             </div>
             <hr class="blogger_line">
-            <div class="blogger_introduction">博主的介绍或其他
+            <div class="blogger_introduction">
+                <p id='sex'>性别: <?php echo get_user_meta($author_id, 'sex', true); ?></p>
+                <p id='birthday'>生日: <?php echo get_user_meta($author_id, 'birthday', true); ?></p>
+                <p id='qq_num'>qq: <?php echo get_user_meta($author_id, 'qq_num', true); ?></p>
+                <p id='wechat_num'>微信: <?php echo get_user_meta($author_id, 'wechat_num', true); ?></p>
+                <p>E-mail: <?php echo $email ?></p>
+                <p id='phone'>手机号码：<?php echo get_user_meta($author_id, 'phone', true); ?></p>
+                <p id='interests'>兴趣标签: <?php echo get_user_meta($author_id, 'interests', true); ?></p>
+                <p id='introduction'>个人简介：<?php echo get_user_meta($author_id, 'introduction', true); ?></p>
                 <p>文章: <?php the_author_posts(); ?></p>
             </div>
         </div>

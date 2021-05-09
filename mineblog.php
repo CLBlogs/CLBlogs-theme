@@ -15,6 +15,7 @@
     echo "<script src=\"$road/js/bootstrap.js\"></script>";
     session_start();
     $user_id = $_SESSION['user_id'];
+    setcookie("user_id", $user_id, time() + 3600, '/');
     $author_info = $wpdb->get_row("SELECT * FROM $wpdb->users WHERE ID=$user_id");
     // echo $author_info->user_email;
     $user_name = $_COOKIE['user_login'];
@@ -80,7 +81,7 @@
             <ul id="myTab" class="nav nav-pills nav-stacked ">
                 <li class="active"><a href="#Tab1" data-toggle="tab">Information</a></li>
                 <li><a href="#Tab3" data-toggle="tab">Management</a></li>
-                <!-- <li><a href="#Tab4" data-toggle="tab">我的收藏</a></li>  -->
+                <li><a href="#Tab4" data-toggle="tab">Collections</a></li>
             </ul>
             <hr class="hidden-sm hidden-md hidden-lg">
         </div>
@@ -102,59 +103,85 @@
                     <div class="text-center">
                         <h2><?php echo $author_info->user_login ?></h2>
                     </div>
-                    <div>
-                        <!--                        <p>个人简介：</p>-->
-                        <!--                        <p>生日:</p>-->
-                        <!--                        <p>性别:</p>-->
-                        <!--                        <p>兴趣标签:</p>-->
-                        <!--                        <p>手机号码：</p>-->
-                        <!--                        <p>qq:</p>-->
-                        <!--                        <p>微信:</p>-->
-                        <!--                        <p>Email:</p>-->
+                    <div id="personal-information">
                         <p>User: <?php echo $author_info->user_login; ?></p>
+                        <p id='sex'>性别: <?php echo get_user_meta($user_id, 'sex', true); ?></p>
+                        <p id='birthday'>生日: <?php echo get_user_meta($user_id, 'birthday', true); ?></p>
+                        <p id='qq_num'>qq: <?php echo get_user_meta($user_id, 'qq_num', true); ?></p>
+                        <p id='wechat_num'>微信: <?php echo get_user_meta($user_id, 'wechat_num', true); ?></p>
                         <p>E-mail: <?php echo $author_info->user_email; ?></p>
+                        <p id='phone'>手机号码：<?php echo get_user_meta($user_id, 'phone', true); ?></p>
+                        <p id='interests'>兴趣标签: <?php echo get_user_meta($user_id, 'interests', true); ?></p>
+                        <p id='introduction'>个人简介：<?php echo get_user_meta($user_id, 'introduction', true); ?></p>
                     </div>
-                    <!--                    <div class="text-center">-->
-                    <!--                        <button class="btn btn-default" type="submit">编辑</button>-->
-                    <!--                    </div>-->
-                </div>
+                    <div class="text-center">
+                        <button class="btn btn-default" id="edit-info" type="submit">Edit</button>
+                    </div>
 
+                    <script>
+                        $("#edit-info").click(function () {
+                            if ($(this).text() == 'Edit') {
+                                $(this).text('Save');
+                                $('#personal-information').html("\
+                                <form id='information-form' method='post' action='<?php echo $road . "/functions/updateUserInfo.php";  ?>'>\
+                                <input style='display:none' name='user_id' value='<?php echo $user_id;?>'>\
+                                <label>User: </label><input name='user' value='<?php echo $author_info->user_login;?>'><br><br>\
+                                <label>性别</label><input name='sex'><br><br>\
+                                <label>生日</label><input name='birthday'><br><br>\
+                                <label>qq</label><input name='qq_num'><br><br>\
+                                <label>微信:</label><input name='wechat_num'><br><br>\
+                                <label>E-mail: </label><input name='e-mail' value='<?php echo $author_info->user_email; ?>'><br><br>\
+                                <label>手机号码</label> <input name='phone'><br><br>\
+                                <label>兴趣标签:</label>\
+                                <textarea name='interests'></textarea><br>\
+                                <label>个人简介：</label>\
+                                <textarea name='introduction'></textarea>\
+                                </form>");
+                            } else {
+                                $(this).text('Edit');
+                                $('#information-form').submit();
+                                //$('#personal-information').html("<p>User: <?php //echo $author_info->user_login; ?>//</p>\
+                                //<p id='sex'>性别: 3</p>\
+                                //<p id='birthday'>生日: 2</p>\
+                                //<p id='qq_num'>qq: 6</p>\
+                                //<p id='wechat_num'>微信: 7</p>\
+                                //<p>E-mail: <?php //echo $author_info->user_email; ?>//</p>\
+                                //<p id='phone'>手机号码：5</p>\
+                                //<p id='interests'>兴趣标签: 4</p>\
+                                //<p id='introduction'>个人简介：1</p>");
+                            }
+                        })
+                    </script>
+                </div>
                 <!-- 博客管理 -->
                 <div class="tab-pane fade" id="Tab3">
-                    <a href="page-editor.php?user_id=<? $user_id ?>">upload blog</a>
-                    <!--                    --><?php
-                    //                    $posts = $wpdb->get_results("SELECT * from $wpdb->posts where post_author=$user_id");
-                    //                    foreach ($posts as $post) {
-                    //                        echo $post->post_title;
-                    //                    }
-                    //                    ?>
-                    <!-- 博文1 -->
-
+                    <a href="page-editor.php">upload blog</a>
                     <?php
+                    query_posts(array('post_status' => 'publish', 'author' => $user_id));
                     if (have_posts()) {
                         while (have_posts()) {
-
                             //获取下一篇文章的信息，并且将信息存入全局变量 $post 中
                             the_post();
 
                             ?>
                             <div class="card">
                                 <a href="<? the_permalink(); ?>"><? the_title(); ?></a>
-                                <div class="pull-right dropdown">
-                                    <button type="button" class="btn dropdown-toggle btn-default" id="menu"
-                                            data-toggle="dropdown" aria-label="Left Align">
-                                        <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu">
-                                        <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="#">删除</a>
-                                        </li>
-                                        <li role="presentation">
-                                            <a role="menuitem" tabindex="-1" href="#">修改</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h5>副标题</h5>
+                                <!--                                删除/修改功能待完善-->
+                                <!--                                <div class="pull-right dropdown">-->
+                                <!--                                    <button type="button" class="btn dropdown-toggle btn-default" id="menu"-->
+                                <!--                                            data-toggle="dropdown" aria-label="Left Align">-->
+                                <!--                                        <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>-->
+                                <!--                                    </button>-->
+                                <!--                                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu">-->
+                                <!--                                        <li role="presentation">-->
+                                <!--                                            <a role="menuitem" tabindex="-1" href="#">删除</a>-->
+                                <!--                                        </li>-->
+                                <!--                                        <li role="presentation">-->
+                                <!--                                            <a role="menuitem" tabindex="-1" href="#">修改</a>-->
+                                <!--                                        </li>-->
+                                <!--                                    </ul>-->
+                                <!--                                </div>-->
+                                <!--                                <h5>副标题</h5>-->
                                 <div class="fakeimg">
                                     <img src="https://cdn.jsdelivr.net/gh/fnsflm/myPicbed/clblogs/images/Yukino.jpg"
                                          alt="Yukino" width="400">
@@ -164,39 +191,55 @@
                             <?
                         }
                     } else {
-                        echo '没有文章可以显示';
+                        echo 'No blog here';
                     }
                     ?>
 
 
-                    <!-- 我的收藏· -->
-                    <!-- <div class="tab-pane fade" id="Tab4">
-                      <h2>标题1</h2>
-                      <h5>副标题</h5>
-                      <div class="fakeimg" >
-                          <img src="https://cdn.jsdelivr.net/gh/fnsflm/myPicbed/clblogs/images/Yukino.jpg" alt="Yukino" width="400">
-                      </div>
-                      <p>Yukino</p>
-                      <br>
-                      <h2>标题2</h2>
-                      <h5>副标题</h5>
-                      <div class="fakeimg">
-                          <img src="https://cdn.jsdelivr.net/gh/fnsflm/myPicbed/clblogs/images/Azusa.jpg" alt="Azusa" width="400">
-                      </div>
-                      <p>Azusa</p>
-                    </div> -->
+                    <!-- 我的收藏 -->
+                    <div class="tab-pane fade" id="Tab4">
+                        <?php
+                        //                        $ar = explode(",", $author_info->user_favorite);
+                        $ar = explode(",", get_user_meta($user_id, 'favorite', true));
+                        foreach ($ar as $zz) {
+                            $collect = $wpdb->get_row("SELECT * FROM $wpdb->posts WHERE ID=$zz");
+                            ?>
+
+                            <div class="card">
+                                <a href=<?php echo $collect->guid; ?>> <?php echo $collect->post_title ?>  </a>
+                                <!--                            <div class="pull-right dropdown">-->
+                                <!--                                <button type="button" class="btn dropdown-toggle btn-default" id="menu"-->
+                                <!--                                        data-toggle="dropdown" aria-label="Left Align">-->
+                                <!--                                    <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>-->
+                                <!--                                </button>-->
+                                <!--                                <ul class="dropdown-menu" role="menu" aria-labelledby="menu">-->
+                                <!--                                    <li role="presentation">-->
+                                <!--                                        <a role="menuitem" tabindex="-1" href="#">取消收藏</a>-->
+                                <!--                                    </li>-->
+                                <!--                                </ul>-->
+                                <!--                            </div>-->
+                                <!--                            <h5>副标题</h5>-->
+                                <div class="fakeimg">
+                                    <img src="https://cdn.jsdelivr.net/gh/fnsflm/myPicbed/clblogs/images/Azusa.jpg" alt="Azusa" width="400">
+                                </div>
+                                <p>Azusa</p>
+                            </div>
+
+                            <?php
+                        }
+                        ?>
+                    </div>
+
                 </div>
 
+
+                <!-- 右侧部分 -->
             </div>
-
-
-            <!-- 右侧部分 -->
         </div>
-    </div>
 
-    <!-- <div class="jumbotron text-center" style="margin-bottom:0">
-      <p>Powered by zzz</p>
-    </div> -->
+        <!-- <div class="jumbotron text-center" style="margin-bottom:0">
+          <p>Powered by zzz</p>
+        </div> -->
 
 </body>
 </html>

@@ -4,7 +4,7 @@
     <?php
     require '../../../wp-blog-header.php';
     global $wpdb;
-    $user_id = $_GET["user_id"];
+    $user_id = $_COOKIE['user_id'];
     ?>
     <meta charset="utf-8"/>
     <title>Form get textarea value - Editor.md examples</title>
@@ -15,12 +15,13 @@
 <body>
 <div id="layout">
     <header>
-        <h1>表单取值</h1>
-        <p>Form get textarea value.</p>
+        <h1>Edit Blog</h1>
     </header>
-    <form method="post" action="page-editor.php?user_id=<?php echo $user_id; ?>">
-        标题: <br><input type="text" name="post_title" size="30"><br>
-        摘要: <br><input type="text" name="post_excerpt" size="30"><br>
+    <form method="post" action="mineblog.php">
+        <div>
+            标题: <br><input type="text" name="post_title" size="30"><br>
+            摘要: <br><input type="text" name="post_excerpt" size="30"><br>
+        </div>
         <div id="test-editormd">
             <textarea style="display:none;">#### Get value
 
