@@ -55,7 +55,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">CLBLOGS</a>
+            <a class="navbar-brand" href="/">CLBLOGS</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
@@ -194,44 +194,45 @@
                         echo 'No blog here';
                     }
                     ?>
-
-
                     <!-- 我的收藏 -->
-                    <div class="tab-pane fade" id="Tab4">
-                        <?php
-                        //                        $ar = explode(",", $author_info->user_favorite);
-                        $ar = explode(",", get_user_meta($user_id, 'favorite', true));
-                        foreach ($ar as $zz) {
-                            $collect = $wpdb->get_row("SELECT * FROM $wpdb->posts WHERE ID=$zz");
-                            ?>
-
-                            <div class="card">
-                                <a href=<?php echo $collect->guid; ?>> <?php echo $collect->post_title ?>  </a>
-                                <!--                            <div class="pull-right dropdown">-->
-                                <!--                                <button type="button" class="btn dropdown-toggle btn-default" id="menu"-->
-                                <!--                                        data-toggle="dropdown" aria-label="Left Align">-->
-                                <!--                                    <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>-->
-                                <!--                                </button>-->
-                                <!--                                <ul class="dropdown-menu" role="menu" aria-labelledby="menu">-->
-                                <!--                                    <li role="presentation">-->
-                                <!--                                        <a role="menuitem" tabindex="-1" href="#">取消收藏</a>-->
-                                <!--                                    </li>-->
-                                <!--                                </ul>-->
-                                <!--                            </div>-->
-                                <!--                            <h5>副标题</h5>-->
-                                <div class="fakeimg">
-                                    <img src="https://cdn.jsdelivr.net/gh/fnsflm/myPicbed/clblogs/images/Azusa.jpg" alt="Azusa" width="400">
-                                </div>
-                                <p>Azusa</p>
-                            </div>
-
-                            <?php
-                        }
-                        ?>
-                    </div>
-
                 </div>
+                <div class="tab-pane fade" id="Tab4">
+                    <?php
+                    //                        $ar = explode(",", $author_info->user_favorite);
+                    //                        $ar = explode(",", get_user_meta($user_id, 'favorite', true));
+                    $ar = get_user_meta($user_id, 'favorite');
+                    foreach ($ar as $zz) {
+                        if (strlen($zz) == 0) {
+                            break;
+                        }
+                        $zz = (int)$zz;
+                        $collect = $wpdb->get_row("SELECT * FROM $wpdb->posts WHERE ID=$zz");
+                        ?>
 
+                        <div class="card">
+                            <a href=<?php echo $collect->guid; ?>> <?php echo $collect->post_title ?>  </a>
+                            <!--                            <div class="pull-right dropdown">-->
+                            <!--                                <button type="button" class="btn dropdown-toggle btn-default" id="menu"-->
+                            <!--                                        data-toggle="dropdown" aria-label="Left Align">-->
+                            <!--                                    <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>-->
+                            <!--                                </button>-->
+                            <!--                                <ul class="dropdown-menu" role="menu" aria-labelledby="menu">-->
+                            <!--                                    <li role="presentation">-->
+                            <!--                                        <a role="menuitem" tabindex="-1" href="#">取消收藏</a>-->
+                            <!--                                    </li>-->
+                            <!--                                </ul>-->
+                            <!--                            </div>-->
+                            <!--                            <h5>副标题</h5>-->
+                            <div class="fakeimg">
+                                <img src="https://cdn.jsdelivr.net/gh/fnsflm/myPicbed/clblogs/images/Azusa.jpg"
+                                     alt="Azusa" width="400">
+                            </div>
+                            <p>Azusa</p>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
 
                 <!-- 右侧部分 -->
             </div>

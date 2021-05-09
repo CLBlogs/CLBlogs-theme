@@ -58,6 +58,16 @@ pageEncoding="UTF-8"%>-->
                 Collect.style.display = 'none';
                 CollectActive.style.display = 'inline';
             }
+            $.ajax({
+                url: <? echo "\"" . $road . "/functions/addColl.php\""; ?>,
+                type: "post",
+                dataType: 'json',
+                data: {post_id: <?php echo $post_id; ?>, author_id: <?php echo $author_id;?>},
+                success: function (response) {
+                    console.log(response);
+                    document.getElementById('coll_number').innerText = response;
+                }
+            });
         }
 
     </script>
@@ -93,7 +103,8 @@ pageEncoding="UTF-8"%>-->
         <div class="blogger">
             <div class="blogger_head">
                 <?php echo "<a href=\"$road/otherblog.php?user_id=$author_id\">"; ?>
-                <img class="blogger_head_portrait" src="https://v1.alapi.cn/api/avatar?email=<?php echo $email; ?>&size=100"
+                <img class="blogger_head_portrait"
+                     src="https://v1.alapi.cn/api/avatar?email=<?php echo $email; ?>&size=100"
                      alt="点击进入博主主页面" class="blogger_head_portrait">
                 </a>
                 <div class="blogger_name">
@@ -150,9 +161,12 @@ pageEncoding="UTF-8"%>-->
                         <?php echo "<img  class='tool_visible'  id= \"Collect_visible\" alt=\"收藏\" src=\"$road/img/tobarCollect.png\">"; ?>
                         <?php echo "<img  class='tool_invisible' id= \"Collect_invisible\" alt=\"已收藏\" src=\"$road/img/tobarCollectionActive.png\">"; ?>
                         <span>Collected</span>
-                        <span>0
-                            <!--                                    收藏数-->
-                                </span>
+                        <span id="coll_number">
+                        <?php
+                        $wpdb->query("select * from $wpdb->usermeta where meta_key='favorite' and meta_value='$post_id'");
+                        echo $wpdb->num_rows;
+                        ?>
+                        </span>
                     </a>
                 </li>
                 <li class="toolbox_comment">
