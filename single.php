@@ -4,11 +4,12 @@ pageEncoding="UTF-8"%>-->
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>博客内容</title>
+    <title><?php echo the_title();?></title>
     <?php
     $road = get_template_directory_uri();
     echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"$road/css/article.css\">";
     echo "<link href=\"$road/css/bootstrap.css\" rel=\"stylesheet\">";
+    echo "<script src=\"$road/js/jquery-3.5.1.js\"></script>";
     global $wpdb;
     // $author_info = $wpdb->get_row("SELECT * FROM $wpdb->users WHERE ID=$user_id");
 
@@ -17,7 +18,12 @@ pageEncoding="UTF-8"%>-->
     $uri = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     setcookie("uri", $uri, time() + 30 * 24 * 3600, '/');
     session_start();
+    // 浏览次数 + 1
+    $post_id = get_the_ID();
+    setPostViews($post_id);
+
     ?>
+
     <script>
         function displayThump() {
             const Thumb = document.querySelector('#Thumb_visible');
@@ -30,7 +36,15 @@ pageEncoding="UTF-8"%>-->
                 Thumb.style.display = 'none';
                 ThumbActive.style.display = 'inline';
             }
-
+            $.ajax({
+                url: <? echo "\"" . $road . "/functions/addLike.php\""; ?>,
+                type: "post",
+                dataType: 'json',
+                data: {post_id: <?php echo $post_id; ?>},
+            });
+            let like_number = parseInt(document.getElementById("like_number").innerText);
+            like_number += 1;
+            document.getElementById("like_number").innerText = like_number.toString();
         }
 
         function displayCollect() {
@@ -62,7 +76,7 @@ pageEncoding="UTF-8"%>-->
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">主页</a></li>
+                <li class="active"><a href="/">Home</a></li>
                 <!--                <li><a href="#">管理</a></li>-->
                 <!--                <li><a href="#">留言</a></li>-->
             </ul>
@@ -118,17 +132,17 @@ pageEncoding="UTF-8"%>-->
                     <a onclick="displayThump()">
                         <?php echo "<img  class='tool_visible'  id= \"Thumb_visible\" alt='点赞'   src=\"$road/img/tobarThumbUp.png\">"; ?>
                         <?php echo "<img  class='tool_invisible' id= \"Thumb_invisible\" alt='已点赞' src=\"$road/img/tobarThumbUpactive.png\">"; ?>
-                        <span>点赞</span>
-                        <span>0
-                            <!--                                    点赞数-->
-                                </span>
+                        <span>Approval</span>
+                        <span id="like_number">
+                        <?php echo number_format(getPostLikes($post_id)); ?>
+                        </span>
                     </a>
                 </li>
                 <li class="toolbox_collection">
                     <a onclick="displayCollect()">
                         <?php echo "<img  class='tool_visible'  id= \"Collect_visible\" alt=\"收藏\" src=\"$road/img/tobarCollect.png\">"; ?>
                         <?php echo "<img  class='tool_invisible' id= \"Collect_invisible\" alt=\"已收藏\" src=\"$road/img/tobarCollectionActive.png\">"; ?>
-                        <span>收藏</span>
+                        <span>Collected</span>
                         <span>0
                             <!--                                    收藏数-->
                                 </span>
@@ -138,9 +152,8 @@ pageEncoding="UTF-8"%>-->
                     <a>
                         <?php echo "<img  class='tool_visible' id= \"Comment_visible\" alt=\"评论\" src=\"$road/img/tobarComment.png\">"; ?>
                         <?php echo "<img  class='tool_invisible' id= \"Comment_invisible\" alt=\"已评论\" src=\"$road/img/tobarCommentactive.png\">"; ?>
-                        <span>评论</span>
-                        <span><?php $id = get_the_ID();
-                            echo $number = get_comments_number($id); ?>
+                        <span>Comments</span>
+                        <span><?php echo $number = get_comments_number($post_id); ?>
                         </span>
                     </a>
                 </li>

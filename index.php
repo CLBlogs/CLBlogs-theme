@@ -16,7 +16,7 @@
     echo "<link rel=\"stylesheet\" href=\"$road/css/styles.css\">";
     setcookie("uri", ' ', time() - 1, '/');
     ?>
-
+    <title>CLBlogs</title>
 </head>
 
 <body>
@@ -32,7 +32,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav">
-                        <li><a id="shouye" href="/">首页</a></li>
+                        <li><a id="shouye" href="/">Home</a></li>
                         <!--                        <li><a id="guidang" href="#">归档</a></li>-->
                         <!--                        <li><a id="liuyan" href="#">留言</a></li>-->
                     </ul>
@@ -53,9 +53,9 @@
         <ul class="nav nav-tabs">
             <?php
             if (empty($_COOKIE['user_login'])) {
-                echo "<li><a id=\"denglu\" href=\"$road/login.php\">登录/注册</a></li>";
+                echo "<li><a id='denglu' href=\"$road/login.php\">sign in / sign up</a></li>";
             } else {
-                echo "<li><a id='denglu' href='$road/mineblog.php'>个人中心</a></li>";
+                echo "<li><a id='denglu' href='$road/mineblog.php'>Personal Center</a></li>";
             }
             ?>
         </ul>
@@ -66,7 +66,7 @@
                 <div id="cnblog_b1" class="sidebar-image"></div>
                 <div id="sidebar_bh" class="sidebar-bh"></div>
                 <div class="card">
-                    <h4 class="card-title"><a href="#">热度排行榜</a></h4>
+                    <h4 class="card-title"><a href="#">Recommendations</a></h4>
                     <ul>
                         <?php $args = array(
                             'meta_key' => 'views',
@@ -79,29 +79,10 @@
                             <li><a href="<? the_permalink(); ?>"><? the_title(); ?></a>
                                 <span class="kc-view fright">浏览：
                                     <?php
-                                    setPostViews(get_the_ID());
                                     echo number_format(getPostViews(get_the_ID()));
                                     ?>
                                 </span>
                             </li>
-                        <?php endwhile;
-                        wp_reset_query(); ?>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h4 class="card-title"><a href="#">排行榜标题</a></h4>
-                    <ul>
-                        <?php $args = array(
-                            'meta_key' => 'views',
-                            'orderby' => 'meta_value_num',
-                            'posts_per_page' => 6,
-                            'order' => 'DESC'
-                        );
-                        query_posts($args);
-                        while (have_posts()) : the_post(); ?>
-                            <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a><span
-                                        class="kc-view fright">浏览：<?php setPostViews(get_the_ID());
-                                    echo number_format(getPostViews(get_the_ID())); ?></span></li>
                         <?php endwhile;
                         wp_reset_query(); ?>
                     </ul>
@@ -146,9 +127,12 @@
                                         </a>
                                         <a class="post-meta-iten" href="#">
                                             <i class="glyphicon glyphicon-eye-open"></i>
-                                            <span><?php setPostViews(get_the_ID());
+                                            <span>
+                                                <?php
                                                 echo ' 浏览次数';
-                                                echo number_format(getPostViews(get_the_ID())); ?></span>
+                                                echo number_format(getPostViews(get_the_ID()));
+                                                ?>
+                                            </span>
                                         </a>
 
                                     </footer>
@@ -157,7 +141,7 @@
                             <?
                         }
                     } else {
-                        echo '没有文章可以显示';
+                        echo 'No blog here';
                     }
                     ?>
                 </div>

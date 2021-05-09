@@ -36,7 +36,7 @@
                     $rows = $wpdb->num_rows;
                     ?>
                     <h2 class="comments-title">
-                        <span>有<?php echo $rows ?>条评论</span>
+                        <span>There are <?php echo $rows ?> comments !</span>
                     </h2>
                     <?php
                     //动态加载所有0级评论
@@ -52,7 +52,7 @@
                                             <div class="comment-author vcard">
                                                 <b class="fn"><a href='#' rel='external nofollow ugc'
                                                                  class='url'><?php echo $arr->comment_author ?></a></b><span
-                                                        class="says">说道：</span>
+                                                        class="says">said：</span>
                                             </div><!-- .comment-author -->
                                             <div class="comment-metadata">
                                                 <time datetime="2021-03-07T15:48:41+00:00"><?php echo $arr->comment_date ?></time>
@@ -96,7 +96,7 @@
                                                     <div class="comment-author vcard">
                                                         <b class="fn"><a href='#' rel='external nofollow ugc'
                                                                          class='url'>&nbsp;&nbsp;&nbsp;<?php echo $subArr->comment_author; ?></a></b><span
-                                                                class="says">说道：</span>
+                                                                class="says">said：</span>
                                                     </div><!-- .comment-author -->
                                                     <div class="comment-metadata">
                                                         <time datetime="2021-03-07T15:48:41+00:00">
@@ -133,25 +133,25 @@
 
                     <!-- 发表评论/回复 -->
                     <div id="respond" class="comment-respond">
-                        <h3 id="reply-title" class="comment-reply-title">发表评论</h3>
+                        <h3 id="reply-title" class="comment-reply-title">Post A Comment</h3>
                         <p class="logged-in-as">
                             <?php
                             if (empty($_SESSION['user_id']))//没有登陆
                             {
-                                echo "<a href=\"$road/login.php\" id=\"statement\">当前为游客状态。</a>";
+                                echo "<a href=\"$road/login.php\" id=\"statement\">。</a>";
                             } else {
                                 $sql = "select * from wp_users where ID=" . $_SESSION['user_id'];
                                 $rst = $wpdb->get_results($sql);
                                 foreach ($rst as $arr) {
-                                    echo "<a href=\"$road/mineblog.php\" id=\"statement\">已登录为" . $arr->user_login . "。</a>";
+                                    echo "<a href=\"$road/mineblog.php\" id=\"statement\">Hello " . $arr->user_login . "。</a>";
                                 }
                             }
                             ?>
                             <?php
                             if (empty($_SESSION['user_id'])) {  //没有登陆
-                                echo "<a id='stateAction' href='$road/login.php'>登录?</a>";
+                                echo "<a id='stateAction' href='$road/login.php'>Login?</a>";
                             } else {
-                                echo "<a id='stateAction' href='' onclick='cancellation()'>注销?</a>";
+                                echo "<a id='stateAction' href='' onclick='cancellation()'>Logout?</a>";
                             }
                             ?>
                         </p>
@@ -159,11 +159,11 @@
                               class="comment-form" novalidate>
                             <p class="logged-in-as"></p>
                             <p class="comment-form-comment">
-                                <label for="comment" style="float: left">评论</label><a id="quxiaohuifu" rel='nofollow'
+                                <label for="comment" style="float: left">Comment</label><a id="quxiaohuifu" rel='nofollow'
                                                                                       class='comment-reply-link'
                                                                                       href='#reply-title'
                                                                                       style="display:none"
-                                                                                      onclick="noReplication()">&nbsp;取消回复</a>
+                                                                                      onclick="noReplication()">&nbsp;Cancel Reply</a>
                                 <input id="huifuid" type="text" name="hfId" value="pinglun" style="display: none"/>
 
                                 <input id="currentUrl" type="text" name="cUrl" value="currentUrl" style="display:none"/>
@@ -208,13 +208,13 @@
     document.getElementById("currentUrl").value = $test;
 
     function replication(id, name) {
-        document.getElementById("reply-title").innerHTML = "回复给" + name;
+        document.getElementById("reply-title").innerHTML = "Reply to " + name;
         document.getElementById("huifuid").value = id;
         document.getElementById("quxiaohuifu").style.display = "block";
     }
 
     function noReplication() {
-        document.getElementById("reply-title").innerHTML = "发表评论";
+        document.getElementById("reply-title").innerHTML = "Post A Comment";
         document.getElementById("huifuid").value = "pinglun";
         document.getElementById("quxiaohuifu").style.display = "none";
     }
@@ -254,7 +254,7 @@
         console.log(user_login_val);
         console.log(user_pass_val);
         console.log(exp.toUTCString());
-        alert("注销成功！");
+        alert("Logout Successfully");
         location.reload();
     }
 </script>

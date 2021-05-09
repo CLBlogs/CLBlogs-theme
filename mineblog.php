@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>主页</title>
     <!-- Bootstrap -->
     <?php
     require '../../../wp-blog-header.php';
@@ -18,7 +17,8 @@
     $user_id = $_SESSION['user_id'];
     $author_info = $wpdb->get_row("SELECT * FROM $wpdb->users WHERE ID=$user_id");
     // echo $author_info->user_email;
-
+    $user_name = $_COOKIE['user_login'];
+    echo "<title>$user_name's Personal Center</title>";
     ?>
 
     <style>
@@ -58,7 +58,7 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">主页</a></li>
+                <li class="active"><a href="/">Home</a></li>
                 <!--                <li><a href="#">管理</a></li>-->
                 <!--                <li><a href="#">留言</a></li>-->
             </ul>
@@ -78,8 +78,8 @@
         <!-- 左侧导航栏 -->
         <div class="col-sm-2">
             <ul id="myTab" class="nav nav-pills nav-stacked ">
-                <li class="active"><a href="#Tab1" data-toggle="tab">个人资料</a></li>
-                <li><a href="#Tab3" data-toggle="tab">博客管理</a></li>
+                <li class="active"><a href="#Tab1" data-toggle="tab">Information</a></li>
+                <li><a href="#Tab3" data-toggle="tab">Management</a></li>
                 <!-- <li><a href="#Tab4" data-toggle="tab">我的收藏</a></li>  -->
             </ul>
             <hr class="hidden-sm hidden-md hidden-lg">
@@ -111,8 +111,8 @@
                         <!--                        <p>qq:</p>-->
                         <!--                        <p>微信:</p>-->
                         <!--                        <p>Email:</p>-->
-                        <p>用户名: <?php echo $author_info->user_login; ?></p>
-                        <p>邮箱: <?php echo $author_info->user_email; ?></p>
+                        <p>User: <?php echo $author_info->user_login; ?></p>
+                        <p>E-mail: <?php echo $author_info->user_email; ?></p>
                     </div>
                     <!--                    <div class="text-center">-->
                     <!--                        <button class="btn btn-default" type="submit">编辑</button>-->
