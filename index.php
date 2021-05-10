@@ -129,7 +129,7 @@
                                             <i class="glyphicon glyphicon-eye-open"></i>
                                             <span>
                                                 <?php
-                                                echo ' views';
+                                                echo ' views: ';
                                                 echo number_format(getPostViews(get_the_ID()));
                                                 ?>
                                             </span>

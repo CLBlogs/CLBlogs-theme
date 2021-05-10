@@ -12,7 +12,6 @@ function setPostLikes($postID)
         update_post_meta($postID, 'likes', $count);
     }
 }
-
 $post_id = $_POST['post_id'];
 setPostLikes($post_id);
 
