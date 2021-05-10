@@ -155,7 +155,7 @@
                 </div>
                 <!-- 博客管理 -->
                 <div class="tab-pane fade" id="Tab3">
-                    <a href="page-editor.php">upload blog</a>
+                    <a href="page-editor.php" class="btn btn-primary btn-lg">upload blog</a>
                     <?php
                     query_posts(array('post_status' => 'publish', 'author' => $user_id));
                     if (have_posts()) {
