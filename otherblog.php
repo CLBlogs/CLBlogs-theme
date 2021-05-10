@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>主页</title>
     <?php
     require '../../../wp-blog-header.php';
     $road = get_template_directory_uri();
@@ -14,6 +13,8 @@
     $user_id = $_GET['user_id'];
     $user_data = get_userdata($user_id);
     $email = $user_data->user_email;
+    $title = empty($user_data->user_login)?"Other's Home":$user_data->user_login."'s Home";
+    echo "<title>$title</title>";
     ?>
 
     <style>
@@ -45,17 +46,17 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">CLBLOGS</a>
+            <a class="navbar-brand" href="/">CLBLOGS</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">主页</a></li>
-                <li><a href="#">管理</a></li>
-                <li><a href="#">留言</a></li>
+                <li class="active"><a href="/">Home</a></li>
+<!--                <li><a href="#">管理</a></li>-->
+<!--                <li><a href="#">留言</a></li>-->
             </ul>
             <div class="pull-right">
                 <ul class="nav navbar-nav">
-                    <li><a href="#">登录</a></li>
+                    <li><a href="login.php">Login</a></li>
                 </ul>
             </div>
         </div>
@@ -74,14 +75,14 @@
             <div class="text-center">
                 <h2><?php echo $user_data->user_login;?></h2>
                 <p>User: <?php echo $user_data->user_login; ?></p>
-                <p id='sex'>性别: <?php echo get_user_meta($user_id, 'sex', true); ?></p>
-                <p id='birthday'>生日: <?php echo get_user_meta($user_id, 'birthday', true); ?></p>
-                <p id='qq_num'>qq: <?php echo get_user_meta($user_id, 'qq_num', true); ?></p>
-                <p id='wechat_num'>微信: <?php echo get_user_meta($user_id, 'wechat_num', true); ?></p>
+                <p id='sex'>Sex: <?php echo get_user_meta($user_id, 'sex', true); ?></p>
+                <p id='birthday'>Birthday: <?php echo get_user_meta($user_id, 'birthday', true); ?></p>
+                <p id='qq_num'>QQ: <?php echo get_user_meta($user_id, 'qq_num', true); ?></p>
+                <p id='wechat_num'>WeChat: <?php echo get_user_meta($user_id, 'wechat_num', true); ?></p>
                 <p>E-mail: <?php echo $user_data->user_email; ?></p>
-                <p id='phone'>手机号码：<?php echo get_user_meta($user_id, 'phone', true); ?></p>
-                <p id='interests'>兴趣标签: <?php echo get_user_meta($user_id, 'interests', true); ?></p>
-                <p id='introduction'>个人简介：<?php echo get_user_meta($user_id, 'introduction', true); ?></p>
+                <p id='phone'>Phone number：<?php echo get_user_meta($user_id, 'phone', true); ?></p>
+                <p id='interests'>Interests: <?php echo get_user_meta($user_id, 'interests', true); ?></p>
+                <p id='introduction'>Introduction：<?php echo get_user_meta($user_id, 'introduction', true); ?></p>
             </div>
         </div>
 
@@ -92,16 +93,16 @@
         <!-- 博客展示区 -->
         <div class="col-sm-6">
             <?php
+
             query_posts(array('post_status' => 'publish', 'author' => $user_id));
-            if (have_posts()) {
+            if (!empty($user_id) && have_posts()) {
                 while (have_posts()) {
                     //获取下一篇文章的信息，并且将信息存入全局变量 $post 中
                     the_post();
                     ?>
                     <div class="card">
                         <a href="<? the_permalink(); ?>"><? the_title(); ?></a>
-                        <h5>副标题</h5>
-
+<!--                        <h5>副标题</h5>-->
                         <div class="fakeimg">
                             <img src="https://cdn.jsdelivr.net/gh/fnsflm/myPicbed/clblogs/images/Azusa.jpg" alt="Azusa"
                                  width="400">
@@ -111,7 +112,7 @@
                     <?
                 }
             } else {
-                echo '没有文章可以显示';
+                echo 'No blog here';
             }
             ?>
         </div>

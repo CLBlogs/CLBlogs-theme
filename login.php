@@ -30,7 +30,7 @@
         }
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>登录注册</title>
+    <title>Sign in and Sign up</title>
 
 
     <script src="js/jquery-3.5.1.js"></script>
@@ -59,11 +59,11 @@
             <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 ">&nbsp;</div>
             <div class="col-md-2 col-sm-2">
                 <p class="text-center" id='lo' style='border-bottom:3px solid #45718A;' onmouseover='onMouseOver()'
-                   onclick="changePage('login')">登录
+                   onclick="changePage('login')">Sign in
                 </p>
             </div>
             <div class="col-md-2 col-sm-2">
-                <p class="text-center" id='re' onmouseover='onMouseOver()' onclick="changePage('register')">注册</p>
+                <p class="text-center" id='re' onmouseover='onMouseOver()' onclick="changePage('register')">Sign up</p>
             </div>
         </div>
     </div>
@@ -74,7 +74,7 @@
             <?php echo "<form action=\"$road/loginaction.php\" method=\"post\">"; ?>
             <div class="row">
                 <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    用户名:&nbsp;&nbsp;
+                    User Name:&nbsp;&nbsp;
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <input class="information" name="user_login" type="text" value=""/>
@@ -83,7 +83,7 @@
             </br>
             <div class="row">
                 <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    密码:&nbsp;&nbsp;&nbsp;&nbsp;
+                    Password:&nbsp;&nbsp;&nbsp;&nbsp;
 
                 </div>
                 <div class="col-md-4 col-sm-4">
@@ -97,10 +97,10 @@
             </br>
             <div class="row">
                 <div class=" col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    验证码:&nbsp;&nbsp;
+                    CAPTCHA:&nbsp;&nbsp;
                 </div>
                 <div class="col-md-3 col-sm-3">
-                    <input class="information canValue-login" type="text" value="" placeholder="不区分大小写">
+                    <input class="information canValue-login" type="text" value="" placeholder="Case Insensitive">
                 </div>
                 <div class="col-md-2 col-sm-2">
                     <canvas class="canvas" id="canvas-login"></canvas>
@@ -109,7 +109,7 @@
             </br>
             <div class="row" style="position: relative;top: 5px;">
                 <div class="col-md-2 col-md-offset-2  col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    记住密码:
+                    Remember Password:
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <input name="remember" type="checkbox"/>
@@ -117,7 +117,7 @@
             </div>
             <div class="row" style="position: relative;top:10px;">
                 <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
-                    <input class="submitButton" id="submitButton-login" type="button" value="登录">
+                    <input class="submitButton" id="submitButton-login" type="button" value="Sign in">
                 </div>
             </div>
             </form>
@@ -130,7 +130,7 @@
             <?php echo "<form action=\"$road/registeraction.php\" method=\"post\">"; ?>
             <div class="row">
                 <div class="col-md-2 col-md-offset-2  col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    用户名:&nbsp;&nbsp;
+                    User Name:&nbsp;&nbsp;
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <input class="information" name="user_login" type="text" value=""/>
@@ -139,7 +139,7 @@
             </br>
             <div class="row">
                 <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    <p>邮箱:&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <p>E-mail:&nbsp;&nbsp;&nbsp;&nbsp;</p>
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <input class="information" name="email" type="text" value=""/>
@@ -149,7 +149,7 @@
 
             <div class="row">
                 <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    密码:&nbsp;&nbsp;&nbsp;&nbsp;
+                    Password:&nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
                 <div class="col-sm-4 col-sm-4">
                     <input class="information password" id="password" name="user_pass" type="password"/>
@@ -161,7 +161,7 @@
             </br>
             <div class="row">
                 <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    确认密码:
+                    Confirm:
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <input class="information repassword" id="rePassword" name="re_password" type="password"
@@ -175,10 +175,10 @@
             </br>
             <div class="row">
                 <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    验证码:&nbsp;&nbsp;
+                    CAPTCHA:&nbsp;&nbsp;
                 </div>
                 <div class="col-md-3 col-sm-3">
-                    <input class="information canValue-register" type="text" value="" placeholder="不区分大小写">
+                    <input class="information canValue-register" type="text" value="" placeholder="Case Insensitive">
                 </div>
                 <div class="col-md-2 col-sm-2">
                     <canvas class="canvas" id="canvas-register"></canvas>
@@ -187,7 +187,7 @@
             </br>
             <div class="row">
                 <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
-                    <input class="submitButton" id="submitButton-register" type="button" value="注册">
+                    <input class="submitButton" id="submitButton-register" type="button" value="Sign up">
                 </div>
             </div>
             </form>
@@ -232,14 +232,14 @@
             var val = $(".canValue-login").val().toLowerCase();
             var num = show_num_login.join("");
             if (val == '') {
-                alert('请输入验证码！');
+                alert('Please enter the CAPTCHA！');
                 $("#submitButton-login").attr("type", "button");
             } else if (val == num) {
                 //alert('提交成功！');
                 $("#submitButton-login").attr("type", "submit");
                 $(".canValue-login").val('');
             } else {
-                alert('验证码错误！请重新输入！');
+                alert('The CAPTCHA is wrong！Try again！');
                 $("#submitButton-login").attr("type", "button");
                 $(".canValue-login").val('');
             }
@@ -248,14 +248,14 @@
             var val = $(".canValue-register").val().toLowerCase();
             var num = show_num_register.join("");
             if (val == '') {
-                alert('请输入验证码！');
+                alert('Please enter the CAPTCHA！');
                 $("#submitButton-register").attr("type", "button");
             } else if (val == num) {
                 //alert('提交成功！');
                 $("#submitButton-register").attr("type", "submit");
                 $(".canValue-register").val('');
             } else {
-                alert('验证码错误！请重新输入！');
+                alert('The CAPTCHA is wrong！Try again！');
                 $("#submitButton-register").attr("type", "button");
                 $(".canValue-register").val('');
             }

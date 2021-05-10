@@ -17,10 +17,10 @@
 <div id="layout">
     <form method="post" action="mineblog.php">
         <div style="width: 40%;padding-left: 2.5%">
-            <label>标题: </label>
+            <label>Title: </label>
             <div><input type="text" name="post_title" style="width: 100%"></div>
             <br>
-            <label>摘要: </label>
+            <label>Abstruct: </label>
             <div><input type="text" name="post_excerpt" style="width: 100%"></div>
             <br>
         </div>
