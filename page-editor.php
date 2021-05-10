@@ -7,20 +7,22 @@
     $user_id = $_COOKIE['user_id'];
     ?>
     <meta charset="utf-8"/>
-    <title>Form get textarea value - Editor.md examples</title>
+    <title>Edit Blog</title>
     <link rel="stylesheet" href="css/editor.css"/>
     <link rel="stylesheet" href="css/editormd.min.css"/>
     <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
 <div id="layout">
-    <header>
-        <h1>Edit Blog</h1>
-    </header>
     <form method="post" action="mineblog.php">
-        <div>
-            标题: <br><input type="text" name="post_title" size="30"><br>
-            摘要: <br><input type="text" name="post_excerpt" size="30"><br>
+        <div style="width: 40%;padding-left: 2.5%">
+            <label>标题: </label>
+            <div><input type="text" name="post_title" style="width: 100%"></div>
+            <br>
+            <label>摘要: </label>
+            <div><input type="text" name="post_excerpt" style="width: 100%"></div>
+            <br>
         </div>
         <div id="test-editormd">
             <textarea style="display:none;">#### Get value
@@ -52,8 +54,8 @@ testEditor.getPreviewedHTML();  // 获取预览窗口里的 HTML，在开启 wat
 ```
 </textarea>
         </div>
-        <div style="width:90%;margin: 10px auto;">
-            <input type="submit" name="submit" value="提交表单 Submit" style="padding: 5px;"/>
+        <div class="pull-right" style="margin: 10px auto;padding-right: 2.5%">
+            <input class="btn btn-primary btn-lg" type="submit" name="submit" value="Post">
         </div>
     </form>
 </div>
@@ -62,8 +64,8 @@ testEditor.getPreviewedHTML();  // 获取预览窗口里的 HTML，在开启 wat
 <script type="text/javascript">
     $(function () {
         var testEditor = editormd("test-editormd", {
-            width: "90%",
-            height: 640,
+            width: "95%",
+            height: 960,
             path: "https://cdn.jsdelivr.net/gh/fnsflm/myPicbed@master/clblogs/lib/",
             saveHTMLToTextarea: true
         });
@@ -90,7 +92,6 @@ $APost = array(
     "post_name" => $_POST["post_title"]
 );
 $wpdb->insert($wpdb->posts, $APost);
-echo "finish insert";
 ?>
 </body>
 </html>
