@@ -113,28 +113,36 @@
                                         <span class="post-meta-item"><? the_date(); ?>
                                         </span>
                                         <a class="post-meta-iten" href="#">
-                                            <i class="glyphicon glyphicon-thumbs-up"></i>
-                                            <span><? _e('author', 'zhangchongen'); ?>：<? the_author(); ?><span>|</span></span>
+                                            <i class="glyphicon glyphicon-glyphicon-user"></i>
+                                            <span>author：<? the_author(); ?></span>
 
                                         </a>
-                                        <a class="post-meta-iten" href="#">
+                                        <a class="post-meta-iten" href="">
                                             <i class="glyphicon glyphicon-star"></i>
-                                            <span><? echo __('time', 'zhangchongen'); ?>：<? the_time('Y-m-d'); ?></span></a>
+                                            <span>time：<? the_time('Y-m-d'); ?></span></a>
 
-                                        <a class="post-meta-iten" href="#">
-                                            <i class="glyphicon glyphicon-eye-open"></i>
-                                            <span><? edit_post_link(__('Edit', 'zhangchongen'), ' <span>|</span> ', ''); ?></span>
-                                        </a>
-                                        <a class="post-meta-iten" href="#">
+<!--                                        <a class="post-meta-iten" href="#">-->
+<!--                                            <i class="glyphicon glyphicon-eye-open"></i>-->
+<!--                                            <span>--><?// edit_post_link(__('Edit', 'zhangchongen'), ' <span>|</span> ', ''); ?><!--</span>-->
+<!--                                        </a>-->
+                                        <a class="post-meta-iten" href="">
                                             <i class="glyphicon glyphicon-eye-open"></i>
                                             <span>
                                                 <?php
-                                                echo ' 浏览次数';
+                                                echo ' views';
                                                 echo number_format(getPostViews(get_the_ID()));
                                                 ?>
                                             </span>
                                         </a>
-
+                                        <a class="post-meta-iten">
+                                            <i class="glyphicon glyphicon-thumbs-up"></i>
+                                            <span>approvals: <?php
+                                                global $post;
+                                                $like_num = get_user_meta($post->post_author, 'likes', true);
+                                                echo empty($like_num)?0:$like_num;
+                                                ?>
+                                            </span>
+                                        </a>
                                     </footer>
                                 </section>
                             </article>

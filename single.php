@@ -105,7 +105,7 @@ pageEncoding="UTF-8"%>-->
                 <?php echo "<a href=\"$road/otherblog.php?user_id=$author_id\">"; ?>
                 <img class="blogger_head_portrait"
                      src="https://v1.alapi.cn/api/avatar?email=<?php echo $email; ?>&size=100"
-                     alt="点击进入博主主页面" class="blogger_head_portrait">
+                     alt="Enter the blogger's home" class="blogger_head_portrait">
                 </a>
                 <div class="blogger_name">
                     <?php echo $author_data->user_login; ?>
