@@ -1,28 +1,40 @@
 <?php
-    $conn=mysqli_connect("localhost","root","123456");
-    if(!$conn){
-        die("数据库连接失败！");
-    }
-    mysqli_select_db($conn,"blog");
-    mysqli_query($conn,"set names utf8");
-    $arr=$_POST;
-    $pro=substr($arr['comment'] , 0 , 2);
-    if(is_numeric($pro)){
-        $subComment=substr($arr['comment'],2);
-        $sql="insert into jc_replication set foreignId='".$pro."',name='jiangchen',content='".$subComment."',time='".date("Y-m-d H:i:s")."'";
-        $rst=mysqli_query($conn,$sql);
-        if($rst){
-            echo "<script>location.href='index.php';</script>";
-        }else{
-            echo "留言失败";
+require '../../../wp-blog-header.php';
+global $wpdb;
+$arr = $_POST;
+$nextUrl = $arr['cUrl'];
+if ($arr['cState'] == "游客") {
+    echo "<script>alert('评论前请先登录！');location.href='login.php';</script>";
+} else {
+    if (!$arr['comment']) {
+        echo "<script>location.href='$nextUrl';</script>";
+    } else {
+        if (is_numeric($arr['hfId'])) {
+            $rst = $wpdb->insert("wp_comments", array(
+                "comment_post_ID" => $arr['aId'],
+                "comment_parent" => $arr['hfId'],
+                "comment_author" => $arr['cState'],
+                "comment_content" => $arr['comment'],
+                "comment_date" => date("Y-m-d H:i:s")
+            ));
+            if ($rst) {
+                echo "<script>location.href='$nextUrl';</script>";
+            } else {
+                echo "留言失败";
+            }
+        } else {
+            $rst = $wpdb->insert("wp_comments", array(
+                "comment_post_ID" => $arr['aId'],
+                "comment_parent" => 0,
+                "comment_author" => $arr['cState'],
+                "comment_content" => $arr['comment'],
+                "comment_date" => date("Y-m-d H:i:s")
+            ));
+            if ($rst) {
+                echo "<script>location.href='$nextUrl';</script>";
+            } else {
+                echo "留言失败";
+            }
         }
-    }else{
-        $sql="insert into jc_comment set name='jiangchen',content='".$arr['comment']."',time='".date("Y-m-d H:i:s")."'";
-        $rst=mysqli_query($conn,$sql);
-        if($rst){
-            echo "<script>location.href='index.php';</script>";
-        }else{
-            echo "留言失败";
     }
-}      
-?>
+}
