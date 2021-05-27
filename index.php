@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <?php
     $road = get_template_directory_uri();
+    setcookie("uri", ' ', time() - 1, '/');
     ?> 
     <link href="https://cdn.bootcdn.net/ajax/libs/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet">
     <style>
