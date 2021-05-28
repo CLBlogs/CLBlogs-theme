@@ -121,10 +121,11 @@
                                             <i class="glyphicon glyphicon-star"></i>
                                             <span>time：<? the_time('Y-m-d'); ?></span></a>
 
-<!--                                        <a class="post-meta-iten" href="#">-->
-<!--                                            <i class="glyphicon glyphicon-eye-open"></i>-->
-<!--                                            <span>--><?// edit_post_link(__('Edit', 'zhangchongen'), ' <span>|</span> ', ''); ?><!--</span>-->
-<!--                                        </a>-->
+                                        <!--                                        <a class="post-meta-iten" href="#">-->
+                                        <!--                                            <i class="glyphicon glyphicon-eye-open"></i>-->
+                                        <!--                                            <span>-->
+                                        <?// edit_post_link(__('Edit', 'zhangchongen'), ' <span>|</span> ', ''); ?><!--</span>-->
+                                        <!--                                        </a>-->
                                         <a class="post-meta-iten" href="">
                                             <i class="glyphicon glyphicon-eye-open"></i>
                                             <span>
@@ -139,7 +140,7 @@
                                             <span>approvals: <?php
                                                 global $post;
                                                 $like_num = get_user_meta($post->post_author, 'likes', true);
-                                                echo empty($like_num)?0:$like_num;
+                                                echo empty($like_num) ? 0 : $like_num;
                                                 ?>
                                             </span>
                                         </a>
