@@ -1,4 +1,4 @@
- function onMouseOver() {
+function onMouseOver() {
     lo.style.cursor = 'pointer';
     re.style.cursor = 'pointer';
 }
@@ -15,4 +15,3 @@
     document.getElementById("submitButton").disabled = true;
 }
 }
-

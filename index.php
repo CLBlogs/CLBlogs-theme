@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>CLBlogs</title>
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <?php
     $road = get_template_directory_uri();
     echo "<link rel=\"application/javascript\" href=\"$road/js/jquery.min.js\">";
@@ -90,7 +90,33 @@
                                     <!-- href="--><?php //$author=the_author(); echo "$road/single.php?user=".$author; ?><!--">--><?// the_title(); ?><!--</a>-->
                                         <a class="post-item-title"
                                             href="<? the_permalink(); ?>"><? the_title(); ?></a>
-                                        
+                                        <span class="dropdown" style="position: absolute;right: 20%;">
+                                                <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" >edit
+                                                <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                                    <li role="presentation">
+                                                        <a class="post-meta-iten" href="" onclick="deleteArticle(<?php the_ID();?>)">
+                                                            <i class="glyphicon glyphicon-trash"></i>
+                                                            <span>
+                                                                <?php
+                                                                echo "delete";
+                                                                ?>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li role="presentation">
+                                                        <a class="post-meta-iten" href="">
+                                                            <i class="glyphicon glyphicon-edit"></i>
+                                                            <span>
+                                                                <?php
+                                                                echo "modify";
+                                                                ?>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </span>
                                         <p class="post-item-summary">
                                             <a href="<?php echo the_permalink()/*."?author=".the_author()*/; ?>"><?php echo "<img class=\"avatar\" src=\"$road/img/photo_test.png\">"; ?>
                                                 <? the_excerpt(); ?>
@@ -254,33 +280,6 @@
                                     <div id="post-item-text-1" class="post-item-text">
                                         <a class="post-item-title"
                                            href="<? the_permalink(); ?>"><? the_title(); ?></a>
-                                        <span class="dropdown" style="position: absolute;right: 20%;">
-                                                <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" >edit
-                                                <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                                    <li role="presentation">
-                                                        <a class="post-meta-iten" href="" onclick="deleteArticle(<?php the_ID();?>)">
-                                                            <i class="glyphicon glyphicon-trash"></i>
-                                                            <span>
-                                                                <?php
-                                                                echo "delete";
-                                                                ?>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li role="presentation">
-                                                        <a class="post-meta-iten" href="">
-                                                            <i class="glyphicon glyphicon-edit"></i>
-                                                            <span>
-                                                                <?php
-                                                                echo "modify";
-                                                                ?>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </span>
                                         <p class="post-item-summary">
                                             <a href="<?php echo the_permalink()/*."?author=".the_author()*/
                                             ; ?>"><?php echo "<img class=\"avatar\" src=\"$road/img/photo_test.png\">"; ?>
