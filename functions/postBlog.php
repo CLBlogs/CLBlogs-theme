@@ -19,7 +19,7 @@ $APost = array(
     "post_modified_gmt" => $now_date,
     "guid" => get_bloginfo('url') . "?p=" . "$posts_id",
     "post_type" => "post",
-    "post_name" => $_POST["post_title"]
+    "post_name" => md5($now_date.$_POST["post_title"])
 );
 $wpdb->insert($wpdb->posts, $APost);
 header('location:../mineblog.php');
