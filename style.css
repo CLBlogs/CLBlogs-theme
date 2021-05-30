@@ -355,3 +355,29 @@ li {
   border-radius: .25rem;
   background-color: #fff;
 }
+
+#navbar_search {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  border-radius: 6px;
+  /*background-color: #f4f4f4;*/
+}
+
+#search-botton {
+  outline: none;
+  border-color: initial;
+  border-radius: 0 4px 4px 0;
+  height: 34px;
+  border-top-width: 0px;
+  border-bottom-width: 0;
+}

@@ -33,10 +33,10 @@
     <title>Sign in and Sign up</title>
 
 
-    <script src="js/jquery-3.5.1.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/login.js"></script>
 
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/login.css" rel="stylesheet">
     <?php
     require '../../../wp-blog-header.php';

@@ -7,9 +7,9 @@
     <?php
     require '../../../wp-blog-header.php';
     $road = get_template_directory_uri();
-    echo "<link href=\"$road/css/bootstrap.css\" rel=\"stylesheet\">";
-    echo "<script src=\"$road/js/jquery-3.5.1.js\"></script>";
-    echo "<script src=\"$road/js/bootstrap.js\"></script>";
+    echo "<link href=\"$road/css/bootstrap.min.css\" rel=\"stylesheet\">";
+    echo "<script src=\"$road/js/jquery.min.js\"></script>";
+    echo "<script src=\"$road/js/bootstrap.min.js\"></script>";
     $user_id = $_GET['user_id'];
     $user_data = get_userdata($user_id);
     $email = $user_data->user_email;
@@ -104,7 +104,7 @@
                         <a href="<? the_permalink(); ?>"><? the_title(); ?></a>
 <!--                        <h5>副标题</h5>-->
                         <div class="fakeimg">
-                            <img src="https://cdn.jsdelivr.net/gh/fnsflm/myPicbed/clblogs/images/Azusa.jpg" alt="Azusa"
+                            <img src="<? get_random_pic(); ?>" alt="Azusa"
                                  width="400">
                         </div>
                         <p><? the_author(); ?></p>

@@ -8,8 +8,8 @@ pageEncoding="UTF-8"%>-->
     <?php
     $road = get_template_directory_uri();
     echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"$road/css/article.css\">";
-    echo "<link href=\"$road/css/bootstrap.css\" rel=\"stylesheet\">";
-    echo "<script src=\"$road/js/jquery-3.5.1.js\"></script>";
+    echo "<link href=\"$road/css/bootstrap.min.css\" rel=\"stylesheet\">";
+    echo "<script src=\"$road/js/jquery.min.js\"></script>";
     global $wpdb;
     global $post;
     $author_id = $post->post_author;

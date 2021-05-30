@@ -2,85 +2,19 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>CLBlogs</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
     <?php
     $road = get_template_directory_uri();
-    echo "<link rel=\"application/javascript\" href=\"$road/js/jquery-3.5.1.js\">";
-    echo "<link rel=\"application/javascript\" href=\"$road/js/bootstrap.js\">";
-    echo "<link rel=\"stylesheet\" href=\"$road/css/bootstrap.css\">";
+    echo "<link rel=\"stylesheet\" href=\"$road/css/bootstrap.min.css\">";
+    echo '<script type="text/javascript" src="' . $road . '/js/jquery.min.js"></script>';
+    echo '<script type="text/javascript" src="' . $road . '/js/bootstrap.min.js"></script>';
     echo "<link rel=\"stylesheet\" href=\"$road/css/Navigation-Clean.css\">";
-    echo "<link rel=\"stylesheet\" href=\"$road/css/Navigation-with-Search-1.css\">";
-    echo "<link rel=\"stylesheet\" href=\"$road/css/Navigation-with-Search.css\">";
-    echo "<link rel=\"stylesheet\" href=\"$road/css/styles.css\">";
     setcookie("uri", ' ', time() - 1, '/');
     ?>
-    <link href="https://cdn.bootcdn.net/ajax/libs/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet">
-    <style>
-        .footer-basic {
-            padding: 40px 0;
-            background-color: #f7f5f5;
-            color: #4b4c4d;
-        }
 
-        .footer-basic ul {
-            padding: 0;
-            list-style: none;
-            text-align: center;
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 0;
-            background-color: #f7f5f5;
-        }
-
-        .footer-basic li {
-            padding: 0 10px;
-        }
-
-        .footer-basic ul a {
-            color: inherit;
-            text-decoration: none;
-            opacity: 0.8;
-        }
-
-        .footer-basic ul a:hover {
-            opacity: 1;
-        }
-
-        .footer-basic .social {
-            text-align: center;
-            padding-bottom: 25px;
-        }
-
-        .footer-basic .social > a {
-            font-size: 24px;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            display: inline-block;
-            text-align: center;
-            border-radius: 50%;
-            border: 1px solid #ccc;
-            margin: 0 8px;
-            color: inherit;
-            opacity: 0.75;
-        }
-
-        .footer-basic .social > a:hover {
-            opacity: 0.9;
-        }
-
-        .footer-basic .copyright {
-            margin-top: 15px;
-            text-align: center;
-            font-size: 13px;
-            color: #aaa;
-            margin-bottom: 0;
-        }
-    </style>
     <style>
         .navigation-clean {
             background: #fff;
@@ -132,7 +66,6 @@
             color: #cbc6c6;
             box-shadow: none;
             background: none;
-            /*pointer-events: none;*/
             padding-top: 8px;
             font-size: 12px;
             padding-bottom: 0;
@@ -196,23 +129,6 @@
             font-size: 15px;
         }
 
-        #navbar_search {
-            padding-left: 20px;
-            padding-right: 20px;
-            padding-top: 5px;
-            padding-bottom: 5px;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-flex-direction: row;
-            -ms-flex-direction: row;
-            flex-direction: row;
-            -webkit-align-items: center;
-            align-items: center;
-            border-radius: 6px;
-            /*background-color: #f4f4f4;*/
-        }
-
         #top-input {
             border: none;
             border-color: #0c0b0b;
@@ -246,15 +162,6 @@
             padding-top: 13px;
             padding-right: 0;
             padding-left: 10px;
-        }
-
-        #search-botton {
-            outline: none;
-            border-color: initial;
-            border-radius: 0 4px 4px 0;
-            height: 34px;
-            border-top-width: 0px;
-            border-bottom-width: 0;
         }
 
         .container {
@@ -312,11 +219,6 @@
         #top_right {
             float: right;
             background-color: #222;
-        }
-
-        #user {
-            padding-top: 10px;
-            padding-bottom: 10px;
         }
 
         navbar {
@@ -460,12 +362,6 @@
             max-width: 300px;
             min-width: 300px;
             margin-left: 5%;
-        }
-
-        .ad-right-text, .sidebar-bh {
-            font-size: 12px;
-            margin-left: 20px;
-            color: #353535;
         }
 
         .card {
@@ -646,15 +542,6 @@
             text-overflow: clip;
         }
 
-        .post-item .avatar {
-            border-radius: 0;
-            padding: 1px;
-            border: 1px solid #ccc;
-            float: left;
-            margin-right: 5px;
-            margin-top: 3px;
-        }
-
         .post-list > .post-item > .post-item-body > .post-item-text > .post-item-title {
             font-weight: bold;
             font-size: 15px;
@@ -736,148 +623,125 @@
 </head>
 
 <body>
-    <div id="wrapper" class="flow">
-        <nav class="navbar navbar-default" id="top">
-            <div class="container-fluid" id="top_in">
-                <div class="navbar-header" id="CLBLOGS"><a class="navbar-brand" id="title" href="#">CLBLOGS</a><button data-toggle="collapse" class="navbar-toggle collapsed" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div>
-                <div class="collapse navbar-collapse" id="navcol-1">
-                    <ul class="nav navbar-nav" id="home_nav">
-                        <li><a id="home" href="#">Home</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav" id="top_right">
-                        <li class="active">
-                            <?php get_search_form(); ?>
-                            <!-- <form class="navbar-form"><input class="form-control" type="text" id="top-input"><button class="btn btn-default" id="search-botton" type="button"><i class="glyphicon glyphicon-search"></i></button></form> -->
-                        </li>
-                        <?php
-                        if (empty($_COOKIE['user_login'])) {
-                            echo "<li><a id=\"login\" href=\"$road/login.php\">sign in / sign up</a></li>";
-                        }
-                        else{
-                            echo "<li><a class=\"dropdown-button\" id= \"caidan\" href=\"$road/mineblog.php\">
-                                <div class=\"dropdown\"><a class=\"dropdown-toggle\" id=\"dropdown_toggle\" aria-expanded=\"false\" data-toggle=\"dropdown\" href=\"$road/mineblog.php\">
+<div id="wrapper" class="flow">
+    <nav class="navbar navbar-default" id="top">
+        <div class="container-fluid" id="top_in">
+            <div class="navbar-header" id="CLBLOGS"><a class="navbar-brand" id="title" href="/">CLBLOGS</a>
+                <button data-toggle="collapse" class="navbar-toggle collapsed" data-target="#navcol-1"><span
+                            class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
+                            class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav" id="home_nav">
+                    <li><a id="home" href="/">Home</a></li>
+                </ul>
+                <ul class="nav navbar-nav" id="top_right">
+                    <li class="active">
+                        <?php get_search_form(); ?>
+                    </li>
+                    <?php
+                    if (empty($_COOKIE['user_login'])) {
+                        echo "<li><a id=\"login\" href=\"$road/login.php\">sign in / sign up</a></li>";
+                    } else {
+                        echo "<li><a class=\"dropdown-button\" id= \"caidan\" href=\"#\">
+                                <div class=\"dropdown\">
+                                <a class=\"dropdown-toggle\" id=\"dropdown_toggle\" aria-expanded=\"false\" data-toggle=\"dropdown\" href=\"#\">
                                         <img id=\"user_icon\" class=\"navbar-avatar\" src=\"assets/img/photo_test.png\">    
                                         昵称
                                     </a>
                                     <ul class=\"dropdown-menu\">
-                                        <li><a href=\"#\"><i class=\"glyphicon glyphicon-user\"></i>个人空间</a></li>
+                                        <li><a href=\"$road/mineblog.php\"><i class=\"glyphicon glyphicon-user\"></i>个人空间</a></li>
                                         <li><a href=\"#\"><i class=\"glyphicon glyphicon-log-out\"></i>退出登录</a></li>
                                     </ul>
                                 </div>
                             </a><li>";
-                        }
-                        ?>
-                    </ul>
-                </div>
+                    }
+                    ?>
+                </ul>
             </div>
-        </nav>
-        <div id="main-contain" class="hero">
-            <div id="main" class="main">
-                <div id="side_left" class="side-left card-list side-bar">
-                    <div class="card">
-                        <h4 class="card-title"><a href="#">排行榜标题</a></h4>
-                        <ul class="item-list">
-                            <?php $args = array(
-                                'meta_key' => 'views',
-                                'orderby' => 'meta_value_num',
-                                'posts_per_page' => 6,
-                                'order' => 'DESC'
-                            );
-                            query_posts($args);
-                            while (have_posts()) : the_post(); ?>
-                                <li><a href="<? the_permalink(); ?>"><? the_title(); ?></a>
-                                    <span class="kc-view fright">浏览：
+        </div>
+    </nav>
+    <div id="main-contain" class="hero">
+        <div id="main" class="main">
+            <div id="side_left" class="side-left card-list side-bar">
+                <div class="card">
+                    <h4 class="card-title">浏览排行榜</h4>
+                    <ul class="item-list">
+                        <?php $args = array(
+                            'meta_key' => 'views',
+                            'orderby' => 'meta_value_num',
+                            'posts_per_page' => 6,
+                            'order' => 'DESC'
+                        );
+                        query_posts($args);
+                        while (have_posts()) : the_post(); ?>
+                            <li><a href="<? the_permalink(); ?>"><? the_title(); ?></a>
+                                <span class="kc-view fright">&nbsp; Views：
                                         <?php
                                         echo number_format(getPostViews(get_the_ID()));
                                         ?>
                                     </span>
-                                </li>
-                            <?php endwhile;
-                            wp_reset_query(); ?>
-                            <!-- <li><span class="number highlight">1</span><a href="#">Announcing -hardening<br><br></a></li>
-                            <li><span class="number highlight">2</span><a href="#">有意思！强大的 SVG 滤镜<br><br><br></a></li>
-                            <li><span class="number highlight">3</span><a href="#">CentOS离线安装Nginx<br><br><br></a></li>
-                            <li><span class="number highlight">4</span><a href="#">图解 | 原来这就是 class<br><br></a></li> -->
-                        </ul>
-                    </div>
-
-                    <!-- <div class="card">
-                        <h4 class="card-title"><a href="#">排行榜标题</a></h4>
-                        <ul class="item-list">
-                            <li><span class="number highlight">1</span><a href="#">Announcing -hardening<br><br></a></li>
-                            <li><span class="number highlight">2</span><a href="#">有意思！强大的 SVG 滤镜<br><br><br></a></li>
-                            <li><span class="number highlight">3</span><a href="#">CentOS离线安装Nginx<br><br><br></a></li>
-                            <li><span class="number highlight">4</span><a href="#">图解 | 原来这就是 class<br><br></a></li>
-                        </ul>
-                    </div> -->
-
-                    <!-- <div class="card">
-                        <h4 class="card-title"><a href="#">排行榜标题</a></h4>
-                        <ul class="item-list">
-                            <li><span class="number highlight">1</span><a href="#">Announcing -hardening<br><br></a></li>
-                            <li><span class="number highlight">2</span><a href="#">有意思！强大的 SVG 滤镜<br><br><br></a></li>
-                            <li><span class="number highlight">3</span><a href="#">CentOS离线安装Nginx<br><br><br></a></li>
-                            <li><span class="number highlight">4</span><a href="#">图解 | 原来这就是 class<br><br></a></li>
-                        </ul>
-                    </div> -->
-
+                            </li>
+                        <?php endwhile;
+                        wp_reset_query(); ?>
+                        <!-- <li><span class="number highlight">1</span><a href="#">Announcing -hardening<br><br></a></li>
+                        <li><span class="number highlight">2</span><a href="#">有意思！强大的 SVG 滤镜<br><br><br></a></li>
+                        <li><span class="number highlight">3</span><a href="#">CentOS离线安装Nginx<br><br><br></a></li>
+                        <li><span class="number highlight">4</span><a href="#">图解 | 原来这就是 class<br><br></a></li> -->
+                    </ul>
                 </div>
-                <div id="main-flow" class="main-flow">
-                    <div id="post-list" class="post-list">
-                        <?php
-                        if (have_posts()) {
-                            while (have_posts()) {
-                                //获取下一篇文章的信息，并且将信息存入全局变量 $post 中
-                                the_post();
-                        ?>
-                        <div class="blog_card"><a href="<? the_permalink(); ?>"><? the_title(); ?></a>
-                            <div class="blog_div">
-                                <a href="#">
-                                    <img class="blog_imag" src="http://test4.fnsflm.xyz:8192/wp-content/uploads/2021/05/屏幕截图27.png">
-                                </a>
-                                <a class="abstract" href="#"><br>
-                                </a></div>
-                            <footer id="post-item-foot-4" class="post-item-foot">
-                            <a class="post-item-author" href="#"><span>author：<? the_author(); ?></span></a><span class="post-meta-item">time：<? the_time('Y-m-d'); ?></span>
-                            <a class="post-meta-iten" href="#"><i class="glyphicon glyphicon-thumbs-up"></i><span>approvals: <?php
-                                global $post;
-                                $like_num = get_user_meta($post->post_author, 'likes', true);
-                                echo empty($like_num)?0:$like_num;
-                                ?></span></a>
-                            <a class="post-meta-iten" href="#"><i class="glyphicon glyphicon-star"></i><span>收藏</span></a>
-                            <a class="post-meta-iten" href="#"><i class="glyphicon glyphicon-eye-open"></i><span><?php
-                                echo ' views: ';
-                                echo number_format(getPostViews(get_the_ID()));
-                                ?></span></a>
-                            </footer>
-                        </div>
-                        <?
+            </div>
+            <div id="main-flow" class="main-flow">
+                <div id="post-list" class="post-list">
+                    <?php
+                    if (have_posts()) {
+                        while (have_posts()) {
+                            //获取下一篇文章的信息，并且将信息存入全局变量 $post 中
+                            the_post();
+                            ?>
+                            <div class="blog_card"><a href="<? the_permalink(); ?>"><? the_title(); ?></a>
+                                <div class="blog_div">
+                                    <a href="<? the_permalink(); ?>">
+                                        <img class="blog_imag" src="<? get_random_pic(); ?>">
+                                    </a>
+                                    <a class="abstract" href="<? the_permalink(); ?>"><br>
+                                    </a></div>
+                                <footer id="post-item-foot-4" class="post-item-foot">
+                                    <a class="post-item-author"
+                                       href="#"><span>Author：<? the_author(); ?></span></a><span class="post-meta-item">Time：<? the_time('Y-m-d'); ?></span>
+                                    <span class="post-meta-item"><i
+                                                class="glyphicon glyphicon-thumbs-up"></i><span>Likes: <?php
+                                            global $post;
+                                            $like_num = get_user_meta($post->post_author, 'likes', true);
+                                            echo empty($like_num) ? 0 : $like_num;
+                                            ?></span></span>
+                                    <span class="post-meta-item"><i
+                                                class="glyphicon glyphicon-star"></i>
+                                        <span>Favorites: <?
+                                            // 收藏数
+                                            global $post;
+                                            echo 0;
+                                            ?>
+                                        </span>
+                                    </span>
+                                    <span class="post-meta-item"><i
+                                                class="glyphicon glyphicon-eye-open"></i><span><?php
+                                            echo ' Views: ';
+                                            echo number_format(getPostViews(get_the_ID()));
+                                            ?></span></span>
+                                </footer>
+                            </div>
+                            <?
                         }
                     } else {
                         echo 'No blog here';
                     }
                     ?>
-                        <!-- <div class="blog_card"><a href="#">博客标题</a>
-                            <div class="blog_div"><a href="#"><img class="blog_imag" src="assets/img/blog_test.png"></a><a class="abstract" href="#">摘要</a></div>
-                            <footer id="post-item-foot-5" class="post-item-foot"><a class="post-item-author" href="#"><span>author</span></a><span class="post-meta-item">time</span><a class="post-meta-iten" href="#"><i class="glyphicon glyphicon-thumbs-up"></i><span>Text</span></a><a class="post-meta-iten" href="#"><i class="glyphicon glyphicon-star"></i><span>Text</span></a><a class="post-meta-iten" href="#"><i class="glyphicon glyphicon-eye-open"></i><span>Text</span></a></footer>
-                        </div> -->
-
-                    </div>
                 </div>
             </div>
         </div>
-        <footer class="footer-basic">
-            <div class="social"><a href="#"><i class="icon ion-android-mail"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
-            <ul class="list-inline">
-                <li><a href="#">CLBlogs</a></li>
-                <li><a href="#">Terms</a></li>
-                <!-- <li><a href="#">Copyright</a></li> -->
-                <li><a href="#">陕ICP备2021003793号</a></li>
-            </ul>
-            <p class="copyright">CLBlogs © 2018-2021</p>
-        </footer>
     </div>
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+</div>
+<? get_footer() ?>
 </body>
 </html>
