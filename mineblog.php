@@ -34,6 +34,24 @@
             padding: 20px;
             margin-top: 20px;
         }
+        #myBtn {
+    display: none; /* 默认隐藏 */
+    position: fixed; 
+    bottom: 20px; 
+    right: 30px; 
+    z-index: 99; 
+    border: none;
+    outline: none; 
+    background-color: red; /* 设置背景颜色，你可以设置自己想要的颜色或图片 */
+    color: white; /* 文本颜色 */
+    cursor: pointer; 
+    padding: 15px; 
+    border-radius: 10px; /* 圆角 */
+}
+ 
+#myBtn:hover {
+    background-color: #555; 
+}
     </style>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -47,6 +65,26 @@
   </div> -->
 
 <!-- 导航栏 -->
+<button onclick="topFunction()" id="myBtn" title="回顶部">返回顶部</button>
+
+<script>
+// 当网页向下滑动 20px 出现"返回顶部" 按钮
+window.onscroll = function() {scrollFunction()};
+ 
+function scrollFunction() {console.log(121);
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+ 
+// 点击按钮，返回顶部
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+</script>
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -96,7 +134,7 @@
                 <!-- 个人资料 -->
                 <div class="tab-pane fade in active" id="Tab1">
                     <div class="text-center">
-                        <?php echo "<img src=\"https://v1.alapi.cn/api/avatar?email=$author_info->user_email&size=200\"
+                        <?php echo "<img src=\"images/Rikka.jpg\"
                              class=\"img-circle text-center\" width=\"200\" height=\"200\">";
                         ?>
                     </div>
