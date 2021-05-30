@@ -770,16 +770,15 @@
                             <div class="blog_card"><a href="<? the_permalink(); ?>"><? the_title(); ?></a>
                                 <div class="blog_div"><a href="#"></a><a class="abstract" href="<? the_permalink(); ?>"><? the_excerpt(); ?><br></a></div>
                                 <footer id="post-item-foot-4" class="post-item-foot">
-                                    <a class="post-item-author"
-                                       href="#"><span>author：<? the_author(); ?></span></a><span
+                                    <span class="post-item-author"><span>author：<? the_author(); ?></span></span><span
                                             class="post-meta-item">time：<? the_time('Y-m-d'); ?></span>
-                                    <p class="post-meta-item" p><p
-                                                class="glyphicon glyphicon-thumbs-up"></p><span>Likes: <?php
+                                    <span class="post-meta-item" ><span
+                                                class="glyphicon glyphicon-thumbs-up"></span><span>Likes: <?php
                                             global $post;
                                             $like_num = get_user_meta($post->post_author, 'likes', true);
                                             echo empty($like_num) ? 0 : $like_num;
                                             ?></span>
-                                    </p>
+                                    </span>
                                     <span class="post-meta-item">
                                         <i class="glyphicon glyphicon-star"></i><span>Favorites</span></span>
                                     <span class="post-meta-item"><i class="glyphicon glyphicon-eye-open"></i><span><?php
