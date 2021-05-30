@@ -233,6 +233,7 @@
 
         #navcol-1 {
             background-color: #222;
+            width: 100%;
         }
 
         #CLBLOGS {
