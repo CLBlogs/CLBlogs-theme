@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="test17">
+    <serverData>
+      <paths name="test17">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/www/wwwroot/test17.fnsflm.xyz/wp-content/themes/CLBlogs-theme" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
