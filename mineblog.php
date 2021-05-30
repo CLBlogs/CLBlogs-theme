@@ -30,6 +30,24 @@
             padding: 20px;
             margin-top: 20px;
         }
+        #myBtn {
+    display: none; /* 默认隐藏 */
+    position: fixed; 
+    bottom: 20px; 
+    right: 30px; 
+    z-index: 99; 
+    border: none;
+    outline: none; 
+    background-color: red; /* 设置背景颜色，你可以设置自己想要的颜色或图片 */
+    color: white; /* 文本颜色 */
+    cursor: pointer; 
+    padding: 15px; 
+    border-radius: 10px; /* 圆角 */
+}
+ 
+#myBtn:hover {
+    background-color: #555; 
+}
     </style>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -43,6 +61,26 @@
   </div> -->
 
 <!-- 导航栏 -->
+<button onclick="topFunction()" id="myBtn" title="回顶部">返回顶部</button>
+
+<script>
+// 当网页向下滑动 20px 出现"返回顶部" 按钮
+window.onscroll = function() {scrollFunction()};
+ 
+function scrollFunction() {console.log(121);
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+ 
+// 点击按钮，返回顶部
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+</script>
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -93,7 +131,7 @@
                 <!-- 个人资料 -->
                 <div class="tab-pane fade in active" id="Tab1">
                     <div class="text-center">
-                        <?php echo "<img src=\"https://v1.alapi.cn/api/avatar?email=$author_info->user_email&size=200\"
+                        <?php echo "<img src=\"images/Rikka.jpg\"
                              class=\"img-circle text-center\" width=\"200\" height=\"200\">";
                         ?>
                     </div>
@@ -122,7 +160,9 @@
                     <form action="mineblog.php?user_id=<?php echo $user_id ?>" method="post">
                         标题: <br><input type="text" name="post_title" size="30"><br>
                         摘要: <br><input type="text" name="post_excerpt" size="30"><br>
-                        正文: <br><input type="text" name="post_content" size="30"><br>
+                        正文: <br><textarea name="post_content" rows="8" cols="32"></textarea><br>
+                        <input type="button" value="转译"
+                        onclick="javascrtpt:window.location.href='http://www.baidu.com/'" />
                         <input type="submit" value="提交">
                     </form>
                     <?php
@@ -159,7 +199,25 @@
                     <!--                            <button class="btn btn-default" type="submit">上传</button>-->
                     <!--                        </div>-->
                     <!--                    </div>-->
+                    <!-- <link rel="stylesheet" href="editor.md-master/css/editormd.css" />
+                <div id="test-editor">
+                    <textarea style="display:none;">### 关于 Editor.md
+
+                **Editor.md** 是一款开源的、可嵌入的 Markdown 在线编辑器（组件），基于 CodeMirror、jQuery 和 Marked 构建。
+                    </textarea>
                 </div>
+                <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+                <script src="editor.md-master/editormd.min.js"></script>
+                <script type="text/javascript">
+                   $(function() {
+                       var editor = editormd("test-editor", {
+                            width  : "100px",
+                            height : "400px",
+                         path   : "editor.md-master/lib/"
+                      });
+                  });
+                </script>  -->
+                </div> 
 
                 <!-- 博客管理 -->
                 <div class="tab-pane fade" id="Tab3">
