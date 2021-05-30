@@ -10,9 +10,9 @@
     require_once 'check.php';
     global $wpdb;
     $road = get_template_directory_uri();
-    echo "<link href=\"$road/css/bootstrap.css\" rel=\"stylesheet\">";
-    echo "<script src=\"$road/js/jquery-3.5.1.js\"></script>";
-    echo "<script src=\"$road/js/bootstrap.js\"></script>";
+    echo "<link href=\"$road/css/bootstrap.min.css\" rel=\"stylesheet\">";
+    echo "<script src=\"$road/js/jquery.min.js\"></script>";
+    echo "<script src=\"$road/js/bootstrap.min.js\"></script>";
     session_start();
     $user_id = $_SESSION['user_id'];
     setcookie("user_id", $user_id, time() + 3600, '/');
@@ -183,7 +183,7 @@
                                 <!--                                </div>-->
                                 <!--                                <h5>副标题</h5>-->
                                 <div class="fakeimg">
-                                    <img src="https://cdn.jsdelivr.net/gh/fnsflm/myPicbed/clblogs/images/Yukino.jpg"
+                                    <img src="<? get_random_pic(); ?>"
                                          alt="Yukino" width="400">
                                 </div>
                                 <p><? the_author(); ?></p>
@@ -224,7 +224,7 @@
                             <!--                            </div>-->
                             <!--                            <h5>副标题</h5>-->
                             <div class="fakeimg">
-                                <img src="https://cdn.jsdelivr.net/gh/fnsflm/myPicbed/clblogs/images/Azusa.jpg"
+                                <img src="<? get_random_pic(); ?>"
                                      alt="Azusa" width="400">
                             </div>
                             <p>Azusa</p>

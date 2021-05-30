@@ -11,13 +11,10 @@
           href='https://cdn.jsdelivr.net/gh/fnsflm/myPicbed/clblogs/css/theme-style.css'
           type='text/css' media='all'/>
     <?php
-    //     require 'wp-blog-header.php';
     global $wpdb;
     $road = get_template_directory_uri();
     $emotion = $road . "/img/emotion/";
     $articleId = get_the_ID();
-    // echo $_COOKIE['uri'];
-    //    session_start();
     ?>
 
 </head>

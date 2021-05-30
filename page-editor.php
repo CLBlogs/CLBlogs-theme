@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/editor.css"/>
     <link rel="stylesheet" href="css/editormd.min.css"/>
     <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon"/>
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
 <div id="layout">
@@ -54,7 +54,7 @@ testEditor.getPreviewedHTML();  // 获取预览窗口里的 HTML，在开启 wat
         </div>
     </form>
 </div>
-<script src="js/jquery-3.5.1.js"></script>
+<script src="js/jquery.min.js"></script>
 <script src="js/editormd.js"></script>
 <script type="text/javascript">
     $(function () {
