@@ -14,7 +14,7 @@
     echo "<link rel=\"stylesheet\" href=\"$road/css/Navigation-Clean.css\">";
     setcookie("uri", ' ', time() - 1, '/');
     ?>
-
+<!--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>-->
     <style>
         .navigation-clean {
             background: #fff;
@@ -644,10 +644,10 @@
                     if (empty($_COOKIE['user_login'])) {
                         echo "<li><a id=\"login\" href=\"$road/login.php\">sign in / sign up</a></li>";
                     } else {
-                        echo "<li><a class=\"dropdown-button\" id= \"caidan\" href=\"#\">
+                        echo "<li><a class=\"dropdown-button\" id= \"caidan\" data-target=\"#\" href=\"/\">
                                 <div class=\"dropdown\">
-                                <a class=\"dropdown-toggle\" id=\"dropdown_toggle\" aria-expanded=\"false\" data-toggle=\"dropdown\" href=\"#\">
-                                        <img id=\"user_icon\" class=\"navbar-avatar\" src=\"assets/img/photo_test.png\">    
+                                <a class=\"dropdown-toggle\" id=\"dropdown_toggle\" aria-expanded=\"false\" data-toggle=\"dropdown\" href=\"/\" data-target=\"#\">
+                                        <img id=\"user_icon\" class=\"navbar-avatar\" src=\"https://cdn.jsdelivr.net/gh/fnsflmzqdydk/myPicbed/2021/01/12/poQDfOJ53v782ab-8d380a.jpeg\">    
                                         昵称
                                     </a>
                                     <ul class=\"dropdown-menu\">
