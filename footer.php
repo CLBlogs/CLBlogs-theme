@@ -1,10 +1,3 @@
-<?php
-$road = get_template_directory_uri();
-echo '<link type="text/css" href="' . $road . '/css/bootstrap.min.css">';
-echo '<script type="text/javascript" src="' . $road . '/js/jquery.min.js"></script>';
-//echo '<script type="text/javascript" src="' . $road . '/js/bootstrap.min.js"></script>';
-?>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 <style>
     .footer-basic {
         padding: 40px 0;
