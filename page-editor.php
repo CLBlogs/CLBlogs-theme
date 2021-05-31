@@ -65,7 +65,7 @@ testEditor.getPreviewedHTML();  // 获取预览窗口里的 HTML，在开启 wat
             path: "https://cdn.jsdelivr.net/gh/fnsflm/myPicbed@master/clblogs/lib/",
             imageUpload    : true,
             imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-            imageUploadURL : "./php/upload.php",
+            imageUploadURL : "./functions/upload.php",
             saveHTMLToTextarea: true,
             onload : function() {
 						    initPasteDragImg(this);}

@@ -20,6 +20,8 @@
     // echo $author_info->user_email;
     $user_name = $_COOKIE['user_login'];
     echo "<title>$user_name's Personal Center</title>";
+    $user_data = get_userdata($user_id);
+    $email = $user_data->user_email;
     ?>
 
     <style>
@@ -134,7 +136,7 @@ function topFunction() {
                 <!-- 个人资料 -->
                 <div class="tab-pane fade in active" id="Tab1">
                     <div class="text-center">
-                        <?php echo "<img src=\"images/Rikka.jpg\"
+                        <?php echo "<img src=\"https://v1.alapi.cn/api/avatar?email=$email&size=200\"
                              class=\"img-circle text-center\" width=\"200\" height=\"200\">";
                         ?>
                     </div>
