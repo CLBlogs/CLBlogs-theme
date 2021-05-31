@@ -54,6 +54,7 @@ testEditor.getPreviewedHTML();  // 获取预览窗口里的 HTML，在开启 wat
         </div>
     </form>
 </div>
+<script src="js/uploadImg.js" type="text/javascript"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/editormd.js"></script>
 <script type="text/javascript">
@@ -62,7 +63,12 @@ testEditor.getPreviewedHTML();  // 获取预览窗口里的 HTML，在开启 wat
             width: "95%",
             height: 960,
             path: "https://cdn.jsdelivr.net/gh/fnsflm/myPicbed@master/clblogs/lib/",
-            saveHTMLToTextarea: true
+            imageUpload    : true,
+            imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadURL : "./php/upload.php",
+            saveHTMLToTextarea: true,
+            onload : function() {
+						    initPasteDragImg(this);}
         });
     });
 </script>

@@ -620,9 +620,50 @@
             background-color: #fff;
         }
     </style>
+    <style>     /* 返回顶部按钮  */
+    #myBtn {        
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 10px;
+    }
+
+    #myBtn:hover {
+    background-color: #555;
+    }
+    </style>
 </head>
 
 <body>
+<button onclick="topFunction()" id="myBtn" title="回顶部">返回顶部</button>
+
+<script>
+// 当网页向下滑动 20px 出现"返回顶部" 按钮
+window.onscroll = function() {scrollFunction()};
+ 
+function scrollFunction() {console.log(121);
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+ 
+// 点击按钮，返回顶部
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+</script>
+
 <div id="wrapper" class="flow">
     <nav class="navbar navbar-default" id="top">
         <div class="container-fluid" id="top_in">
