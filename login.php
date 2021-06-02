@@ -17,9 +17,22 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Sign in and Sign up</title>
 
-
     <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
     <script src="js/login.js"></script>
+    <script >
+        $(document).ready(function () {
+            if ($.cookie("user_login") != null)  {
+                $("#user_login").val($.cookie("user_login"));
+            }
+            if ($.cookie("user_pass") != null)  {
+                $("#user_pass").val($.cookie("user_pass"));
+                $(".canValue-login").attr("placeholder","no need to fill")
+               // $(".canValue-login").val("no need to fill");
+            }
+
+        })
+    </script>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/login.css" rel="stylesheet">
@@ -62,7 +75,7 @@
                     User Name&nbsp;&nbsp;
                 </div>
                 <div class="col-md-4 col-sm-4">
-                    <input class="information" name="user_login" type="text" value=""/>
+                    <input class="information" name="user_login" id="user_login"  type="text" value=""/>
                 </div>
             </div>
             </br>
@@ -72,7 +85,7 @@
 
                 </div>
                 <div class="col-md-4 col-sm-4">
-                    <input class="information password" name="user_pass" type="password" value=""/>
+                    <input class="information password" name="user_pass" id="user_pass" type="password" />
 
                 </div>
                 <div class="col-md-1 col-sm-1">
@@ -80,12 +93,12 @@
                 </div>
             </div>
             </br>
-            <div class="row">
+            <div class="row" >
                 <div class=" col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
                     CAPTCHA&nbsp;&nbsp;
                 </div>
                 <div class="col-md-3 col-sm-3">
-                    <input class="information canValue-login" type="text" value="" placeholder="Case Insensitive">
+                    <input class="information canValue-login" type="text" placeholder="Case Insensitive">
                 </div>
                 <div class="col-md-2 col-sm-2">
                     <canvas class="canvas" id="canvas-login"></canvas>
@@ -96,8 +109,8 @@
                 <div class="col-md-2 col-md-offset-2  col-sm-2 col-sm-offset-2 text-right" id="textContent">
                 </div>
                 <div class="col-md-4 col-sm-4">
-                    <input name="remember" type="checkbox"/>
-                    Remember Password:
+                    <input name="remember" id="remember" type="checkbox" checked="checked"/>
+                    Remember Password
                 </div>
             </div>
             <div class="row" style="position: relative;top:10px;">
@@ -183,6 +196,9 @@
 </div>
 
 <script>
+
+
+
     function changePage(val) {
         var login_div = document.getElementById("login");
         var register_div = document.getElementById("register");
@@ -217,18 +233,24 @@
         $("#submitButton-login").on('click', function () {
             var val = $(".canValue-login").val().toLowerCase();
             var num = show_num_login.join("");
-            if (val == '') {
-                alert('Please enter the CAPTCHA！');
-                $("#submitButton-login").attr("type", "button");
-            } else if (val == num) {
-                //alert('提交成功！');
+            if ($.cookie("user_pass") == null) {
+
+                if (val == '') {
+                    alert('Please enter the CAPTCHA！');
+                    $("#submitButton-login").attr("type", "button");
+                } else if (val == num) {
+                    //alert('提交成功！');
+                    $("#submitButton-login").attr("type", "submit");
+                    $(".canValue-login").val('');
+                } else {
+                    alert('The CAPTCHA is wrong！Try again！');
+                    $("#submitButton-login").attr("type", "button");
+                    $(".canValue-login").val('');
+                }
+            }else{
                 $("#submitButton-login").attr("type", "submit");
-                $(".canValue-login").val('');
-            } else {
-                alert('The CAPTCHA is wrong！Try again！');
-                $("#submitButton-login").attr("type", "button");
-                $(".canValue-login").val('');
             }
+
         })
         $("#submitButton-register").on('click', function () {
             var val = $(".canValue-register").val().toLowerCase();
@@ -243,7 +265,6 @@
             } else {
                 alert('The CAPTCHA is wrong！Try again！');
                 $("#submitButton-register").attr("type", "button");
-                $(".canValue-register").val('');
             }
         })
     })
