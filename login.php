@@ -13,28 +13,26 @@
             border: 1px solid #000000;
         }
 
-        .backColor {
-            background-color: rgba(240, 255, 255, 0.25);
-            border-radius: 10px;
-        }
-
-        .submitButton {
-            border-radius: 30px;
-            margin-top: 10px;
-            background-color: rgba(70, 114, 137, 0.3);
-            width: 100%;
-            height: 50px;
-            border: 0px;
-            font-size: 18px;
-            font-family: "黑体";
-        }
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Sign in and Sign up</title>
 
-
     <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
     <script src="js/login.js"></script>
+    <script >
+        $(document).ready(function () {
+            if ($.cookie("user_login") != null)  {
+                $("#user_login").val($.cookie("user_login"));
+            }
+            if ($.cookie("user_pass") != null)  {
+                $("#user_pass").val($.cookie("user_pass"));
+                $(".canValue-login").attr("placeholder","no need to fill")
+               // $(".canValue-login").val("no need to fill");
+            }
+
+        })
+    </script>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/login.css" rel="stylesheet">
@@ -74,20 +72,20 @@
             <?php echo "<form action=\"$road/loginaction.php\" method=\"post\">"; ?>
             <div class="row">
                 <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    User Name:&nbsp;&nbsp;
+                    User Name&nbsp;&nbsp;
                 </div>
                 <div class="col-md-4 col-sm-4">
-                    <input class="information" name="user_login" type="text" value=""/>
+                    <input class="information" name="user_login" id="user_login"  type="text" value=""/>
                 </div>
             </div>
             </br>
             <div class="row">
                 <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    Password:&nbsp;&nbsp;&nbsp;&nbsp;
+                    Password&nbsp;&nbsp;
 
                 </div>
                 <div class="col-md-4 col-sm-4">
-                    <input class="information password" name="user_pass" type="password" value=""/>
+                    <input class="information password" name="user_pass" id="user_pass" type="password" />
 
                 </div>
                 <div class="col-md-1 col-sm-1">
@@ -95,12 +93,12 @@
                 </div>
             </div>
             </br>
-            <div class="row">
+            <div class="row" >
                 <div class=" col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    CAPTCHA:&nbsp;&nbsp;
+                    CAPTCHA&nbsp;&nbsp;
                 </div>
                 <div class="col-md-3 col-sm-3">
-                    <input class="information canValue-login" type="text" value="" placeholder="Case Insensitive">
+                    <input class="information canValue-login" type="text" placeholder="Case Insensitive">
                 </div>
                 <div class="col-md-2 col-sm-2">
                     <canvas class="canvas" id="canvas-login"></canvas>
@@ -109,15 +107,16 @@
             </br>
             <div class="row" style="position: relative;top: 5px;">
                 <div class="col-md-2 col-md-offset-2  col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    Remember Password:
                 </div>
                 <div class="col-md-4 col-sm-4">
-                    <input name="remember" type="checkbox"/>
+                    <input name="remember" id="remember" type="checkbox" checked="checked"/>
+                    Remember Password
                 </div>
             </div>
             <div class="row" style="position: relative;top:10px;">
                 <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
                     <input class="submitButton" id="submitButton-login" type="button" value="Sign in">
+
                 </div>
             </div>
             </form>
@@ -130,7 +129,7 @@
             <?php echo "<form action=\"$road/registeraction.php\" method=\"post\">"; ?>
             <div class="row">
                 <div class="col-md-2 col-md-offset-2  col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    User Name:&nbsp;&nbsp;
+                    User Name&nbsp;&nbsp;
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <input class="information" name="user_login" type="text" value=""/>
@@ -139,7 +138,7 @@
             </br>
             <div class="row">
                 <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    <p>E-mail:&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <p>E-mail&nbsp;&nbsp;</p>
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <input class="information" name="email" type="text" value=""/>
@@ -149,7 +148,7 @@
 
             <div class="row">
                 <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    Password:&nbsp;&nbsp;&nbsp;&nbsp;
+                    Password&nbsp;&nbsp;
                 </div>
                 <div class="col-sm-4 col-sm-4">
                     <input class="information password" id="password" name="user_pass" type="password"/>
@@ -161,7 +160,7 @@
             </br>
             <div class="row">
                 <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    Confirm:
+                    Confirm&nbsp;&nbsp;
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <input class="information repassword" id="rePassword" name="re_password" type="password"
@@ -175,7 +174,7 @@
             </br>
             <div class="row">
                 <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    CAPTCHA:&nbsp;&nbsp;
+                    CAPTCHA&nbsp;&nbsp;
                 </div>
                 <div class="col-md-3 col-sm-3">
                     <input class="information canValue-register" type="text" value="" placeholder="Case Insensitive">
@@ -197,6 +196,9 @@
 </div>
 
 <script>
+
+
+
     function changePage(val) {
         var login_div = document.getElementById("login");
         var register_div = document.getElementById("register");
@@ -210,7 +212,7 @@
         } else if (val == 'register') {
             login_div.style.display = 'none';
             register_div.style.display = 'block';
-            $("#back").css("height", "500");
+            $("#back").css("height", "485");
             lo.style.borderBottom = '';
             re.style.borderBottom = '3px solid #45718A';
         }
@@ -231,18 +233,24 @@
         $("#submitButton-login").on('click', function () {
             var val = $(".canValue-login").val().toLowerCase();
             var num = show_num_login.join("");
-            if (val == '') {
-                alert('Please enter the CAPTCHA！');
-                $("#submitButton-login").attr("type", "button");
-            } else if (val == num) {
-                //alert('提交成功！');
+            if ($.cookie("user_pass") == null) {
+
+                if (val == '') {
+                    alert('Please enter the CAPTCHA！');
+                    $("#submitButton-login").attr("type", "button");
+                } else if (val == num) {
+                    //alert('提交成功！');
+                    $("#submitButton-login").attr("type", "submit");
+                    $(".canValue-login").val('');
+                } else {
+                    alert('The CAPTCHA is wrong！Try again！');
+                    $("#submitButton-login").attr("type", "button");
+                    $(".canValue-login").val('');
+                }
+            }else{
                 $("#submitButton-login").attr("type", "submit");
-                $(".canValue-login").val('');
-            } else {
-                alert('The CAPTCHA is wrong！Try again！');
-                $("#submitButton-login").attr("type", "button");
-                $(".canValue-login").val('');
             }
+
         })
         $("#submitButton-register").on('click', function () {
             var val = $(".canValue-register").val().toLowerCase();
@@ -257,7 +265,6 @@
             } else {
                 alert('The CAPTCHA is wrong！Try again！');
                 $("#submitButton-register").attr("type", "button");
-                $(".canValue-register").val('');
             }
         })
     })
