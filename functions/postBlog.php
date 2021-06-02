@@ -3,7 +3,7 @@ require '../../../../wp-blog-header.php';
 global $wpdb;
 $user_id = $_COOKIE['user_id'];
 $wpdb->query("SELECT * from $wpdb->posts");
-$posts_id = $wpdb->num_rows + 1;
+$posts_id = base_convert(uniqid(), 32, 10);
 $now_date = date('Y-m-d H:i:s');
 $APost = array(
     "ID" => $posts_id,
@@ -19,7 +19,8 @@ $APost = array(
     "post_modified_gmt" => $now_date,
     "guid" => get_bloginfo('url') . "?p=" . "$posts_id",
     "post_type" => "post",
-    "post_name" => $_POST["post_title"]
+    "post_name" => md5($now_date . $_POST["post_title"])
 );
 $wpdb->insert($wpdb->posts, $APost);
+add_post_meta($posts_id, 'articleMd', htmlentities($_POST["test-editormd-markdown-doc"]));
 header('location:../mineblog.php');

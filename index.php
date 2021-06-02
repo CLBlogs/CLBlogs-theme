@@ -8,13 +8,12 @@
 
     <?php
     $road = get_template_directory_uri();
-    echo "<link rel=\"stylesheet\" href=\"$road/css/bootstrap.min.css\">";
+    echo '<link rel="stylesheet" href="' . $road . '/css/bootstrap.min.css">';
     echo '<script type="text/javascript" src="' . $road . '/js/jquery.min.js"></script>';
     echo '<script type="text/javascript" src="' . $road . '/js/bootstrap.min.js"></script>';
     echo "<link rel=\"stylesheet\" href=\"$road/css/Navigation-Clean.css\">";
     setcookie("uri", ' ', time() - 1, '/');
     ?>
-
     <style>
         .navigation-clean {
             background: #fff;
@@ -685,10 +684,10 @@ function topFunction() {
                     if (empty($_COOKIE['user_login'])) {
                         echo "<li><a id=\"login\" href=\"$road/login.php\">sign in / sign up</a></li>";
                     } else {
-                        echo "<li><a class=\"dropdown-button\" id= \"caidan\" href=\"#\">
+                        echo "<li><a class=\"dropdown-button\" id= \"caidan\" data-target=\"#\" href=\"/\">
                                 <div class=\"dropdown\">
-                                <a class=\"dropdown-toggle\" id=\"dropdown_toggle\" aria-expanded=\"false\" data-toggle=\"dropdown\" href=\"#\">
-                                        <img id=\"user_icon\" class=\"navbar-avatar\" src=\"assets/img/photo_test.png\">    
+                                <a class=\"dropdown-toggle\" id=\"dropdown_toggle\" aria-expanded=\"false\" data-toggle=\"dropdown\" href=\"/\" data-target=\"#\">
+                                        <img id=\"user_icon\" class=\"navbar-avatar\" src=\"https://cdn.jsdelivr.net/gh/fnsflmzqdydk/myPicbed/2021/01/12/poQDfOJ53v782ab-8d380a.jpeg\">    
                                         昵称
                                     </a>
                                     <ul class=\"dropdown-menu\">

@@ -20,6 +20,8 @@
     // echo $author_info->user_email;
     $user_name = $_COOKIE['user_login'];
     echo "<title>$user_name's Personal Center</title>";
+    $user_data = get_userdata($user_id);
+    $email = $user_data->user_email;
     ?>
 
     <style>
@@ -34,24 +36,25 @@
             padding: 20px;
             margin-top: 20px;
         }
+
         #myBtn {
-    display: none; /* 默认隐藏 */
-    position: fixed; 
-    bottom: 20px; 
-    right: 30px; 
-    z-index: 99; 
-    border: none;
-    outline: none; 
-    background-color: red; /* 设置背景颜色，你可以设置自己想要的颜色或图片 */
-    color: white; /* 文本颜色 */
-    cursor: pointer; 
-    padding: 15px; 
-    border-radius: 10px; /* 圆角 */
-}
- 
-#myBtn:hover {
-    background-color: #555; 
-}
+            display: none; /* 默认隐藏 */
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: red; /* 设置背景颜色，你可以设置自己想要的颜色或图片 */
+            color: white; /* 文本颜色 */
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 10px; /* 圆角 */
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+        }
     </style>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -68,22 +71,24 @@
 <button onclick="topFunction()" id="myBtn" title="回顶部">返回顶部</button>
 
 <script>
-// 当网页向下滑动 20px 出现"返回顶部" 按钮
-window.onscroll = function() {scrollFunction()};
- 
-function scrollFunction() {console.log(121);
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        document.getElementById("myBtn").style.display = "block";
-    } else {
-        document.getElementById("myBtn").style.display = "none";
+    // 当网页向下滑动 20px 出现"返回顶部" 按钮
+    window.onscroll = function () {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("myBtn").style.display = "block";
+        } else {
+            document.getElementById("myBtn").style.display = "none";
+        }
     }
-}
- 
-// 点击按钮，返回顶部
-function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-}
+
+    // 点击按钮，返回顶部
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
 </script>
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -134,7 +139,7 @@ function topFunction() {
                 <!-- 个人资料 -->
                 <div class="tab-pane fade in active" id="Tab1">
                     <div class="text-center">
-                        <?php echo "<img src=\"images/Rikka.jpg\"
+                        <?php echo "<img src=\"https://v1.alapi.cn/api/avatar?email=$email&size=200\"
                              class=\"img-circle text-center\" width=\"200\" height=\"200\">";
                         ?>
                     </div>
@@ -204,6 +209,32 @@ function topFunction() {
                             ?>
                             <div class="card">
                                 <a href="<? the_permalink(); ?>"><? the_title(); ?></a>
+                                <span class="dropdown" style="position: absolute;right: 3%;">
+                                                <button type="button" class="btn dropdown-toggle" id="dropdownMenu1"
+                                                        data-toggle="dropdown">edit
+                                                <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                                    <li role="presentation">
+                                                        <a class="delete-article"
+                                                           href="<?php echo $road . '/functions/deleteBlog.php?id=' . get_the_ID(); ?>">
+                                                            <i class="glyphicon glyphicon-trash"></i>
+                                                            <span>
+                                                                delete
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li role="presentation">
+                                                        <a class="modify-article"
+                                                           href=<?php echo $road . "/page-editor.php?id=" . get_the_ID(); ?>>
+                                                            <i class="glyphicon glyphicon-edit"></i>
+                                                            <span>
+                                                                modify
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </span>
                                 <!--                                删除/修改功能待完善-->
                                 <!--                                <div class="pull-right dropdown">-->
                                 <!--                                    <button type="button" class="btn dropdown-toggle btn-default" id="menu"-->
@@ -220,9 +251,10 @@ function topFunction() {
                                 <!--                                    </ul>-->
                                 <!--                                </div>-->
                                 <!--                                <h5>副标题</h5>-->
-                                <div class="fakeimg">
-                                    <img src="<? get_random_pic(); ?>"
-                                         alt="Yukino" width="400">
+                                <div class="fakeimg"><a href="<? the_permalink(); ?>">
+                                        <img src="<? get_random_pic(); ?>"
+                                             alt="Yukino" width="400">
+                                    </a>
                                 </div>
                                 <p><? the_author(); ?></p>
                             </div>
@@ -275,10 +307,6 @@ function topFunction() {
                 <!-- 右侧部分 -->
             </div>
         </div>
-
-        <!-- <div class="jumbotron text-center" style="margin-bottom:0">
-          <p>Powered by zzz</p>
-        </div> -->
 
 </body>
 </html>

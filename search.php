@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>CLBlogs</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <?php
     $road = get_template_directory_uri();
+    echo '<link type="stylesheet" href="' . $road . '/css/bootstrap.min.css">';
+    echo '<script type="text/javascript" src="' . $road . '/js/jquery.min.js"></script>';
+    echo '<script type="text/javascript" src="' . $road . '/js/bootstrap.min.js"></script>';
     ?>
     <style>
         body {
@@ -768,11 +769,13 @@
                             the_post();
                             ?>
                             <div class="blog_card"><a href="<? the_permalink(); ?>"><? the_title(); ?></a>
-                                <div class="blog_div"><a href="#"></a><a class="abstract" href="<? the_permalink(); ?>"><? the_excerpt(); ?><br></a></div>
+                                <div class="blog_div"><a href="#"></a><a class="abstract"
+                                                                         href="<? the_permalink(); ?>"><? the_excerpt(); ?>
+                                        <br></a></div>
                                 <footer id="post-item-foot-4" class="post-item-foot">
                                     <span class="post-item-author"><span>author：<? the_author(); ?></span></span><span
                                             class="post-meta-item">time：<? the_time('Y-m-d'); ?></span>
-                                    <span class="post-meta-item" ><span
+                                    <span class="post-meta-item"><span
                                                 class="glyphicon glyphicon-thumbs-up"></span><span>Likes: <?php
                                             global $post;
                                             $like_num = get_user_meta($post->post_author, 'likes', true);
