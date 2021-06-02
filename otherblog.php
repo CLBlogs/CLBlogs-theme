@@ -74,15 +74,21 @@
             </div>
             <div class="text-center">
                 <h2><?php echo $user_data->user_login;?></h2>
-                <p>User: <?php echo $user_data->user_login; ?></p>
-                <p id='sex'>Sex: <?php echo get_user_meta($user_id, 'sex', true); ?></p>
-                <p id='birthday'>Birthday: <?php echo get_user_meta($user_id, 'birthday', true); ?></p>
-                <p id='qq_num'>QQ: <?php echo get_user_meta($user_id, 'qq_num', true); ?></p>
-                <p id='wechat_num'>WeChat: <?php echo get_user_meta($user_id, 'wechat_num', true); ?></p>
+                <?php if(!empty(get_user_meta($user_id, 'sex', true))) {?>
+                    <p id='sex'>性别: <?php echo get_user_meta($user_id, 'sex', true); ?></p> <?} ?>
+                <?php if(!empty(get_user_meta($user_id, 'birthday', true))) {?>
+                    <p id='sex'>生日: <?php echo get_user_meta($user_id, 'birthday', true); ?></p> <?} ?>
+                <?php if(!empty(get_user_meta($user_id, 'qq_num', true))) {?>
+                    <p id='qq_num'>qq: <?php echo get_user_meta($user_id, 'qq_num', true); ?></p> <?} ?>
+                <?php if(!empty(get_user_meta($user_id, 'wechat_num', true))) {?>
+                    <p id='wechat_num'>微信: <?php echo get_user_meta($user_id, 'wechat_num', true); ?></p> <?} ?>
                 <p>E-mail: <?php echo $user_data->user_email; ?></p>
-                <p id='phone'>Phone number：<?php echo get_user_meta($user_id, 'phone', true); ?></p>
-                <p id='interests'>Interests: <?php echo get_user_meta($user_id, 'interests', true); ?></p>
-                <p id='introduction'>Introduction：<?php echo get_user_meta($user_id, 'introduction', true); ?></p>
+                <?php if(!empty(get_user_meta($user_id, 'phone', true))) {?>
+                    <p id='phone'>手机号码：<?php echo get_user_meta($user_id, 'phone', true); ?></p> <?} ?>
+                <?php if(!empty(get_user_meta($user_id, 'interests', true))) {?>
+                    <p id='interests'>兴趣标签: <?php echo get_user_meta($user_id, 'interests', true); ?></p> <?} ?>
+                <?php if(!empty(get_user_meta($user_id, 'introduction', true))) {?>
+                    <p id='introduction'>个人简介：<?php echo get_user_meta($user_id, 'introduction', true); ?></p> <?} ?>
             </div>
         </div>
 
