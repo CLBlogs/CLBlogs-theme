@@ -19,7 +19,8 @@ $APost = array(
     "post_modified_gmt" => $now_date,
     "guid" => get_bloginfo('url') . "?p=" . "$posts_id",
     "post_type" => "post",
-    "post_name" => md5($now_date.$_POST["post_title"])
+    "post_name" => md5($now_date . $_POST["post_title"])
 );
 $wpdb->insert($wpdb->posts, $APost);
+add_post_meta($posts_id, 'articleMd', htmlentities($_POST["test-editormd-markdown-doc"]));
 header('location:../mineblog.php');

@@ -72,9 +72,8 @@ testEditor.getHTML();           // 获取 Textarea 保存的 HTML 源码
 testEditor.getPreviewedHTML();  // 获取预览窗口里的 HTML，在开启 watch 且没有开启 saveHTMLToTextarea 时使用
 ```';
                 if (strpos($_SERVER['REQUEST_URI'], '?')) {
-                    foreach ($rows as $arrArticle) {
-                        echo $arrArticle->post_content;
-                    }
+                    $articleMd = get_post_meta(substr(strstr($_SERVER['REQUEST_URI'], "?"), 4), "articleMd", true);
+                    echo $articleMd;
                 } else
                     echo $text_content;
                 ?>
