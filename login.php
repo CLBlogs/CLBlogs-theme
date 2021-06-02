@@ -13,21 +13,6 @@
             border: 1px solid #000000;
         }
 
-        .backColor {
-            background-color: rgba(240, 255, 255, 0.25);
-            border-radius: 10px;
-        }
-
-        .submitButton {
-            border-radius: 30px;
-            margin-top: 10px;
-            background-color: rgba(70, 114, 137, 0.3);
-            width: 100%;
-            height: 50px;
-            border: 0px;
-            font-size: 18px;
-            font-family: "黑体";
-        }
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Sign in and Sign up</title>
@@ -74,7 +59,7 @@
             <?php echo "<form action=\"$road/loginaction.php\" method=\"post\">"; ?>
             <div class="row">
                 <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    User Name:&nbsp;&nbsp;
+                    User Name&nbsp;&nbsp;
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <input class="information" name="user_login" type="text" value=""/>
@@ -83,7 +68,7 @@
             </br>
             <div class="row">
                 <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    Password:&nbsp;&nbsp;&nbsp;&nbsp;
+                    Password&nbsp;&nbsp;
 
                 </div>
                 <div class="col-md-4 col-sm-4">
@@ -97,7 +82,7 @@
             </br>
             <div class="row">
                 <div class=" col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    CAPTCHA:&nbsp;&nbsp;
+                    CAPTCHA&nbsp;&nbsp;
                 </div>
                 <div class="col-md-3 col-sm-3">
                     <input class="information canValue-login" type="text" value="" placeholder="Case Insensitive">
@@ -109,15 +94,16 @@
             </br>
             <div class="row" style="position: relative;top: 5px;">
                 <div class="col-md-2 col-md-offset-2  col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    Remember Password:
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <input name="remember" type="checkbox"/>
+                    Remember Password:
                 </div>
             </div>
             <div class="row" style="position: relative;top:10px;">
                 <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
                     <input class="submitButton" id="submitButton-login" type="button" value="Sign in">
+
                 </div>
             </div>
             </form>
@@ -130,7 +116,7 @@
             <?php echo "<form action=\"$road/registeraction.php\" method=\"post\">"; ?>
             <div class="row">
                 <div class="col-md-2 col-md-offset-2  col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    User Name:&nbsp;&nbsp;
+                    User Name&nbsp;&nbsp;
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <input class="information" name="user_login" type="text" value=""/>
@@ -139,7 +125,7 @@
             </br>
             <div class="row">
                 <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    <p>E-mail:&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <p>E-mail&nbsp;&nbsp;</p>
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <input class="information" name="email" type="text" value=""/>
@@ -149,7 +135,7 @@
 
             <div class="row">
                 <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    Password:&nbsp;&nbsp;&nbsp;&nbsp;
+                    Password&nbsp;&nbsp;
                 </div>
                 <div class="col-sm-4 col-sm-4">
                     <input class="information password" id="password" name="user_pass" type="password"/>
@@ -161,7 +147,7 @@
             </br>
             <div class="row">
                 <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    Confirm:
+                    Confirm&nbsp;&nbsp;
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <input class="information repassword" id="rePassword" name="re_password" type="password"
@@ -175,7 +161,7 @@
             </br>
             <div class="row">
                 <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 text-right" id="textContent">
-                    CAPTCHA:&nbsp;&nbsp;
+                    CAPTCHA&nbsp;&nbsp;
                 </div>
                 <div class="col-md-3 col-sm-3">
                     <input class="information canValue-register" type="text" value="" placeholder="Case Insensitive">
@@ -210,7 +196,7 @@
         } else if (val == 'register') {
             login_div.style.display = 'none';
             register_div.style.display = 'block';
-            $("#back").css("height", "500");
+            $("#back").css("height", "485");
             lo.style.borderBottom = '';
             re.style.borderBottom = '3px solid #45718A';
         }
