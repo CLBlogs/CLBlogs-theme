@@ -6,13 +6,12 @@
             width: 30px;
             height: 30px;
         }
-
-        .canvas {
-            width: 120px;
-            height: 42px;
-            border: 1px solid #000000;
+        .canvas{
+            width:120px ;
+            height:42px;
+            border:1px solid #ffffff;
+            background-color: #bce8f1;
         }
-
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Sign in and Sign up</title>
@@ -282,13 +281,13 @@
             canvas_width = $('#canvas-register').width();
             canvas_height = $('#canvas-register').height();
         }
-
         var context = canvas.getContext("2d");
         canvas.width = canvas_width;
         canvas.height = canvas_height;
         var sCode = "a,b,c,d,e,f,g,h,i,j,k,m,n,p,q,r,s,t,u,v,w,x,y,z,A,B,C,E,F,G,H,J,K,L,M,N,P,Q,R,S,T,W,X,Y,Z,1,2,3,4,5,6,7,8,9,0";
         var aCode = sCode.split(",");
         var aLength = aCode.length;
+
         for (var i = 0; i < 4; i++) {
             var j = Math.floor(Math.random() * aLength);
             var deg = Math.random() - 0.5;
@@ -296,7 +295,7 @@
             show_num[i] = txt.toLowerCase();
             var x = 10 + i * 20;
             var y = 20 + Math.random() * 8;
-            context.font = "bold 23px 微软雅黑";
+            context.font = "bold 25px 微软雅黑";
             context.translate(x, y);
             context.rotate(deg);
             context.fillStyle = randomColor();
