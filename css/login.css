@@ -15,7 +15,7 @@ body {
 .position {
     width: 100%;
     position: absolute;
-    top: 15%;
+    top: 10%;
 }
 .information {
     background-color: transparent;
@@ -27,7 +27,7 @@ body {
     font-family: serif;
 }
 #textContent {
-    font-family: "黑体";
+    <!-- fron-family:""  -->
     font-size: 20px;
 }
 .submitButton {
@@ -38,7 +38,6 @@ body {
     height: 50px;
     border: 0px;
     font-size: 18px;
-    font-family: "仿宋";
 }
 .navi {
     width: 100%;
@@ -53,7 +52,7 @@ body {
     margin-left: 70px;
 }
 .backColor {
-    background-color: rgba(240, 255, 255, 0.25);
+    background-color: rgba(240, 255, 255, 0.5);
     border-radius: 10px;
 }
 .passwordImgs, .repasswordImgs{
@@ -64,5 +63,6 @@ body {
 .canvas{
     width:120px ;
     height:42px;
-    border:1px solid #000000;
+    border:1px solid white;
+    background-color: white;
 }
