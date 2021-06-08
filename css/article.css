@@ -134,7 +134,7 @@ article{
     display: none;
 }
 div.toolbox{
-    margin:20px -5px 10px -5px;
+    margin:20px 0px 10px ;
     background-color: #f7f7f7;
 }
 ul.toolbox_one{
