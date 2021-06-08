@@ -13,6 +13,8 @@
     echo "<link href=\"$road/css/bootstrap.min.css\" rel=\"stylesheet\">";
     echo "<script src=\"$road/js/jquery.min.js\"></script>";
     echo "<script src=\"$road/js/bootstrap.min.js\"></script>";
+    echo "<link rel=\"stylesheet\" href=\"$road/css/Navigation-Clean.css\">";
+
     session_start();
     $user_id = $_SESSION['user_id'];
     setcookie("user_id", $user_id, time() + 3600, '/');
@@ -20,11 +22,241 @@
     // echo $author_info->user_email;
     $user_name = $_COOKIE['user_login'];
     echo "<title>$user_name's Personal Center</title>";
-    $user_data = get_userdata($user_id);
-    $email = $user_data->user_email;
     ?>
 
     <style>
+        a:link {text-decoration: none;}
+        a:visited {text-decoration: none;}
+        a:active {text-decoration: none;}
+        a:hover {text-decoration: none;}
+
+        @media (max-width: 767px) {
+            .navigation-clean {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .navigation-clean .navbar-header {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+        }
+
+        .navigation-clean .navbar-brand {
+            font-weight: bold;
+        }
+
+        .navigation-clean .navbar-toggle {
+            border-color: #ddd;
+        }
+
+        .navigation-clean .navbar-toggle:hover, .navigation-clean .navbar-toggle:focus {
+            background: none;
+        }
+
+        .navigation-clean .navbar-toggle .icon-bar {
+            background-color: #888;
+        }
+
+        .navigation-clean .navbar-nav > .active > a, .navigation-clean .navbar-nav > .open > a {
+            background: none;
+            box-shadow: none;
+        }
+
+        .navigation-clean.navbar-default .navbar-nav > .active > a, .navigation-clean.navbar-default .navbar-nav > .active > a:focus, .navigation-clean.navbar-default .navbar-nav > .active > a:hover {
+            color: #cbc6c6;
+            box-shadow: none;
+            background: none;
+            padding-top: 8px;
+            font-size: 12px;
+            padding-bottom: 0;
+            padding-right: 0;
+        }
+
+        .navigation-clean.navbar .navbar-nav > li > a {
+            padding-left: 18px;
+            padding-right: 18px;
+        }
+
+        .navigation-clean.navbar-default .navbar-nav > li > a {
+            color: #465765;
+        }
+
+        .navigation-clean.navbar-default .navbar-nav > li > a:focus, .navigation-clean.navbar-default .navbar-nav > li > a:hover {
+            color: #faf8f8 !important;
+            background-color: transparent;
+        }
+
+        .navigation-clean .navbar-nav > li > .dropdown-menu {
+            margin-top: -5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
+            background-color: #fff;
+            border-radius: 2px;
+        }
+
+        .navigation-clean .dropdown-menu > li > a:focus, .navigation-clean .dropdown-menu > li > a {
+            line-height: 2;
+            font-size: 14px;
+            color: #37434d;
+        }
+
+        .navigation-clean .dropdown-menu > li > a:focus, .navigation-clean .dropdown-menu > li > a:hover {
+            background: #eee;
+            color: inherit;
+        }
+
+        .navbar-collapse {
+            -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        .top_nav_link {
+            padding-left: 18px;
+            padding-right: 18px;
+            font-size: 20px;
+        }
+
+        .navbar-brand {
+            font-size: 28px;
+        }
+
+        .navbar-list > a {
+            margin-left: 24px;
+        }
+
+
+        .navbar-brand {
+            padding-top: 12px;
+        }
+
+        #user_icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .navbar-avatar {
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        #main-flow {
+            margin: 0 auto;
+        }
+
+        a {
+            font-size: 15px;
+        }
+
+        .dropdown {
+            background-color: initial;
+        }
+
+        .dropdown-menu {
+            min-width: initial;
+        }
+
+        .dropdown-toggle {
+            color: #f0eeee;
+        }
+
+        #top_right {
+            float: right;
+            background-color: #222;
+        }
+
+        navbar {
+            background-color: #2b2727;
+            border-radius: 4px;
+        }
+
+        #top_in {
+            background-color: #222;
+            border-radius: 4px;
+        }
+
+        #navcol-1 {
+            background-color: #222;
+            width: 100%;
+        }
+
+        #CLBLOGS {
+            background-color: #222;
+        }
+
+        #title {
+            color: #9d9d9d;
+            float: left;
+            height: 50px;
+            /*padding: 15px 15px;*/
+            font-size: 19px;
+            line-height: 23px;
+        }
+
+        .blog_card {
+            border-width: 5px;
+            border-bottom: 1px solid #d5d3d3;
+            border-left: 1px solid #edeef0;
+            border-right: 1px solid #edeef0;
+            background-color: white;
+            padding: 20px;
+            border-top: 3px solid skyblue;
+            margin-bottom: 15px;
+        }
+
+        .abstract {
+            display: block;
+        }
+
+        #top {
+            margin-bottom: 40px;
+            border: none;
+        }
+
+        #home {
+            background-color: rgb(0, 0, 0);
+            color: #ddd;
+        }
+
+        #home:hover {
+            color: rgb(255, 255, 255);
+        }
+
+        #title {
+            color: rgb(224, 224, 224);
+        }
+
+        #title:hover {
+            color: #fff;
+        }
+
+        #login {
+            color: #ddd;
+        }
+
+        #login:hover {
+            color: rgb(255, 255, 255);
+        }
+
+        #caidan {
+            padding-top: 2px;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-bottom: 10px;
+            background-color: #222;
+        }
+
+        #dropdown_toggle {
+            background-color: #222;
+        }
+
         .card {
             border-width: 5px;
             /* border-style: solid; */
@@ -36,7 +268,6 @@
             padding: 20px;
             margin-top: 20px;
         }
-
         #myBtn {
             display: none; /* 默认隐藏 */
             position: fixed;
@@ -72,11 +303,9 @@
 
 <script>
     // 当网页向下滑动 20px 出现"返回顶部" 按钮
-    window.onscroll = function () {
-        scrollFunction()
-    };
+    window.onscroll = function() {scrollFunction()};
 
-    function scrollFunction() {
+    function scrollFunction() {console.log(121);
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
             document.getElementById("myBtn").style.display = "block";
         } else {
@@ -90,27 +319,39 @@
         document.documentElement.scrollTop = 0;
     }
 </script>
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">CLBLOGS</a>
+<nav class="navbar navbar-default" id="top">
+    <div class="container-fluid" id="top_in">
+        <div class="navbar-header" id="CLBLOGS"><a class="navbar-brand" id="title" href="/">CLBLOGS</a>
+            <button data-toggle="collapse" class="navbar-toggle collapsed" data-target="#navcol-1"><span
+                        class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
+                        class="icon-bar"></span><span class="icon-bar"></span></button>
         </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
-                <!--                <li><a href="#">管理</a></li>-->
-                <!--                <li><a href="#">留言</a></li>-->
+        <div class="collapse navbar-collapse" id="navcol-1">
+            <ul class="nav navbar-nav" id="home_nav">
+                <li><a id="home" href="/">Home</a></li>
             </ul>
-            <!--            <div class="pull-right">-->
-            <!--                <ul class="nav navbar-nav">-->
-            <!--                    <li><a href="#">登录</a></li>-->
-            <!--                </ul>-->
-            <!--            </div>-->
+            <ul class="nav navbar-nav" id="top_right">
+                <?php
+                if (empty($_COOKIE['user_login'])) {
+                    echo "<li><a id=\"login\" href=\"$road/login.php\">sign in / sign up</a></li>";
+                } else {
+                    echo "<li><a class=\"dropdown-button\" id= \"caidan\" data-target=\"#\" href=\"/\">
+                                <div class=\"dropdown\">
+                                <a class=\"dropdown-toggle\" id=\"dropdown_toggle\" aria-expanded=\"false\" data-toggle=\"dropdown\" href=\"/\" data-target=\"#\">
+                                        <img id=\"user_icon\" class=\"navbar-avatar\" src=\"https://cdn.jsdelivr.net/gh/fnsflmzqdydk/myPicbed/2021/01/12/poQDfOJ53v782ab-8d380a.jpeg\">    
+                                         $author_info->user_login
+                                    </a>
+                                    <ul class=\"dropdown-menu\">
+                                        <li><a href=\"$road/mineblog.php\"><i class=\"glyphicon glyphicon-user\"></i>个人空间</a></li>
+                                        <li><a href=\"$road/functions/loginout.php\"><i class=\"glyphicon glyphicon-log-out\"></i>退出登录</a></li>
+                                    </ul>
+                                </div>
+                                
+                            </a>
+                            <li>";
+                }
+                ?>
+            </ul>
         </div>
     </div>
 </nav>
@@ -139,7 +380,7 @@
                 <!-- 个人资料 -->
                 <div class="tab-pane fade in active" id="Tab1">
                     <div class="text-center">
-                        <?php echo "<img src=\"https://v1.alapi.cn/api/avatar?email=$email&size=200\"
+                        <?php echo "<img src=\"images/Rikka.jpg\"
                              class=\"img-circle text-center\" width=\"200\" height=\"200\">";
                         ?>
                     </div>
@@ -149,7 +390,7 @@
                     <div id="personal-information">
                         <p>User: <?php echo $author_info->user_login; ?></p>
                         <?php if(!empty(get_user_meta($user_id, 'sex', true))) {?>
-                                <p id='sex'>性别: <?php echo get_user_meta($user_id, 'sex', true); ?></p> <?} ?>
+                            <p id='sex'>性别: <?php echo get_user_meta($user_id, 'sex', true); ?></p> <?} ?>
                         <?php if(!empty(get_user_meta($user_id, 'birthday', true))) {?>
                             <p id='sex'>生日: <?php echo get_user_meta($user_id, 'birthday', true); ?></p> <?} ?>
                         <?php if(!empty(get_user_meta($user_id, 'qq_num', true))) {?>
@@ -206,7 +447,11 @@
                 </div>
                 <!-- 博客管理 -->
                 <div class="tab-pane fade" id="Tab3">
-                    <a href="page-editor.php" class="btn btn-primary btn-lg">upload blog</a>
+
+                    <a href="page-editor.php" class="glyphicon glyphicon-plus" style="position: absolute;right: 3%;">
+                        upload blog
+                    </a>
+                    <br>
                     <?php
                     query_posts(array('post_status' => 'publish', 'author' => $user_id));
                     if (have_posts()) {
@@ -218,7 +463,7 @@
                             <div class="card">
                                 <a href="<? the_permalink(); ?>"><? the_title(); ?></a>
                                 <span class="dropdown" style="position: absolute;right: 3%;">
-                                                <button type="button" class="btn dropdown-toggle" id="dropdownMenu1"
+                                                <button type="button" class="btn" id="dropdownMenu1"
                                                         data-toggle="dropdown">edit
                                                 <span class="caret"></span>
                                                 </button>
@@ -243,22 +488,6 @@
                                                     </li>
                                                 </ul>
                                             </span>
-                                <!--                                删除/修改功能待完善-->
-                                <!--                                <div class="pull-right dropdown">-->
-                                <!--                                    <button type="button" class="btn dropdown-toggle btn-default" id="menu"-->
-                                <!--                                            data-toggle="dropdown" aria-label="Left Align">-->
-                                <!--                                        <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>-->
-                                <!--                                    </button>-->
-                                <!--                                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu">-->
-                                <!--                                        <li role="presentation">-->
-                                <!--                                            <a role="menuitem" tabindex="-1" href="#">删除</a>-->
-                                <!--                                        </li>-->
-                                <!--                                        <li role="presentation">-->
-                                <!--                                            <a role="menuitem" tabindex="-1" href="#">修改</a>-->
-                                <!--                                        </li>-->
-                                <!--                                    </ul>-->
-                                <!--                                </div>-->
-                                <!--                                <h5>副标题</h5>-->
                                 <div class="fakeimg"><a href="<? the_permalink(); ?>">
                                         <img src="<? get_random_pic(); ?>"
                                              alt="Yukino" width="400">
@@ -272,8 +501,10 @@
                         echo 'No blog here';
                     }
                     ?>
+
                     <!-- 我的收藏 -->
                 </div>
+                <!-- 收藏管理-->
                 <div class="tab-pane fade" id="Tab4">
                     <?php
                     //                        $ar = explode(",", $author_info->user_favorite);
@@ -285,36 +516,35 @@
                         }
                         $zz = (int)$zz;
                         $collect = $wpdb->get_row("SELECT * FROM $wpdb->posts WHERE ID=$zz");
-                        ?>
-
-                        <div class="card">
-                            <a href=<?php echo $collect->guid; ?>> <?php echo $collect->post_title ?>  </a>
-                            <!--                            <div class="pull-right dropdown">-->
-                            <!--                                <button type="button" class="btn dropdown-toggle btn-default" id="menu"-->
-                            <!--                                        data-toggle="dropdown" aria-label="Left Align">-->
-                            <!--                                    <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>-->
-                            <!--                                </button>-->
-                            <!--                                <ul class="dropdown-menu" role="menu" aria-labelledby="menu">-->
-                            <!--                                    <li role="presentation">-->
-                            <!--                                        <a role="menuitem" tabindex="-1" href="#">取消收藏</a>-->
-                            <!--                                    </li>-->
-                            <!--                                </ul>-->
-                            <!--                            </div>-->
-                            <!--                            <h5>副标题</h5>-->
-                            <div class="fakeimg">
-                                <img src="<? get_random_pic(); ?>"
-                                     alt="Azusa" width="400">
+                        if(post_exists($collect->post_title)!=0){
+                            ?>
+                            <div class="card">
+                                <a href=<?php echo $collect->guid; ?>> <?php echo $collect->post_title ?>  </a>
+                                <span style="position: absolute;right: 3%;">
+                                    <a class="delete-article"
+                                       href="<?php echo $road . '/functions/delete_collect.php?uid=' . $user_id.'&pid='.$zz; ?>">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                        <span>
+                                            delete
+                                        </span>
+                                    </a>
+                                </span>
+                                <div class="fakeimg"><a href="<? the_permalink(); ?>">
+                                        <img src="<? get_random_pic(); ?>"
+                                             alt="Azusa" width="400">
+                                </div>
                             </div>
-                            <p>Azusa</p>
-                        </div>
-                        <?php
+                        <?php }
                     }
                     ?>
                 </div>
 
-                <!-- 右侧部分 -->
             </div>
         </div>
+
+        <!-- <div class="jumbotron text-center" style="margin-bottom:0">
+          <p>Powered by zzz</p>
+        </div> -->
 
 </body>
 </html>
