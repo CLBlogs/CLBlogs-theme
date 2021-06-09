@@ -8,9 +8,10 @@
     <title>CLBlogs</title>
     <?php
     $road = get_template_directory_uri();
-    echo '<link type="stylesheet" href="' . $road . '/css/bootstrap.min.css">';
+    echo '<link rel="stylesheet" href="' . $road . '/css/bootstrap.min.css">';
     echo '<script type="text/javascript" src="' . $road . '/js/jquery.min.js"></script>';
     echo '<script type="text/javascript" src="' . $road . '/js/bootstrap.min.js"></script>';
+    echo "<link rel=\"stylesheet\" href=\"$road/css/Navigation-Clean.css\">";
     ?>
     <style>
         body {
@@ -736,14 +737,17 @@
                     if (empty($_COOKIE['user_login'])) {
                         echo "<li><a id=\"login\" href=\"$road/login.php\">sign in / sign up</a></li>";
                     } else {
+                        $user_id = $_COOKIE['user_id'];
+                        $user_data = get_userdata($user_id);
+                        $email = $user_data->user_email;
                         echo "<li><a class=\"dropdown-button\" id= \"caidan\" href=\"$road/mineblog.php\">
                                 <div class=\"dropdown\"><a class=\"dropdown-toggle\" id=\"dropdown_toggle\" aria-expanded=\"false\" data-toggle=\"dropdown\" href=\"$road/mineblog.php\">
-                                        <img id=\"user_icon\" class=\"navbar-avatar\" src=\"assets/img/photo_test.png\">    
-                                        昵称
+                                        <img id=\"user_icon\" class=\"navbar-avatar\" src=\"https://v1.alapi.cn/api/avatar?email=$email&size=30\">    
+                                        " . $_COOKIE['user_login'] . "
                                     </a>
                                     <ul class=\"dropdown-menu\">
-                                        <li><a href=\"#\"><i class=\"glyphicon glyphicon-user\"></i>个人空间</a></li>
-                                        <li><a href=\"#\"><i class=\"glyphicon glyphicon-log-out\"></i>退出登录</a></li>
+                                        <li><a href=\"$road/mineblog.php\"><i class=\"glyphicon glyphicon-user\"></i>个人空间</a></li>
+                                        <li><a href=\"$road/functions/loginout.php\"><i class=\"glyphicon glyphicon-log-out\"></i>退出登录</a></li>
                                     </ul>
                                 </div>
                             </a><li>";
@@ -801,21 +805,69 @@
             </div>
             <div id="side_left" class="side-left card-list side-bar">
                 <div class="card">
-                    <h4 class="card-title"><a href="#">排行榜标题</a></h4>
+                    <h4 class="card-title">Views Rank</h4>
                     <ul class="item-list">
-                        <li><span class="number highlight">1</span><a href="#">Announcing -hardening<br><br></a></li>
-                        <li><span class="number highlight">2</span><a href="#">有意思！强大的 SVG 滤镜<br><br><br></a></li>
-                        <li><span class="number highlight">3</span><a href="#">CentOS离线安装Nginx<br><br><br></a></li>
-                        <li><span class="number highlight">4</span><a href="#">图解 | 原来这就是 class<br><br></a></li>
+                        <?php $args = array(
+                            'meta_key' => 'views',
+                            'orderby' => 'meta_value_num',
+                            'posts_per_page' => 6,
+                            'order' => 'DESC'
+                        );
+                        query_posts($args);
+                        while (have_posts()) : the_post(); ?>
+                            <li><a href="<? the_permalink(); ?>"><? the_title(); ?></a>
+                                <span class="kc-view fright">&nbsp; Views：
+                                        <?php
+                                        echo number_format(getPostViews(get_the_ID()));
+                                        ?>
+                                    </span>
+                            </li>
+                        <?php endwhile;
+                        wp_reset_query(); ?>
                     </ul>
                 </div>
                 <div class="card">
-                    <h4 class="card-title"><a href="#">排行榜标题</a></h4>
+                    <h4 class="card-title">Likes Rank</h4>
                     <ul class="item-list">
-                        <li><span class="number highlight">1</span><a href="#">Announcing -hardening<br><br></a></li>
-                        <li><span class="number highlight">2</span><a href="#">有意思！强大的 SVG 滤镜<br><br><br></a></li>
-                        <li><span class="number highlight">3</span><a href="#">CentOS离线安装Nginx<br><br><br></a></li>
-                        <li><span class="number highlight">4</span><a href="#">图解 | 原来这就是 class<br><br></a></li>
+                        <?php $args = array(
+                            'meta_key' => 'likes',
+                            'orderby' => 'meta_value_num',
+                            'posts_per_page' => 6,
+                            'order' => 'DESC'
+                        );
+                        query_posts($args);
+                        while (have_posts()) : the_post(); ?>
+                            <li><a href="<? the_permalink(); ?>"><? the_title(); ?></a>
+                                <span class="kc-view fright">&nbsp; Likes：
+                                        <?php
+                                        echo number_format(getPostLikes(get_the_ID()));
+                                        ?>
+                                    </span>
+                            </li>
+                        <?php endwhile;
+                        wp_reset_query(); ?>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4 class="card-title">Favorites Rank</h4>
+                    <ul class="item-list">
+                        <?php $args = array(
+                            'meta_key' => 'favorite',
+                            'orderby' => 'meta_value_num',
+                            'posts_per_page' => 6,
+                            'order' => 'DESC'
+                        );
+                        query_posts($args);
+                        while (have_posts()) : the_post(); ?>
+                            <li><a href="<? the_permalink(); ?>"><? the_title(); ?></a>
+                                <span class="kc-view fright">&nbsp; Favorites：
+                                        <?php
+                                        echo number_format(getPostFavorites(get_the_ID()));
+                                        ?>
+                                    </span>
+                            </li>
+                        <?php endwhile;
+                        wp_reset_query(); ?>
                     </ul>
                 </div>
             </div>

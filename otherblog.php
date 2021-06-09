@@ -13,7 +13,7 @@
     $user_id = $_GET['user_id'];
     $user_data = get_userdata($user_id);
     $email = $user_data->user_email;
-    $title = empty($user_data->user_login)?"Other's Home":$user_data->user_login."'s Home";
+    $title = empty($user_data->user_login) ? "Other's Home" : $user_data->user_login . "'s Home";
     echo "<title>$title</title>";
     ?>
 
@@ -51,12 +51,32 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Home</a></li>
-<!--                <li><a href="#">管理</a></li>-->
-<!--                <li><a href="#">留言</a></li>-->
+                <!--                <li><a href="#">管理</a></li>-->
+                <!--                <li><a href="#">留言</a></li>-->
             </ul>
             <div class="pull-right">
                 <ul class="nav navbar-nav">
-                    <li><a href="login.php">Login</a></li>
+                    <!--                    <li><a href="login.php">Login</a></li>-->
+                    <?php
+                    if (empty($_COOKIE['user_login'])) {
+                        echo "<li><a id=\"login\" href=\"$road/login.php\">sign in / sign up</a></li>";
+                    } else {
+                        echo "<li><a class=\"dropdown-button\" id= \"caidan\" data-target=\"#\" href=\"/\">
+                                <div class=\"dropdown\">
+                                <a class=\"dropdown-toggle\" id=\"dropdown_toggle\" aria-expanded=\"false\" data-toggle=\"dropdown\" href=\"/\" data-target=\"#\">
+                                        <img id=\"user_icon\" class=\"navbar-avatar\" src=\"https://v1.alapi.cn/api/avatar?email=$email&size=30\">    
+                                         $user_data->user_login
+                                    </a>
+                                    <ul class=\"dropdown-menu\">
+                                        <li><a href=\"$road/mineblog.php\"><i class=\"glyphicon glyphicon-user\"></i>Personal Center</a></li>
+                                        <li><a href=\"$road/functions/loginout.php\"><i class=\"glyphicon glyphicon-log-out\"></i>Log out</a></li>
+                                    </ul>
+                                </div>
+                                
+                            </a>
+                            <li>";
+                    }
+                    ?>
                 </ul>
             </div>
         </div>
@@ -73,22 +93,22 @@
                      class="img-circle text-center" width="200" height="200">
             </div>
             <div class="text-center">
-                <h2><?php echo $user_data->user_login;?></h2>
-                <?php if(!empty(get_user_meta($user_id, 'sex', true))) {?>
-                    <p id='sex'>性别: <?php echo get_user_meta($user_id, 'sex', true); ?></p> <?} ?>
-                <?php if(!empty(get_user_meta($user_id, 'birthday', true))) {?>
-                    <p id='sex'>生日: <?php echo get_user_meta($user_id, 'birthday', true); ?></p> <?} ?>
-                <?php if(!empty(get_user_meta($user_id, 'qq_num', true))) {?>
-                    <p id='qq_num'>qq: <?php echo get_user_meta($user_id, 'qq_num', true); ?></p> <?} ?>
-                <?php if(!empty(get_user_meta($user_id, 'wechat_num', true))) {?>
-                    <p id='wechat_num'>微信: <?php echo get_user_meta($user_id, 'wechat_num', true); ?></p> <?} ?>
+                <h2><?php echo $user_data->user_login; ?></h2>
+                <?php if (!empty(get_user_meta($user_id, 'sex', true))) { ?>
+                    <p id='sex'>性别: <?php echo get_user_meta($user_id, 'sex', true); ?></p> <? } ?>
+                <?php if (!empty(get_user_meta($user_id, 'birthday', true))) { ?>
+                    <p id='sex'>生日: <?php echo get_user_meta($user_id, 'birthday', true); ?></p> <? } ?>
+                <?php if (!empty(get_user_meta($user_id, 'qq_num', true))) { ?>
+                    <p id='qq_num'>qq: <?php echo get_user_meta($user_id, 'qq_num', true); ?></p> <? } ?>
+                <?php if (!empty(get_user_meta($user_id, 'wechat_num', true))) { ?>
+                    <p id='wechat_num'>微信: <?php echo get_user_meta($user_id, 'wechat_num', true); ?></p> <? } ?>
                 <p>E-mail: <?php echo $user_data->user_email; ?></p>
-                <?php if(!empty(get_user_meta($user_id, 'phone', true))) {?>
-                    <p id='phone'>手机号码：<?php echo get_user_meta($user_id, 'phone', true); ?></p> <?} ?>
-                <?php if(!empty(get_user_meta($user_id, 'interests', true))) {?>
-                    <p id='interests'>兴趣标签: <?php echo get_user_meta($user_id, 'interests', true); ?></p> <?} ?>
-                <?php if(!empty(get_user_meta($user_id, 'introduction', true))) {?>
-                    <p id='introduction'>个人简介：<?php echo get_user_meta($user_id, 'introduction', true); ?></p> <?} ?>
+                <?php if (!empty(get_user_meta($user_id, 'phone', true))) { ?>
+                    <p id='phone'>手机号码：<?php echo get_user_meta($user_id, 'phone', true); ?></p> <? } ?>
+                <?php if (!empty(get_user_meta($user_id, 'interests', true))) { ?>
+                    <p id='interests'>兴趣标签: <?php echo get_user_meta($user_id, 'interests', true); ?></p> <? } ?>
+                <?php if (!empty(get_user_meta($user_id, 'introduction', true))) { ?>
+                    <p id='introduction'>个人简介：<?php echo get_user_meta($user_id, 'introduction', true); ?></p> <? } ?>
             </div>
         </div>
 
@@ -108,7 +128,7 @@
                     ?>
                     <div class="card">
                         <a href="<? the_permalink(); ?>"><? the_title(); ?></a>
-<!--                        <h5>副标题</h5>-->
+                        <!--                        <h5>副标题</h5>-->
                         <div class="fakeimg">
                             <img src="<? get_random_pic(); ?>" alt="Azusa"
                                  width="400">

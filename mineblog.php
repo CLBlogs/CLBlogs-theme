@@ -353,12 +353,12 @@
                     echo "<li><a class=\"dropdown-button\" id= \"caidan\" data-target=\"#\" href=\"/\">
                                 <div class=\"dropdown\">
                                 <a class=\"dropdown-toggle\" id=\"dropdown_toggle\" aria-expanded=\"false\" data-toggle=\"dropdown\" href=\"/\" data-target=\"#\">
-                                        <img id=\"user_icon\" class=\"navbar-avatar\" src=\"https://cdn.jsdelivr.net/gh/fnsflmzqdydk/myPicbed/2021/01/12/poQDfOJ53v782ab-8d380a.jpeg\">    
-                                         $author_info->user_login
+                                        <img id=\"user_icon\" class=\"navbar-avatar\" src=\"https://v1.alapi.cn/api/avatar?email=$email&size=30\">    
+                                         " . $_COOKIE['user_login'] . "
                                     </a>
                                     <ul class=\"dropdown-menu\">
-                                        <li><a href=\"$road/mineblog.php\"><i class=\"glyphicon glyphicon-user\"></i>个人空间</a></li>
-                                        <li><a href=\"$road/functions/loginout.php\"><i class=\"glyphicon glyphicon-log-out\"></i>退出登录</a></li>
+                                        <li><a href=\"$road/mineblog.php\"><i class=\"glyphicon glyphicon-user\"></i>Personal Center</a></li>
+                                        <li><a href=\"$road/functions/loginout.php\"><i class=\"glyphicon glyphicon-log-out\"></i>Log out</a></li>
                                     </ul>
                                 </div>
                                 
@@ -534,8 +534,8 @@
                         }
                         $zz = (int)$zz;
                         $collect = $wpdb->get_row("SELECT * FROM $wpdb->posts WHERE ID=$zz");
-//                        if (post_exists($collect->post_title) != 0) {
                         if (!empty($collect)) {
+//                            if (post_exists($collect->post_title) != 0) {
                             ?>
                             <div class="card">
                                 <a href=<?php echo $collect->guid; ?>> <?php echo $collect->post_title ?>  </a>
@@ -556,6 +556,7 @@
                             </div>
                             <?php
                         }
+//                        }
                     }
                     ?>
                 </div>
