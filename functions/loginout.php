@@ -9,5 +9,5 @@ setcookie("user_pass","", time() + 3600, '/');
 setcookie("PHPSESSID","", time() + 3600, '/');
 setcookie("user_id","", time() + 3600, '/');
 echo "<script>
-            window.location.href=\"http://test5.fnsflm.xyz:8193/\";
+            window.location.href=\"http://www.clblogs.xyz/#\";
       </script>";
