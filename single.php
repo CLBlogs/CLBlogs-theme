@@ -408,7 +408,33 @@ pageEncoding="UTF-8"%>-->
                 }
             });
 
+
         }
+        // if (window.addEventListener)//FF,火狐浏览器会识别该方法
+        //     window.addEventListener('DOMMouseScroll', scroll, false);
+        // window.onscroll = document.onscroll = scroll;//W3C
+        // let v1=document.getElementById('other_article');
+        // const len=$('#other_article').offset().top-$(window).scrollTop();
+        // let scrolltop=0;
+        // //  console.log(len);
+        // if(len==10){
+        //     scrolltop=$(window).scrollTop();
+        // }
+        // function scroll(scrolltop){
+        //
+        //     if(scrolltop<=$(window).scrollTop()){
+        //         console.log(scrolltop);
+        //         v1.className ='other_article_fixed';
+        //         console.log(scrolltop);
+        //         console.log($(window).scrollTop())
+        //         console.log(v1.className);
+        //     }
+        //     else{
+        //         v1.className ='other_article_relative';
+        //             console.log(len);
+        //             console.log(v1.className);
+        //     }
+        // }
 
     </script>
 </head>
@@ -455,51 +481,44 @@ pageEncoding="UTF-8"%>-->
 
 <div id="main_content">
     <aside>
-        <div class="blogger">
-            <div class="blogger_head">
-                <?php echo "<a href=\"$road/otherblog.php?user_id=$author_id\">"; ?>
-                <img class="blogger_head_portrait"
-                     src="https://v1.alapi.cn/api/avatar?email=<?php echo $email; ?>&size=100"
-                     alt="Enter the blogger's home" class="blogger_head_portrait">
-                </a>
-                <div class="blogger_name">
-                    <?php echo $author_data->user_login; ?>
-                </div><span id='introduction'>个人简介：<?php echo get_user_meta($author_id, 'introduction', true); ?></span>
-            </div>
+
+        <div class="blogger_head">
+            <?php echo "<a href=\"$road/otherblog.php?user_id=$author_id\">"; ?>
+            <img class="blogger_head_portrait"
+                 src="https://v1.alapi.cn/api/avatar?email=<?php echo $email; ?>&size=100"
+                 alt="Enter the blogger's home" class="blogger_head_portrait">
+            </a><br>
+            <span id='author_introduction'>个人简介:<?php echo get_user_meta($author_id, 'introduction', true); ?></span>
+        </div>
+
+        <div class="blogger_introduction">
+            <p class="blogger_name"> <?php echo $author_data->user_login; ?> </p>
             <hr class="blogger_line">
-            <div class="blogger_introduction">
+            <div class="blogger_information">
                 <span>Article: <?php the_author_posts(); ?></span>
-                |<span>Tags:<?php echo count(get_tags()); ?></span>
-                |<span>Category:<?php echo count(get_categories()); ?></span>
                 |<span id="sum_comm">Comments:</span>
                 |<span>Collection: </span>
                 |<span>Thump:</span>
                 |<span>E-mail: <?php echo $email ?></span>
-
             </div>
         </div>
+
         <div class="classify">
-            <h4>Category</h4>
-            <ul>
-                <? wp_list_cats();?>
-            </ul>
+
             <h4>Time nodes</h4>
             <ul>
                 <?php wp_get_archives() ?>
             </ul>
-            <h4>Tags</h4>
+
+        </div>
+        <div class="other_article_relative" id="other_article">
+            <h4>其他文章</h4>
             <ul>
-                <?php
-                $all_the_tags = get_tags();
-                if($all_the_tags) {
-                    foreach ($all_the_tags as $this_tag){
-                        $tag_id = $this_tag->term_id;
-                        $link=get_tag_link($tag_id);?>
-                        <?php  echo "<li class= \"tag-item tag-item-$tag_id\">"?>
-                        <?php echo  "<a href=\"$link\">";echo  $this_tag->name?> </a>
-                        </li>
-                    <?php }
-                }?>
+                <li>
+                    <a href="/">示范样例-article name</a>
+                    <?php echo "<img  class='article_view' src=\"$road/img/articleView.png\">"; ?>
+                    <span>访问量</span>
+                </li>
             </ul>
         </div>
     </aside>
@@ -512,9 +531,9 @@ pageEncoding="UTF-8"%>-->
                         <a href="index.php" class="blogger_name" target="_blank"><? the_author(); ?></a>
                         <span class="creat_time"><? the_time('Y-m-d H:i:s'); ?></span>
                     </div>
-                    <div class="article_tag">
-                        <? the_tags(); ?>
-                    </div>
+<!--                    <div class="article_tag">-->
+<!--                        --><?// the_tags(); ?>
+<!--                    </div>-->
                 </div>
             </div>
             <article>
