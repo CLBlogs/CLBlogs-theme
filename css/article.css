@@ -8,7 +8,7 @@ a:hover{
 }
 #main_content{
     width: 1170px;
-    margin: 5px auto 15px;
+    margin: 10px auto 15px;
     clear: both;
     display: block;
     overflow: auto;
@@ -23,46 +23,44 @@ main{
     margin: 10px 10px 10px 20px;
     width: 800px;
     border-radius: 5px;
-    padding: 5px;
 }
 
-.blogger{
+.blogger_head,.blogger_introduction{
     overflow: auto;
     height:auto;
     width: 266px;
     background-color: #ffffff;
     border-radius: 5px;
     padding: 5px;
-    margin:20px 0;
+    margin:0px 0px 20px;
 }
-.blogger_head{
-    margin:5px;
-    height: auto;
-}
+
 .blogger_head_portrait{
     height:80px;
     width:80px;
     border-radius:50%;
     margin: 5px auto;
 }
+
+p.blogger_name{
+    padding: 5px;
+    height:24px;
+    font-size: 22px;
+    line-height: 24px;
+    color: black;
+    text-decoration-line: none ;
+}
 hr.blogger_line{
     size: 1px;
-    margin:auto;
+    margin: 5px auto;
 }
-.blogger_introduction{
-    margin:5px;
-}
-.blogger_name{
-    text-decoration-line: none ;
-    color: black;
-    height: 20px;
-    font-size: 18px;
-    line-height: 20px;
-    padding: 5px;
+.blogger_information{
+    margin:10px auto;
+    word-wrap: break-word;
+    -ms-word-wrap: break-word;
 }
 
-
-.classify{
+.classify,#other_article{
     overflow: auto;
     height:auto;
     width: 266px;
@@ -71,18 +69,39 @@ hr.blogger_line{
     padding: 5px;
     margin:20px 0;
 }
-.classify ul{
+.other_article_fixed{
+    position:fixed;
+    top:10px;
+}
+.other_article_relative{
+    position:relative;
+    top:0px;
+    left:0px;
+}
+.classify ul,#other_article ul{
     margin:20px auto;
 }
-.classify li{
-    margin:10px 20px;
-    list-style: none;
-    font-size:20px;
+.classify li,#other_article li{
+    margin:10px 10px;
+    list-style-type: none;
 }
-.classify li>a{
+.classify li>a,#other_article li>a{
     color: black;
+    font-size:18px;
 }
 
+#other_article>h4{
+    margin:5px;
+}
+#other_article>ul img{
+    width:20px;
+    height:20px;
+    margin:5px;
+}
+#other_article>ul span{
+    font-size:14px;
+    margin: 5px;
+}
 .main_head{
     margin:10px;
 }
@@ -104,17 +123,6 @@ hr.blogger_line{
     padding: 5px;
     line-height: 20px;
 }
-.article_tag{
-    margin: 15px 5px 5px 15px;
-}
-
-.article_tag>a{
-    height:20px;
-    line-height: 20px;
-    background-color: #ffffff;
-    padding: 4px;
-    box-shadow: 0 1px 2px #000000;
-}
 article{
     margin: 10px;
 
@@ -134,7 +142,7 @@ article{
     display: none;
 }
 div.toolbox{
-    margin:20px 0px 10px ;
+    margin:20px 0px 10px;
     background-color: #f7f7f7;
 }
 ul.toolbox_one{
@@ -160,6 +168,15 @@ ul.toolbox_one>li{
     border: 1px solid white;
     margin-bottom: 10px;
     background-color: #ffffff;
+}
+
+.content .container{
+    margin:15px auto;
+    width:100%;
+}
+#primary{
+    padding:45px 10px;
+    margin:0px;
 }
 
 
