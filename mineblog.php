@@ -7,7 +7,7 @@
     <!-- Bootstrap -->
     <?php
     require '../../../wp-blog-header.php';
-        require '../../../wp-admin/includes/post.php';
+    require '../../../wp-admin/includes/post.php';
     require_once 'check.php';
     global $wpdb;
     $road = get_template_directory_uri();
@@ -309,9 +309,6 @@
 
 
 <body>
-<!-- <div class="jumbotron text-center" style="margin-bottom:0">
-    <h1>我的主页</h1>
-  </div> -->
 
 <!-- 导航栏 -->
 <button onclick="topFunction()" id="myBtn" title="回顶部">返回顶部</button>
@@ -538,11 +535,11 @@
                         $zz = (int)$zz;
                         $collect = $wpdb->get_row("SELECT * FROM $wpdb->posts WHERE ID=$zz");
 //                        if (post_exists($collect->post_title) != 0) {
-                        if(!empty($collect)){
-                    ?>
-                        <div class="card">
-                            <a href=<?php echo $collect->guid; ?>> <?php echo $collect->post_title ?>  </a>
-                            <span style="position: absolute;right: 3%;">
+                        if (!empty($collect)) {
+                            ?>
+                            <div class="card">
+                                <a href=<?php echo $collect->guid; ?>> <?php echo $collect->post_title ?>  </a>
+                                <span style="position: absolute;right: 3%;">
                                                                 <a class="delete-article"
                                                                    href="
                             <?php echo $road . '/functions/delete_collect.php?uid=' . $user_id . '&pid=' . $zz; ?>">
@@ -552,13 +549,13 @@
                                                                     </span>
                                                                 </a>
                                                             </span>
-                            <div class="fakeimg"><a href="<? the_permalink(); ?>">
-                                    <img src="<? get_random_pic(); ?>"
-                                         alt="Azusa" width="400">
+                                <div class="fakeimg"><a href="<? the_permalink(); ?>">
+                                        <img src="<? get_random_pic(); ?>"
+                                             alt="Azusa" width="400">
+                                </div>
                             </div>
-                        </div>
-                        <?php
-                    }
+                            <?php
+                        }
                     }
                     ?>
                 </div>

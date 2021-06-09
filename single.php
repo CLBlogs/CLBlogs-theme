@@ -22,7 +22,7 @@ pageEncoding="UTF-8"%>-->
     // 浏览次数 + 1
     $post_id = get_the_ID();
     setPostViews($post_id);
-    echo $post_id;
+
     ?>
     <style>
         .navigation-clean {
@@ -403,9 +403,10 @@ pageEncoding="UTF-8"%>-->
 
             var pid = <?php echo $post->ID; ?>; //文章ID
             var u_ip = '<?php echo $_SERVER["REMOTE_ADDR"]; ?>'; //当前客户端的IP地址
-            var cookie_val = pid+'_'+u_ip; //cookie名
-            if($.cookie(cookie_val)){ //如果 COOKIE 存在，就提示 已点赞过
-                alert("你已点赞过了。"); return;
+            var cookie_val = pid + '_' + u_ip; //cookie名
+            if ($.cookie(cookie_val)) { //如果 COOKIE 存在，就提示 已点赞过
+                alert("你已点赞过了。");
+                return;
             }
 
             $.ajax({
@@ -415,9 +416,9 @@ pageEncoding="UTF-8"%>-->
                 data: {post_id: "<?php echo $post_id; ?>"},
             });
             let like_number = parseInt(document.getElementById("like_number").innerText);
-            like_number+=1;
+            like_number += 1;
             document.getElementById("like_number").innerText = like_number.toString();
-            $.cookie(cookie_val, cookie_val, { expires: 1 }); //设置COOKIE有效期 1 天
+            $.cookie(cookie_val, cookie_val, {expires: 1}); //设置COOKIE有效期 1 天
         }
 
         function displayCollect() {
@@ -448,6 +449,32 @@ pageEncoding="UTF-8"%>-->
                 }
             });
         }
+
+        // if (window.addEventListener)//FF,火狐浏览器会识别该方法
+        //     window.addEventListener('DOMMouseScroll', scroll, false);
+        // window.onscroll = document.onscroll = scroll;//W3C
+        // let v1=document.getElementById('other_article');
+        // const len=$('#other_article').offset().top-$(window).scrollTop();
+        // let scrolltop=0;
+        // //  console.log(len);
+        // if(len==10){
+        //     scrolltop=$(window).scrollTop();
+        // }
+        // function scroll(scrolltop){
+        //
+        //     if(scrolltop<=$(window).scrollTop()){
+        //         console.log(scrolltop);
+        //         v1.className ='other_article_fixed';
+        //         console.log(scrolltop);
+        //         console.log($(window).scrollTop())
+        //         console.log(v1.className);
+        //     }
+        //     else{
+        //         v1.className ='other_article_relative';
+        //             console.log(len);
+        //             console.log(v1.className);
+        //     }
+        // }
 
     </script>
 </head>
@@ -493,57 +520,6 @@ pageEncoding="UTF-8"%>-->
 
 
 <div id="main_content">
-    <aside>
-        <div class="blogger">
-            <div class="blogger_head">
-                <?php echo "<a href=\"$road/otherblog.php?user_id=$author_id\">"; ?>
-                <img class="blogger_head_portrait"
-                     src="https://v1.alapi.cn/api/avatar?email=<?php echo $email; ?>&size=100"
-                     alt="Enter the blogger's home" class="blogger_head_portrait">
-                </a>
-                <div class="blogger_name">
-                    <?php echo $author_data->user_login; ?>
-                </div>
-                <span id='introduction'>个人简介：<?php echo get_user_meta($author_id, 'introduction', true); ?></span>
-            </div>
-            <hr class="blogger_line">
-            <div class="blogger_introduction">
-                <span>Article: <?php the_author_posts(); ?></span>
-                |<span>Tags:<?php echo count(get_tags()); ?></span>
-                |<span>Category:<?php echo count(get_categories()); ?></span>
-                |<span id="sum_comm">Comments:</span>
-                |<span>Collection: </span>
-                |<span>Thump:</span>
-                |<span>E-mail: <?php echo $email ?></span>
-
-            </div>
-        </div>
-        <div class="classify">
-            <h4>Category</h4>
-            <ul>
-                <? wp_list_cats(); ?>
-            </ul>
-            <h4>Time nodes</h4>
-            <ul>
-                <?php wp_get_archives() ?>
-            </ul>
-            <h4>Tags</h4>
-            <ul>
-                <?php
-                $all_the_tags = get_tags();
-                if ($all_the_tags) {
-                    foreach ($all_the_tags as $this_tag) {
-                        $tag_id = $this_tag->term_id;
-                        $link = get_tag_link($tag_id); ?>
-                        <?php echo "<li class= \"tag-item tag-item-$tag_id\">" ?>
-                        <?php echo "<a href=\"$link\">";
-                        echo $this_tag->name ?> </a>
-                        </li>
-                    <?php }
-                } ?>
-            </ul>
-        </div>
-    </aside>
     <main>
         <div class="main">
             <div class="main_head">
@@ -553,9 +529,9 @@ pageEncoding="UTF-8"%>-->
                         <a href="index.php" class="blogger_name" target="_blank"><? the_author(); ?></a>
                         <span class="creat_time"><? the_time('Y-m-d H:i:s'); ?></span>
                     </div>
-                    <div class="article_tag">
-                        <? the_tags(); ?>
-                    </div>
+                    <!--                    <div class="article_tag">-->
+                    <!--                        --><? // the_tags(); ?>
+                    <!--                    </div>-->
                 </div>
             </div>
             <article>
@@ -582,6 +558,7 @@ pageEncoding="UTF-8"%>-->
                             <span>Favorites</span>
                             <span id="coll_number">
                         <?php
+                        global $wpdb;
                         $wpdb->query("select * from $wpdb->usermeta where meta_key='favorite' and meta_value='$post_id'");
                         echo $wpdb->num_rows;
                         ?>
@@ -590,7 +567,7 @@ pageEncoding="UTF-8"%>-->
                     </li>
                     <li class="toolbox_comment">
                         <a>
-                            <?php echo "<img   id= \"Comment_visible\" alt=\"评论\" src=\"$road/img/comment.png\">"; ?>
+                            <?php echo "<img id= \"Comment_visible\" alt=\"评论\" src=\"$road/img/comment.png\">"; ?>
                             <span>Comments</span>
                             <span><?php echo $number = get_comments_number($post_id); ?>
                         </span>
@@ -601,6 +578,58 @@ pageEncoding="UTF-8"%>-->
         </div>
         <? comments_template(); ?>
     </main>
+    <aside>
+
+        <div class="blogger_head">
+            <?php echo "<a href=\"$road/otherblog.php?user_id=$author_id\">"; ?>
+            <img class="blogger_head_portrait"
+                 src="https://v1.alapi.cn/api/avatar?email=<?php echo $email; ?>&size=100"
+                 alt="Enter the blogger's home" class="blogger_head_portrait">
+            </a><br>
+            <span id='author_introduction'>个人简介:<?php echo get_user_meta($author_id, 'introduction', true); ?></span>
+        </div>
+
+        <div class="blogger_introduction">
+            <p class="blogger_name"> <?php echo $author_data->user_login; ?> </p>
+            <hr class="blogger_line">
+            <div class="blogger_information">
+                <span>Article: <?php the_author_posts(); ?></span>
+                |<span id="sum_comm">Comments:</span>
+                |<span>Collection: </span>
+                |<span>Thump:</span>
+                |<span>E-mail: <?php echo $email ?></span>
+            </div>
+        </div>
+        <div class="classify">
+
+            <h4>Time nodes</h4>
+            <ul>
+                <?php wp_get_archives() ?>
+            </ul>
+
+        </div>
+        <div class="other_article_relative" id="other_article">
+            <h4>Blogger's Other Blogs</h4>
+            <ul>
+                <?php
+                query_posts(array('post_status' => 'publish', 'author' => $author_id));
+                if (!empty($author_id) && have_posts()) {
+                    while (have_posts()) {
+                        //获取下一篇文章的信息，并且将信息存入全局变量 $post 中
+                        the_post();
+                        ?>
+                        <li>
+                            <a href="<? the_permalink(); ?>"><? the_title(); ?></a>
+                            <?php echo "<img  class='article_view' src=\"$road/img/articleView.png\">"; ?>
+                            <span>Views: <? echo getPostViews(get_the_ID()); ?></span>
+                        </li>
+                        <?
+                    }
+                }
+                ?>
+            </ul>
+        </div>
+    </aside>
 </div>
 <button onclick="topFunction()" id="myBtn" title="回顶部">返回顶部</button>
 <script>
