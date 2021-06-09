@@ -7,6 +7,7 @@
     <!-- Bootstrap -->
     <?php
     require '../../../wp-blog-header.php';
+        require '../../../wp-admin/includes/post.php';
     require_once 'check.php';
     global $wpdb;
     $road = get_template_directory_uri();
@@ -15,20 +16,33 @@
     echo "<script src=\"$road/js/bootstrap.min.js\"></script>";
     echo "<link rel=\"stylesheet\" href=\"$road/css/Navigation-Clean.css\">";
 
-    session_start();
+    //    session_start();
     $user_id = $_SESSION['user_id'];
     setcookie("user_id", $user_id, time() + 3600, '/');
     $author_info = $wpdb->get_row("SELECT * FROM $wpdb->users WHERE ID=$user_id");
     // echo $author_info->user_email;
     $user_name = $_COOKIE['user_login'];
     echo "<title>$user_name's Personal Center</title>";
+    $user_data = get_userdata($user_id);
+    $email = $user_data->user_email;
     ?>
 
     <style>
-        a:link {text-decoration: none;}
-        a:visited {text-decoration: none;}
-        a:active {text-decoration: none;}
-        a:hover {text-decoration: none;}
+        a:link {
+            text-decoration: none;
+        }
+
+        a:visited {
+            text-decoration: none;
+        }
+
+        a:active {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
 
         @media (max-width: 767px) {
             .navigation-clean {
@@ -268,6 +282,7 @@
             padding: 20px;
             margin-top: 20px;
         }
+
         #myBtn {
             display: none; /* 默认隐藏 */
             position: fixed;
@@ -276,7 +291,7 @@
             z-index: 99;
             border: none;
             outline: none;
-            background-color: red; /* 设置背景颜色，你可以设置自己想要的颜色或图片 */
+            background-color: skyblue; /* 设置背景颜色，你可以设置自己想要的颜色或图片 */
             color: white; /* 文本颜色 */
             cursor: pointer;
             padding: 15px;
@@ -303,9 +318,12 @@
 
 <script>
     // 当网页向下滑动 20px 出现"返回顶部" 按钮
-    window.onscroll = function() {scrollFunction()};
+    window.onscroll = function () {
+        scrollFunction()
+    };
 
-    function scrollFunction() {console.log(121);
+    function scrollFunction() {
+        // console.log(121);
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
             document.getElementById("myBtn").style.display = "block";
         } else {
@@ -380,7 +398,7 @@
                 <!-- 个人资料 -->
                 <div class="tab-pane fade in active" id="Tab1">
                     <div class="text-center">
-                        <?php echo "<img src=\"images/Rikka.jpg\"
+                        <?php echo "<img src=\"https://v1.alapi.cn/api/avatar?email=$email&size=200\"
                              class=\"img-circle text-center\" width=\"200\" height=\"200\">";
                         ?>
                     </div>
@@ -389,21 +407,24 @@
                     </div>
                     <div id="personal-information">
                         <p>User: <?php echo $author_info->user_login; ?></p>
-                        <?php if(!empty(get_user_meta($user_id, 'sex', true))) {?>
-                            <p id='sex'>性别: <?php echo get_user_meta($user_id, 'sex', true); ?></p> <?} ?>
-                        <?php if(!empty(get_user_meta($user_id, 'birthday', true))) {?>
-                            <p id='sex'>生日: <?php echo get_user_meta($user_id, 'birthday', true); ?></p> <?} ?>
-                        <?php if(!empty(get_user_meta($user_id, 'qq_num', true))) {?>
-                            <p id='qq_num'>qq: <?php echo get_user_meta($user_id, 'qq_num', true); ?></p> <?} ?>
-                        <?php if(!empty(get_user_meta($user_id, 'wechat_num', true))) {?>
-                            <p id='wechat_num'>微信: <?php echo get_user_meta($user_id, 'wechat_num', true); ?></p> <?} ?>
+                        <?php if (!empty(get_user_meta($user_id, 'sex', true))) { ?>
+                            <p id='sex'>性别: <?php echo get_user_meta($user_id, 'sex', true); ?></p> <? } ?>
+                        <?php if (!empty(get_user_meta($user_id, 'birthday', true))) { ?>
+                            <p id='sex'>生日: <?php echo get_user_meta($user_id, 'birthday', true); ?></p> <? } ?>
+                        <?php if (!empty(get_user_meta($user_id, 'qq_num', true))) { ?>
+                            <p id='qq_num'>qq: <?php echo get_user_meta($user_id, 'qq_num', true); ?></p> <? } ?>
+                        <?php if (!empty(get_user_meta($user_id, 'wechat_num', true))) { ?>
+                            <p id='wechat_num'>
+                                微信: <?php echo get_user_meta($user_id, 'wechat_num', true); ?></p> <? } ?>
                         <p>E-mail: <?php echo $author_info->user_email; ?></p>
-                        <?php if(!empty(get_user_meta($user_id, 'phone', true))) {?>
-                            <p id='phone'>手机号码：<?php echo get_user_meta($user_id, 'phone', true); ?></p> <?} ?>
-                        <?php if(!empty(get_user_meta($user_id, 'interests', true))) {?>
-                            <p id='interests'>兴趣标签: <?php echo get_user_meta($user_id, 'interests', true); ?></p> <?} ?>
-                        <?php if(!empty(get_user_meta($user_id, 'introduction', true))) {?>
-                            <p id='introduction'>个人简介：<?php echo get_user_meta($user_id, 'introduction', true); ?></p> <?} ?>
+                        <?php if (!empty(get_user_meta($user_id, 'phone', true))) { ?>
+                            <p id='phone'>手机号码：<?php echo get_user_meta($user_id, 'phone', true); ?></p> <? } ?>
+                        <?php if (!empty(get_user_meta($user_id, 'interests', true))) { ?>
+                            <p id='interests'>
+                                兴趣标签: <?php echo get_user_meta($user_id, 'interests', true); ?></p> <? } ?>
+                        <?php if (!empty(get_user_meta($user_id, 'introduction', true))) { ?>
+                            <p id='introduction'>
+                                个人简介：<?php echo get_user_meta($user_id, 'introduction', true); ?></p> <? } ?>
                         <p>文章: <?php echo count_user_posts($user_id); ?></p>
                     </div>
                     <div class="text-center">
@@ -516,35 +537,33 @@
                         }
                         $zz = (int)$zz;
                         $collect = $wpdb->get_row("SELECT * FROM $wpdb->posts WHERE ID=$zz");
-                        if(post_exists($collect->post_title)!=0){
-                            ?>
-                            <div class="card">
-                                <a href=<?php echo $collect->guid; ?>> <?php echo $collect->post_title ?>  </a>
-                                <span style="position: absolute;right: 3%;">
-                                    <a class="delete-article"
-                                       href="<?php echo $road . '/functions/delete_collect.php?uid=' . $user_id.'&pid='.$zz; ?>">
-                                        <i class="glyphicon glyphicon-trash"></i>
-                                        <span>
-                                            delete
-                                        </span>
-                                    </a>
-                                </span>
-                                <div class="fakeimg"><a href="<? the_permalink(); ?>">
-                                        <img src="<? get_random_pic(); ?>"
-                                             alt="Azusa" width="400">
-                                </div>
+//                        if (post_exists($collect->post_title) != 0) {
+                        if(!empty($collect)){
+                    ?>
+                        <div class="card">
+                            <a href=<?php echo $collect->guid; ?>> <?php echo $collect->post_title ?>  </a>
+                            <span style="position: absolute;right: 3%;">
+                                                                <a class="delete-article"
+                                                                   href="
+                            <?php echo $road . '/functions/delete_collect.php?uid=' . $user_id . '&pid=' . $zz; ?>">
+                                                                    <i class="glyphicon glyphicon-trash"></i>
+                                                                    <span>
+                                                                        delete
+                                                                    </span>
+                                                                </a>
+                                                            </span>
+                            <div class="fakeimg"><a href="<? the_permalink(); ?>">
+                                    <img src="<? get_random_pic(); ?>"
+                                         alt="Azusa" width="400">
                             </div>
-                        <?php }
+                        </div>
+                        <?php
+                    }
                     }
                     ?>
                 </div>
 
             </div>
         </div>
-
-        <!-- <div class="jumbotron text-center" style="margin-bottom:0">
-          <p>Powered by zzz</p>
-        </div> -->
-
 </body>
 </html>

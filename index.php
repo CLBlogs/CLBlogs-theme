@@ -621,24 +621,24 @@
         }
     </style>
     <style>     /* 返回顶部按钮  */
-    #myBtn {        
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 30px;
-    z-index: 99;
-    border: none;
-    outline: none;
-    background-color: red;
-    color: white;
-    cursor: pointer;
-    padding: 15px;
-    border-radius: 10px;
-    }
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: skyblue;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 10px;
+        }
 
-    #myBtn:hover {
-    background-color: #555;
-    }
+        #myBtn:hover {
+            background-color: #555;
+        }
     </style>
 </head>
 
@@ -646,22 +646,25 @@
 <button onclick="topFunction()" id="myBtn" title="回顶部">返回顶部</button>
 
 <script>
-// 当网页向下滑动 20px 出现"返回顶部" 按钮
-window.onscroll = function() {scrollFunction()};
- 
-function scrollFunction() {console.log(121);
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        document.getElementById("myBtn").style.display = "block";
-    } else {
-        document.getElementById("myBtn").style.display = "none";
+    // 当网页向下滑动 20px 出现"返回顶部" 按钮
+    window.onscroll = function () {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        // console.log(121);
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("myBtn").style.display = "block";
+        } else {
+            document.getElementById("myBtn").style.display = "none";
+        }
     }
-}
- 
-// 点击按钮，返回顶部
-function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-}
+
+    // 点击按钮，返回顶部
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
 </script>
 
 <div id="wrapper" class="flow">
@@ -706,7 +709,7 @@ function topFunction() {
         <div id="main" class="main">
             <div id="side_left" class="side-left card-list side-bar">
                 <div class="card">
-                    <h4 class="card-title">浏览排行榜</h4>
+                    <h4 class="card-title">Views Rank</h4>
                     <ul class="item-list">
                         <?php $args = array(
                             'meta_key' => 'views',
@@ -731,6 +734,61 @@ function topFunction() {
                         <li><span class="number highlight">4</span><a href="#">图解 | 原来这就是 class<br><br></a></li> -->
                     </ul>
                 </div>
+
+                <div class="card">
+                    <h4 class="card-title">Likes Rank</h4>
+                    <ul class="item-list">
+                        <?php $args = array(
+                            'meta_key' => 'likes',
+                            'orderby' => 'meta_value_num',
+                            'posts_per_page' => 6,
+                            'order' => 'DESC'
+                        );
+                        query_posts($args);
+                        while (have_posts()) : the_post(); ?>
+                            <li><a href="<? the_permalink(); ?>"><? the_title(); ?></a>
+                                <span class="kc-view fright">&nbsp; Likes：
+                                        <?php
+                                        echo number_format(getPostLikes(get_the_ID()));
+                                        ?>
+                                    </span>
+                            </li>
+                        <?php endwhile;
+                        wp_reset_query(); ?>
+                        <!-- <li><span class="number highlight">1</span><a href="#">Announcing -hardening<br><br></a></li>
+                        <li><span class="number highlight">2</span><a href="#">有意思！强大的 SVG 滤镜<br><br><br></a></li>
+                        <li><span class="number highlight">3</span><a href="#">CentOS离线安装Nginx<br><br><br></a></li>
+                        <li><span class="number highlight">4</span><a href="#">图解 | 原来这就是 class<br><br></a></li> -->
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title">Favorites Rank</h4>
+                    <ul class="item-list">
+                        <?php $args = array(
+                            'meta_key' => 'favorite',
+                            'orderby' => 'meta_value_num',
+                            'posts_per_page' => 6,
+                            'order' => 'DESC'
+                        );
+                        query_posts($args);
+                        while (have_posts()) : the_post(); ?>
+                            <li><a href="<? the_permalink(); ?>"><? the_title(); ?></a>
+                                <span class="kc-view fright">&nbsp; Favorites：
+                                        <?php
+                                        echo number_format(getPostFavorites(get_the_ID()));
+                                        ?>
+                                    </span>
+                            </li>
+                        <?php endwhile;
+                        wp_reset_query(); ?>
+                        <!-- <li><span class="number highlight">1</span><a href="#">Announcing -hardening<br><br></a></li>
+                        <li><span class="number highlight">2</span><a href="#">有意思！强大的 SVG 滤镜<br><br><br></a></li>
+                        <li><span class="number highlight">3</span><a href="#">CentOS离线安装Nginx<br><br><br></a></li>
+                        <li><span class="number highlight">4</span><a href="#">图解 | 原来这就是 class<br><br></a></li> -->
+                    </ul>
+                </div>
+
             </div>
             <div id="main-flow" class="main-flow">
                 <div id="post-list" class="post-list">

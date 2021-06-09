@@ -34,6 +34,17 @@ function getPostLikes($postID)
     return $count . '';
 }
 
+function getPostFavorites($postID)
+{
+    $count = get_post_meta($postID, 'favorite', true);
+    if ($count == '') {
+        delete_post_meta($postID, 'favorite');
+        add_post_meta($postID, 'favorite', '0');
+        return "0";
+    }
+    return $count . '';
+}
+
 // 自定义搜索
 function bootstrapwp_search_form($form)
 {
@@ -45,10 +56,12 @@ function bootstrapwp_search_form($form)
              </form>';
     return $form;
 }
+
 add_filter('get_search_form', 'bootstrapwp_search_form');
 
 // 获取随机图片
-function get_random_pic(){
+function get_random_pic()
+{
     $pic_array = array(
         'https://cdn.jsdelivr.net/gh/fnsflm/myPicbed@master/clblogs/images/71822775_p0(1).png',
         'https://cdn.jsdelivr.net/gh/fnsflm/myPicbed@master/clblogs/images/84049481_p0(1).jpg',

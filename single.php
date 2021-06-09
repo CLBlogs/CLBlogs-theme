@@ -22,7 +22,7 @@ pageEncoding="UTF-8"%>-->
     // 浏览次数 + 1
     $post_id = get_the_ID();
     setPostViews($post_id);
-
+    echo $post_id;
     ?>
     <style>
         .navigation-clean {
@@ -324,20 +324,42 @@ pageEncoding="UTF-8"%>-->
         #dropdown_toggle {
             background-color: #222;
         }
-        .navbar-nav>li{
+
+        .navbar-nav > li {
             margin-bottom: 0px;
         }
-        li.active>form{
-            height:34px;
+
+        li.active > form {
+            height: 34px;
         }
-        .navbar-from>.btn-default{
+
+        .navbar-from > .btn-default {
             border: white;
             border-radius: 4px;
+        }
+
+        #myBtn {
+            display: none; /* 默认隐藏 */
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: skyblue; /* 设置背景颜色，你可以设置自己想要的颜色或图片 */
+            color: white; /* 文本颜色 */
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 10px; /* 圆角 */
+        }
+
+        #myBtn:hover {
+            background-color: #555;
         }
     </style>
 
     <script>
-        window.onload=function (){
+        window.onload = function () {
             const Thumb = document.querySelector('#Thumb_visible');
             const ThumbActive = document.querySelector('#Thumb_invisible');
             const Collect = document.querySelector('#Collect_visible');
@@ -346,22 +368,22 @@ pageEncoding="UTF-8"%>-->
                 url: <? echo "\"" . $road . "/functions/blogcontent.php\""; ?>,
                 type: "post",
                 dataType: 'json',
-                data: {post_id: <?php echo $post_id; ?>, author_id: <?php echo $author_id;?>},
+                data: {post_id: "<?php echo $post_id; ?>", author_id: <?php echo $author_id;?>},
                 success: function (result) {
                     console.log(result);
-                    let obj =typeof result=="string"?JSON.parse(result):result;
+                    let obj = typeof result == "string" ? JSON.parse(result) : result;
                     if (obj.judge == 0)//表示还未收藏
                     {
-                        Collect.className='tool_visible';
-                        CollectActive.className='tool_invisible';
+                        Collect.className = 'tool_visible';
+                        CollectActive.className = 'tool_invisible';
                     } else {//已收藏
-                        Collect.className='tool_invisible';
-                        CollectActive.className='tool_visible';
+                        Collect.className = 'tool_invisible';
+                        CollectActive.className = 'tool_visible';
                     }
                     document.getElementById('coll_number').innerText = obj.num;
-                    document.getElementById('sum_comm').innerText+=obj.sum_comm;
+                    document.getElementById('sum_comm').innerText += obj.sum_comm;
                 },
-                error:function (e){
+                error: function (e) {
                     console.log(e);
                 }
             });
@@ -372,12 +394,13 @@ pageEncoding="UTF-8"%>-->
                 url: <? echo "\"" . $road . "/functions/addLike.php\""; ?>,
                 type: "post",
                 dataType: 'json',
-                data: {post_id: <?php echo $post_id; ?>},
+                data: {post_id: "<?php echo $post_id; ?>"},
             });
             let like_number = parseInt(document.getElementById("like_number").innerText);
             like_number += 1;
             document.getElementById("like_number").innerText = like_number.toString();
         }
+
         function displayCollect() {
             const Collect = document.querySelector('#Collect_visible');
             const CollectActive = document.querySelector('#Collect_invisible');
@@ -385,29 +408,26 @@ pageEncoding="UTF-8"%>-->
                 url: <? echo "\"" . $road . "/functions/addColl.php\""; ?>,
                 type: "post",
                 dataType: 'json',
-                data: {post_id: <?php echo $post_id; ?>, author_id: <?php echo $author_id;?>},
+                data: {post_id: "<?php echo $post_id; ?>", author_id: <?php echo $author_id;?>},
                 success: function (result) {
-                    let obj =typeof result=="string"?JSON.parse(result):result;
-                    // console.log(obj);
-                    //  alert(obj.judge);
+                    let obj = typeof result == "string" ? JSON.parse(result) : result;
                     if (obj.judge == 0)//表示还未收藏，可以收藏
                     {
 
-                        Collect.className='tool_invisible';
-                        CollectActive.className='tool_visible';
+                        Collect.className = 'tool_invisible';
+                        CollectActive.className = 'tool_visible';
                         // Collect.style.display = "none";
                         // CollectActive.style.display = "inline";
                     } else {//已收藏，取消收藏
                         // Collect.style.display = "inline";
                         // CollectActive.style.display = "none";
-                        Collect.className='tool_visible';
-                        CollectActive.className='tool_invisible';
+                        Collect.className = 'tool_visible';
+                        CollectActive.className = 'tool_invisible';
                     }
                     document.getElementById('coll_number').innerText = obj.num;
 
                 }
             });
-
         }
 
     </script>
@@ -464,7 +484,8 @@ pageEncoding="UTF-8"%>-->
                 </a>
                 <div class="blogger_name">
                     <?php echo $author_data->user_login; ?>
-                </div><span id='introduction'>个人简介：<?php echo get_user_meta($author_id, 'introduction', true); ?></span>
+                </div>
+                <span id='introduction'>个人简介：<?php echo get_user_meta($author_id, 'introduction', true); ?></span>
             </div>
             <hr class="blogger_line">
             <div class="blogger_introduction">
@@ -481,7 +502,7 @@ pageEncoding="UTF-8"%>-->
         <div class="classify">
             <h4>Category</h4>
             <ul>
-                <? wp_list_cats();?>
+                <? wp_list_cats(); ?>
             </ul>
             <h4>Time nodes</h4>
             <ul>
@@ -491,15 +512,16 @@ pageEncoding="UTF-8"%>-->
             <ul>
                 <?php
                 $all_the_tags = get_tags();
-                if($all_the_tags) {
-                    foreach ($all_the_tags as $this_tag){
+                if ($all_the_tags) {
+                    foreach ($all_the_tags as $this_tag) {
                         $tag_id = $this_tag->term_id;
-                        $link=get_tag_link($tag_id);?>
-                        <?php  echo "<li class= \"tag-item tag-item-$tag_id\">"?>
-                        <?php echo  "<a href=\"$link\">";echo  $this_tag->name?> </a>
+                        $link = get_tag_link($tag_id); ?>
+                        <?php echo "<li class= \"tag-item tag-item-$tag_id\">" ?>
+                        <?php echo "<a href=\"$link\">";
+                        echo $this_tag->name ?> </a>
                         </li>
                     <?php }
-                }?>
+                } ?>
             </ul>
         </div>
     </aside>
@@ -528,9 +550,9 @@ pageEncoding="UTF-8"%>-->
                         <a onclick="displayThump()">
                             <?php echo "<img    class='tool_visible' id= \"Thumb_visible\" alt='点赞'   src=\"$road/img/tobarThumbUp.png\">"; ?>
                             <?php echo "<img class='tool_invisible'  id= \"Thumb_invisible\" alt='已点赞' src=\"$road/img/tobarThumbUpactive.png\">"; ?>
-                            <span>Approval</span>
+                            <span>Likes</span>
                             <span id="like_number">
-                        <?php echo number_format(getPostLikes($post_id)); ?>
+                        <?php echo number_format(getPostLikes((int)$post_id)); ?>
                         </span>
                         </a>
                     </li>
@@ -538,7 +560,7 @@ pageEncoding="UTF-8"%>-->
                         <a onclick="displayCollect()">
                             <?php echo "<img  class='tool_visible' id= \"Collect_visible\" alt=\"收藏\" src=\"$road/img/tobarCollect.png\">"; ?>
                             <?php echo "<img class='tool_invisible' id= \"Collect_invisible\" alt=\"已收藏\" src=\"$road/img/tobarCollectionActive.png\">"; ?>
-                            <span>Collected</span>
+                            <span>Favorites</span>
                             <span id="coll_number">
                         <?php
                         $wpdb->query("select * from $wpdb->usermeta where meta_key='favorite' and meta_value='$post_id'");
@@ -561,5 +583,26 @@ pageEncoding="UTF-8"%>-->
         <? comments_template(); ?>
     </main>
 </div>
+<button onclick="topFunction()" id="myBtn" title="回顶部">返回顶部</button>
+<script>
+    // 当网页向下滑动 20px 出现"返回顶部" 按钮
+    window.onscroll = function () {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("myBtn").style.display = "block";
+        } else {
+            document.getElementById("myBtn").style.display = "none";
+        }
+    }
+
+    // 点击按钮，返回顶部
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
 </body>
 </html>
