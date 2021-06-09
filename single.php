@@ -357,7 +357,7 @@ pageEncoding="UTF-8"%>-->
             background-color: #555;
         }
     </style>
-
+    <script type="text/javascript" src="<?php bloginfo("template_url"); ?>/js/jquery.cookie.js"></script>
     <script>
         window.onload = function () {
             const Thumb = document.querySelector('#Thumb_visible');
@@ -390,6 +390,24 @@ pageEncoding="UTF-8"%>-->
         }
 
         function displayThump() {
+            const Thumb = document.querySelector('#Thumb_visible');
+            const ThumbActive = document.querySelector('#Thumb_invisible');
+            const dis = Thumb.style.display;
+            if (dis == 'none') {
+                Thumb.style.display = 'inline';
+                ThumbActive.style.display = 'none';
+            } else {
+                Thumb.style.display = 'none';
+                ThumbActive.style.display = 'inline';
+            }
+
+            var pid = <?php echo $post->ID; ?>; //文章ID
+            var u_ip = '<?php echo $_SERVER["REMOTE_ADDR"]; ?>'; //当前客户端的IP地址
+            var cookie_val = pid+'_'+u_ip; //cookie名
+            if($.cookie(cookie_val)){ //如果 COOKIE 存在，就提示 已点赞过
+                alert("你已点赞过了。"); return;
+            }
+
             $.ajax({
                 url: <? echo "\"" . $road . "/functions/addLike.php\""; ?>,
                 type: "post",
@@ -397,8 +415,9 @@ pageEncoding="UTF-8"%>-->
                 data: {post_id: "<?php echo $post_id; ?>"},
             });
             let like_number = parseInt(document.getElementById("like_number").innerText);
-            like_number += 1;
+            like_number+=1;
             document.getElementById("like_number").innerText = like_number.toString();
+            $.cookie(cookie_val, cookie_val, { expires: 1 }); //设置COOKIE有效期 1 天
         }
 
         function displayCollect() {
