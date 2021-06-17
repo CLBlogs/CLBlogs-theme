@@ -78,7 +78,7 @@
                                         </div><!-- .comment-content -->
                                         <div class="reply"><a rel='nofollow' class='comment-reply-link'
                                                               href='#reply-title'
-                                                              onclick="replication(<?php echo $arr->comment_ID; ?>,'<?php echo $arr->comment_author; ?>')">回复</a>
+                                                              onclick="replication(<?php echo $arr->comment_ID; ?>,'<?php echo $arr->comment_author; ?>')">reply</a>
                                         </div>
 
                                         <!-- 动态加载回复 -->
@@ -191,7 +191,7 @@
                                 <?php } ?>
                             </p>
                             <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit"
-                                                          value="发表评论" style="float: right"/></p>
+                                                          value="Post Comment" style="float: right"/></p>
                         </form>
                     </div><!-- #respond -->
                 </div><!-- #comments -->

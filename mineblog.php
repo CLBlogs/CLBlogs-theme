@@ -311,7 +311,7 @@
 <body>
 
 <!-- 导航栏 -->
-<button onclick="topFunction()" id="myBtn" title="回顶部">返回顶部</button>
+<button onclick="topFunction()" id="myBtn" title="回顶部">Back To Top</button>
 
 <script>
     // 当网页向下滑动 20px 出现"返回顶部" 按钮
@@ -380,7 +380,7 @@
             <ul id="myTab" class="nav nav-pills nav-stacked ">
                 <li class="active"><a href="#Tab1" data-toggle="tab">Information</a></li>
                 <li><a href="#Tab3" data-toggle="tab">Management</a></li>
-                <li><a href="#Tab4" data-toggle="tab">Collections</a></li>
+                <li><a href="#Tab4" data-toggle="tab">Favorites</a></li>
             </ul>
             <hr class="hidden-sm hidden-md hidden-lg">
         </div>
@@ -405,24 +405,24 @@
                     <div id="personal-information">
                         <p>User: <?php echo $author_info->user_login; ?></p>
                         <?php if (!empty(get_user_meta($user_id, 'sex', true))) { ?>
-                            <p id='sex'>性别: <?php echo get_user_meta($user_id, 'sex', true); ?></p> <? } ?>
+                            <p id='sex'>Sex: <?php echo get_user_meta($user_id, 'sex', true); ?></p> <? } ?>
                         <?php if (!empty(get_user_meta($user_id, 'birthday', true))) { ?>
-                            <p id='sex'>生日: <?php echo get_user_meta($user_id, 'birthday', true); ?></p> <? } ?>
+                            <p id='sex'>Birthday: <?php echo get_user_meta($user_id, 'birthday', true); ?></p> <? } ?>
                         <?php if (!empty(get_user_meta($user_id, 'qq_num', true))) { ?>
-                            <p id='qq_num'>qq: <?php echo get_user_meta($user_id, 'qq_num', true); ?></p> <? } ?>
+                            <p id='qq_num'>QQ: <?php echo get_user_meta($user_id, 'qq_num', true); ?></p> <? } ?>
                         <?php if (!empty(get_user_meta($user_id, 'wechat_num', true))) { ?>
                             <p id='wechat_num'>
-                                微信: <?php echo get_user_meta($user_id, 'wechat_num', true); ?></p> <? } ?>
+                                WeChat: <?php echo get_user_meta($user_id, 'wechat_num', true); ?></p> <? } ?>
                         <p>E-mail: <?php echo $author_info->user_email; ?></p>
                         <?php if (!empty(get_user_meta($user_id, 'phone', true))) { ?>
-                            <p id='phone'>手机号码：<?php echo get_user_meta($user_id, 'phone', true); ?></p> <? } ?>
+                            <p id='phone'>Phone：<?php echo get_user_meta($user_id, 'phone', true); ?></p> <? } ?>
                         <?php if (!empty(get_user_meta($user_id, 'interests', true))) { ?>
                             <p id='interests'>
-                                兴趣标签: <?php echo get_user_meta($user_id, 'interests', true); ?></p> <? } ?>
+                                Interests: <?php echo get_user_meta($user_id, 'interests', true); ?></p> <? } ?>
                         <?php if (!empty(get_user_meta($user_id, 'introduction', true))) { ?>
                             <p id='introduction'>
-                                个人简介：<?php echo get_user_meta($user_id, 'introduction', true); ?></p> <? } ?>
-                        <p>文章: <?php echo count_user_posts($user_id); ?></p>
+                                Introduction：<?php echo get_user_meta($user_id, 'introduction', true); ?></p> <? } ?>
+                        <p>Articles: <?php echo count_user_posts($user_id); ?></p>
                     </div>
                     <div class="text-center">
                         <button class="btn btn-default" id="edit-info" type="submit">Edit</button>
@@ -436,29 +436,20 @@
                                 <form id='information-form' method='post' action='<?php echo $road . "/functions/updateUserInfo.php";  ?>'>\
                                 <input style='display:none' name='user_id' value='<?php echo $user_id;?>'>\
                                 <label>User: </label><input name='user' value='<?php echo $author_info->user_login;?>'><br><br>\
-                                <label>性别</label><input name='sex'><br><br>\
-                                <label>生日</label><input name='birthday'><br><br>\
-                                <label>qq</label><input name='qq_num'><br><br>\
-                                <label>微信:</label><input name='wechat_num'><br><br>\
+                                <label>Sex: </label><input name='sex' value='<? echo get_user_meta($user_id, "sex", true);?>'><br><br>\
+                                <label>Birthday: </label><input name='birthday' value=<? echo get_user_meta($user_id, "birthday", true); ?>><br><br>\
+                                <label>QQ: </label><input name='qq_num' value='<? echo get_user_meta($user_id, "qq_num", true); ?>'><br><br>\
+                                <label>WeChat: </label><input name='wechat_num' value='<? echo get_user_meta($user_id, "wechat_num", true); ?>'><br><br>\
                                 <label>E-mail: </label><input name='e-mail' value='<?php echo $author_info->user_email; ?>'><br><br>\
-                                <label>手机号码</label> <input name='phone'><br><br>\
-                                <label>兴趣标签:</label>\
-                                <textarea name='interests'></textarea><br>\
-                                <label>个人简介：</label>\
-                                <textarea name='introduction'></textarea>\
+                                <label>Phone: </label> <input name='phone' value='<? echo get_user_meta($user_id, "phone", true); ?>'><br><br>\
+                                <label>Interests: </label>\
+                                <textarea name='interests'><? echo get_user_meta($user_id, "interests", true); ?></textarea><br>\
+                                <label>Introduction：</label>\
+                                <textarea name='introduction'><? echo get_user_meta($user_id, "introduction", true); ?></textarea>\
                                 </form>");
                             } else {
                                 $(this).text('Edit');
                                 $('#information-form').submit();
-                                //$('#personal-information').html("<p>User: <?php //echo $author_info->user_login; ?>//</p>\
-                                //<p id='sex'>性别: 3</p>\
-                                //<p id='birthday'>生日: 2</p>\
-                                //<p id='qq_num'>qq: 6</p>\
-                                //<p id='wechat_num'>微信: 7</p>\
-                                //<p>E-mail: <?php //echo $author_info->user_email; ?>//</p>\
-                                //<p id='phone'>手机号码：5</p>\
-                                //<p id='interests'>兴趣标签: 4</p>\
-                                //<p id='introduction'>个人简介：1</p>");
                             }
                         })
                     </script>

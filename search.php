@@ -12,6 +12,7 @@
     echo '<script type="text/javascript" src="' . $road . '/js/jquery.min.js"></script>';
     echo '<script type="text/javascript" src="' . $road . '/js/bootstrap.min.js"></script>';
     echo "<link rel=\"stylesheet\" href=\"$road/css/Navigation-Clean.css\">";
+    global $post;
     ?>
     <style>
         body {
@@ -777,17 +778,18 @@
                                                                          href="<? the_permalink(); ?>"><? the_excerpt(); ?>
                                         <br></a></div>
                                 <footer id="post-item-foot-4" class="post-item-foot">
-                                    <span class="post-item-author"><span>author：<? the_author(); ?></span></span><span
-                                            class="post-meta-item">time：<? the_time('Y-m-d'); ?></span>
+                                    <a class="post-item-author"
+                                       href="<? echo $road . "/otherblog.php?user_id=" . $post->post_author; ?>"><span>Author：<? $author_data = get_userdata($post->post_author);
+                                            echo $author_data->user_login; ?></span></a><span
+                                            class="post-meta-item">Time：<? the_time('Y-m-d'); ?></span>
                                     <span class="post-meta-item"><span
                                                 class="glyphicon glyphicon-thumbs-up"></span><span>Likes: <?php
-                                            global $post;
                                             $like_num = get_user_meta($post->post_author, 'likes', true);
                                             echo empty($like_num) ? 0 : $like_num;
                                             ?></span>
                                     </span>
                                     <span class="post-meta-item">
-                                        <i class="glyphicon glyphicon-star"></i><span>Favorites</span></span>
+                                        <i class="glyphicon glyphicon-star"></i><span>Favorites: <? echo getPostFavorites(get_the_ID()); ?></span></span>
                                     <span class="post-meta-item"><i class="glyphicon glyphicon-eye-open"></i><span><?php
                                             echo ' views: ';
                                             echo number_format(getPostViews(get_the_ID()));

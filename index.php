@@ -13,6 +13,7 @@
     echo '<script type="text/javascript" src="' . $road . '/js/bootstrap.min.js"></script>';
     echo "<link rel=\"stylesheet\" href=\"$road/css/Navigation-Clean.css\">";
     setcookie("uri", ' ', time() - 1, '/');
+    global $post;
     ?>
     <style>
         .navigation-clean {
@@ -643,7 +644,7 @@
 </head>
 
 <body>
-<button onclick="topFunction()" id="myBtn" title="回顶部">返回顶部</button>
+<button onclick="topFunction()" id="myBtn" title="回顶部">Back To Top</button>
 
 <script>
     // 当网页向下滑动 20px 出现"返回顶部" 按钮
@@ -731,10 +732,6 @@
                             </li>
                         <?php endwhile;
                         wp_reset_query(); ?>
-                        <!-- <li><span class="number highlight">1</span><a href="#">Announcing -hardening<br><br></a></li>
-                        <li><span class="number highlight">2</span><a href="#">有意思！强大的 SVG 滤镜<br><br><br></a></li>
-                        <li><span class="number highlight">3</span><a href="#">CentOS离线安装Nginx<br><br><br></a></li>
-                        <li><span class="number highlight">4</span><a href="#">图解 | 原来这就是 class<br><br></a></li> -->
                     </ul>
                 </div>
 
@@ -809,28 +806,30 @@
                                     <a class="abstract" href="<? the_permalink(); ?>"><br>
                                     </a></div>
                                 <footer id="post-item-foot-4" class="post-item-foot">
-                                    <a class="post-item-author"
-                                       href="#"><span>Author：<? the_author(); ?></span></a><span class="post-meta-item">Time：<? the_time('Y-m-d'); ?></span>
-                                    <span class="post-meta-item"><i
-                                                class="glyphicon glyphicon-thumbs-up"></i><span>Likes: <?php
-                                            global $post;
+                                    <a class="post-item-author" href="<?
+                                    echo $road . "/otherblog.php?user_id=" . $post->post_author; ?>">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                        <span>Author：<? $author_data = get_userdata($post->post_author);
+                                            echo $author_data->user_login; ?></span></a>
+                                    <span class="post-meta-item">
+                                        <i class="glyphicon glyphicon-time"></i>
+                                        <span>Time：<? the_time('Y-m-d'); ?></span>
+                                    </span>
+                                    <span class="post-meta-item">
+                                        <i class="glyphicon glyphicon-thumbs-up"></i>
+                                        <span>Likes: <?php
                                             $like_num = get_user_meta($post->post_author, 'likes', true);
                                             echo empty($like_num) ? 0 : $like_num;
                                             ?></span></span>
-                                    <span class="post-meta-item"><i
-                                                class="glyphicon glyphicon-star"></i>
-                                        <span>Favorites: <?
-                                            // 收藏数
-                                            global $post;
-                                            echo 0;
-                                            ?>
+                                    <span class="post-meta-item">
+                                        <i class="glyphicon glyphicon-star"></i>
+                                        <span>Favorites: <? echo getPostFavorites(get_the_ID()); ?>
                                         </span>
                                     </span>
-                                    <span class="post-meta-item"><i
-                                                class="glyphicon glyphicon-eye-open"></i><span><?php
-                                            echo ' Views: ';
-                                            echo number_format(getPostViews(get_the_ID()));
-                                            ?></span></span>
+                                    <span class="post-meta-item">
+                                        <i class="glyphicon glyphicon-eye-open"></i>
+                                        <span>Views: <?php echo number_format(getPostViews(get_the_ID())); ?></span>
+                                    </span>
                                 </footer>
                             </div>
                             <?

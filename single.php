@@ -349,7 +349,7 @@ pageEncoding="UTF-8"%>-->
             background-color: skyblue; /* 设置背景颜色，你可以设置自己想要的颜色或图片 */
             color: white; /* 文本颜色 */
             cursor: pointer;
-            padding: 15px;
+            padding: 7px 11.5px 41px 11.5px;
             border-radius: 10px; /* 圆角 */
         }
 
@@ -405,7 +405,7 @@ pageEncoding="UTF-8"%>-->
             var u_ip = '<?php echo $_SERVER["REMOTE_ADDR"]; ?>'; //当前客户端的IP地址
             var cookie_val = pid + '_' + u_ip; //cookie名
             if ($.cookie(cookie_val)) { //如果 COOKIE 存在，就提示 已点赞过
-                alert("你已点赞过了。");
+                alert("You Have Liked it!");
                 return;
             }
 
@@ -569,7 +569,11 @@ pageEncoding="UTF-8"%>-->
                         <a>
                             <?php echo "<img id= \"Comment_visible\" alt=\"评论\" src=\"$road/img/comment.png\">"; ?>
                             <span>Comments</span>
-                            <span><?php echo $number = get_comments_number($post_id); ?>
+                            <span><?php
+                                $sql = "select * from wp_comments where comment_post_ID=" . $post_id;
+                                $rst = $wpdb->get_results($sql);
+                                $rows = $wpdb->num_rows;
+                                echo $rows;?>
                         </span>
                         </a>
                     </li>
@@ -583,21 +587,26 @@ pageEncoding="UTF-8"%>-->
         <div class="blogger_head">
             <?php echo "<a href=\"$road/otherblog.php?user_id=$author_id\">"; ?>
             <img class="blogger_head_portrait"
-                 src="https://v1.alapi.cn/api/avatar?email=<?php echo $email; ?>&size=100"
+                 src="https://v1.alapi.cn/api/avatar?email=<?php echo $email; ?>&size=256"
                  alt="Enter the blogger's home" class="blogger_head_portrait">
             </a><br>
-            <span id='author_introduction'>个人简介:<?php echo get_user_meta($author_id, 'introduction', true); ?></span>
         </div>
 
         <div class="blogger_introduction">
             <p class="blogger_name"> <?php echo $author_data->user_login; ?> </p>
             <hr class="blogger_line">
             <div class="blogger_information">
-                <span>Article: <?php the_author_posts(); ?></span>
-                |<span id="sum_comm">Comments:</span>
-                |<span>Collection: </span>
-                |<span>Thump:</span>
-                |<span>E-mail: <?php echo $email ?></span>
+
+                <?php if (!empty(get_user_meta($author_id, 'qq_num', true))) { ?>
+                    <span>QQ: <?php echo get_user_meta($author_id, 'qq_num', true); ?></span><br><? } ?>
+                <span>E-mail: <?php echo $email ?></span><br>
+                <span>Article: <?php the_author_posts(); ?></span><br>
+                <?php if (!empty(get_user_meta($author_id, 'interests', true))) { ?>
+                    <span>
+                        Interests: <?php echo get_user_meta($author_id, 'interests', true); ?></span><br> <? } ?>
+                <?php if (!empty(get_user_meta($author_id, 'introduction', true))) { ?>
+                    <span id='introduction'>
+                        Introduction：<?php echo get_user_meta($author_id, 'introduction', true); ?></span> <? } ?>
             </div>
         </div>
         <div class="classify">
@@ -631,7 +640,7 @@ pageEncoding="UTF-8"%>-->
         </div>
     </aside>
 </div>
-<button onclick="topFunction()" id="myBtn" title="回顶部">返回顶部</button>
+<button onclick="topFunction()" id="myBtn" title="回顶部">Back To Top</button>
 <script>
     // 当网页向下滑动 20px 出现"返回顶部" 按钮
     window.onscroll = function () {
